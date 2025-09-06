@@ -1,32 +1,32 @@
-/* script.js */
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const html = document.documentElement;
-        
-        // Check for saved theme preference
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', currentTheme);
-        updateThemeIcon(currentTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-        
-        function updateThemeIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const html = document.documentElement;
+
+// Set default theme as dark
+const currentTheme = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+}
+
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
