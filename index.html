@@ -21,7 +21,7 @@
         <div class="container nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <i class="fas fa-graduation-cap" style="color: var(--soul-blue); background: var(--soul-yellow); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                    <i class="fas fa-graduation-cap" style="color: var(--soul-blue); background: rgb(210, 209, 221); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
                 </div>
                 <span class="logo-text font-poppins">SoUL Organization</span>
             </div>
@@ -53,30 +53,41 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-icon">
-                <i class="fas fa-heart"></i>
-            </div>
-            <h1 class="font-poppins">SoUL - So U Learn</h1>
-            <h2 class="font-poppins">Educating minds Empowering lives</h2>
-            <br>
-            <p>"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i>
-                    Join Our Mission
-                </a>
-                <a href="#about" class="btn btn-secondary">
-                    <i class="fas fa-info-circle"></i>
-                    Learn More
-                </a>
-            </div>
-        </div>
-        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+<!-- Hero Section with Background Video -->
+<section id="home" class="hero">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="img/hero.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Hero Content -->
+  <div class="hero-content">
+      <div class="hero-icon">
+          <img src="img/log.png" alt="SoUL Logo" style="width: 110px; height: 110px; object-fit: contain;">
+      </div>
+      <h1 class="font-poppins">SoUL - So U Learn</h1>
+      <h2 class="font-poppins">Educating minds Empowering lives</h2>
+      <br>
+      <p>"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela</p>
+      <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">
+              <i class="fas fa-rocket"></i>
+              Join Our Mission
+          </a>
+          <a href="#about" class="btn btn-secondary">
+              <i class="fas fa-info-circle"></i>
+              Learn More
+          </a>
+      </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+      <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
 
     <!-- About Section -->
     <section id="about" class="section">
@@ -153,7 +164,7 @@
                     </a>
                 </div>
 
-                <div class="service-card fade-in" onclick="openServiceModal('Reflections', 'Reflections is one of the events organised by one of the Club of MCE, more like an inter-school competition.\n\nWe the volunteers, prepare the Balmandir kids to participate in various events just like other kids from any other private institutions.\n\nThis helps our children to represent themselves in the competitive world right from their childhood.', 'fa-solid fa-palette')">
+                <div class="service-card fade-in" onclick="openServiceModal('Reflections', 'Reflections is one of the events organised by one of the Club of Malnad College of Engineering, more like an inter-school competition.\n\nWe the volunteers, prepare the Balmandir kids to participate in various events just like other kids from any other private institutions.\n\nThis helps our children to represent themselves in the competitive world right from their childhood.', 'fa-solid fa-palette')">
                     <div class="service-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
                         <i class="fa-solid fa-palette"></i>
                     </div>
@@ -223,7 +234,7 @@
                 <div class="card fade-in">
                     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
                         <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="alumni.png" alt="Alumni Meet Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <img src="img/alumni.png" alt="Alumni Meet Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                         </div>
                         <div>
                             <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Alumni Meet</h3>
@@ -247,7 +258,7 @@
                             </div>
                         </div>
                         <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="soulday.png" alt="SoUL Day Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <img src="img/soulday.png" alt="SoUL Day Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                         </div>
                     </div>
                 </div>
@@ -255,7 +266,7 @@
                 <div class="card fade-in">
                     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
                         <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="celeb.png" alt="Festivals Celebrations Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <img src="img/celeb.png" alt="Festivals Celebrations Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                         </div>
                         <div>
                             <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Festivals Celebrations</h3>
@@ -272,14 +283,14 @@
                     <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;">
                         <div>
                             <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Patriotic Festivities</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Every Independence Day and Republic Day, Balmandir children proudly participate in the parade at the Hassan District Stadium, showcasing their respect for the nation. Their performances honor the sacrifices of our freedom fighters, while the boys of Balmandir march with discipline, energy, and perfect synchronization—displaying true team spirit and patriotism.</p>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Every Independence Day and Republic Day, Balmandir children proudly participate in the parade at the Hassan District Stadium, showcasing their respect for the nation. Their performances honor the sacrifices of our freedom fighters.</p>
                             <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
                                 <span style="padding: 0.25rem 0.75rem; background: var(--gradient-secondary); color: white; border-radius: 15px; font-size: 0.875rem;">100+ Students</span>
                                 <span style="padding: 0.25rem 0.75rem; background: var(--gradient-accent); color: white; border-radius: 15px; font-size: 0.875rem;">November 2024</span>
                             </div>
                         </div>
                         <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="patri.png" alt="Patriotic Festivities Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            <img src="img/patri.png" alt="Patriotic Festivities Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                         </div>
                     </div>
                 </div>
@@ -363,7 +374,23 @@
                     <div class="members-grid">
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/41.png" alt="Pooja k v" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div class="member-name">POOJA K V</div>
+                            <div class="member-position">Evernt Coordinator</div>
+                            <div class="member-branch">ECE</div>
+                        </div>
+                        <div class="member-card fade-in">
+                            <div class="member-photo-placeholder">
+                                <img src="img/42.jpg" alt="PRIYANKA" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div class="member-name">PRIYANKA</div>
+                            <div class="member-position">Tuition Coordinator</div>
+                            <div class="member-branch">ISE</div>
+                        </div>
+                        <div class="member-card fade-in">
+                            <div class="member-photo-placeholder">
+                                <img src="img/43.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">President</div>
@@ -371,7 +398,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/44.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">President</div>
@@ -379,7 +406,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/45.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">President</div>
@@ -387,7 +414,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/46.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">President</div>
@@ -395,30 +422,14 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="member-name">Student Name</div>
-                            <div class="member-position">President</div>
-                            <div class="member-branch">Computer Science</div>
-                        </div>
-                        <div class="member-card fade-in">
-                            <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="member-name">Student Name</div>
-                            <div class="member-position">President</div>
-                            <div class="member-branch">Computer Science</div>
-                        </div>
-                        <div class="member-card fade-in">
-                            <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/47.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">President</div>
                             <div class="member-branch">Computer Science</div>
                         </div><div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/48.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">President</div>
@@ -426,7 +437,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/49.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">Vice President</div>
@@ -434,7 +445,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/50.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">Secretary</div>
@@ -442,7 +453,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/51.png" alt="Student Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">Student Name</div>
                             <div class="member-position">Secretary</div>
@@ -456,7 +467,7 @@
                     <div class="members-grid">
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="31.png" alt="Shreyas S M" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/31.png" alt="Shreyas S M" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">SHREYAS S M</div>
                             <div class="member-position">Volunteer</div>
@@ -464,7 +475,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="32.png" alt="Sowmya S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/32.png" alt="Sowmya S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">SINCHANA K</div>
                             <div class="member-position">Volunteer</div>
@@ -472,7 +483,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="33.jpg" alt="MANJUSHREE" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/33.jpg" alt="MANJUSHREE" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">MANJUSHREE</div>
                             <div class="member-position">Volunteer</div>
@@ -480,7 +491,7 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="34.png" alt="SUSHMITHA H P" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/34.png" alt="SUSHMITHA H P" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">SUSHMITHA H P</div>
                             <div class="member-position">Volunteer</div>
@@ -488,11 +499,11 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <i class="fas fa-user"></i>
+                                <img src="img/35.png" alt="MANYA C S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Student Name</div>
+                            <div class="member-name">MANYA C S</div>
                             <div class="member-position">Volunteer</div>
-                            <div class="member-branch">Computer Science</div>
+                            <div class="member-branch">EIE</div>
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
@@ -542,7 +553,7 @@
                     <div class="members-grid">
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="21.jpg" alt="Akash Manjunath Koushik" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/21.jpg" alt="Akash Manjunath Koushik" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">AKASH MANJUNATH KOUSHIK</div>
                             <div class="member-position">Volunteer</div>
@@ -550,21 +561,21 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="22.png" alt="KRUTHIKA N P" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+                                <img src="img/22.png" alt="KRUTHIKA N P" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
                             <div class="member-name">KRUTHIKA N P </div>
                             <div class="member-position">Volunteer</div>
                             <div class="member-branch">ECE</div>
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="23.png" alt="NITHIN KUMAR S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+                                <img src="img/23.png" alt="NITHIN KUMAR S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
                             <div class="member-name">LAKSHMI M V</div>
                             <div class="member-position">Volunteer</div>
                             <div class="member-branch">EEE</div>
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="24.png" alt="THRISHA R" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/24.png" alt="THRISHA R" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">THRISHA R</div>
                             <div class="member-position">Volunteer</div>
@@ -572,14 +583,14 @@
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="25.jpg" alt="Kishan S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
+                                <img src="img/25.jpg" alt="Kishan S" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
                             <div class="member-name">KISHAN S</div>
                             <div class="member-position">Volunteer</div>
                             <div class="member-branch">CSE</div>
                         </div>
                         <div class="member-card fade-in">
                             <div class="member-photo-placeholder">
-                                <img src="26.png" alt="RANJITHA V" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                <img src="img/26.png" alt="RANJITHA V" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
                             <div class="member-name">RANJITHA V</div>
                             <div class="member-position">Volunteer</div>
@@ -671,7 +682,7 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal1.png" alt="SoUL Day Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal1.png" alt="SoUL Day Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Educational Workshop</p>
                             </div>
                         </div>
@@ -679,7 +690,7 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal2.png" alt="Community Service Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal2.png" alt="Community Service Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Community Service</p>
                             </div>
                         </div>
@@ -687,7 +698,7 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal3.png" alt="Food Drive Event" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal3.jpg" alt="Food Drive Event" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Food Drive Event</p>
                             </div>
                         </div>
@@ -695,7 +706,7 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal4.png" alt="Team Meeting" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal4.png" alt="Team Meeting" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Team Meeting</p>
                             </div>
                         </div>
@@ -703,7 +714,7 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal5.png" alt="Alumni Gathering" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal5.png" alt="Alumni Gathering" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Alumni Gathering</p>
                             </div>
                         </div>
@@ -711,7 +722,7 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal6.png" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal6.png" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Environmental Drive</p>
                             </div>
                         </div>
@@ -719,11 +730,61 @@
                     <div class="gallery-slide">
                         <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
                             <div style="text-align: center;">
-                                <img src="gal7.png" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <img src="img/gal7.png" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                                 <p>Environmental Drive</p>
                             </div>
                         </div>
                     </div>
+                    <div class="gallery-slide">
+                        <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                            <div style="text-align: center;">
+                                <img src="img/gal8.jpg" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <p>Environmental Drive</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                            <div style="text-align: center;">
+                                <img src="img/gal9.jpg" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <p>Environmental Drive</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                            <div style="text-align: center;">
+                                <img src="img/gal10.jpg" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <p>Environmental Drive</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <div style="width: 100%; height: 500px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                            <div style="text-align: center;">
+                                <img src="img/gal11.jpg" alt="Environmental Drive" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+                                <p>Environmental Drive</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video with controls
+                    <div class="gallery-slide">
+                        <div class="video-container">
+                            <video id="galleryVideo" loop muted>
+                                <source src="img/ved.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <!-- Control overlay -->
+                    <div class="video-overlay">
+                        <button id="muteToggle">
+                            <i class="fas fa-volume-mute"></i>
+                        </button>
+                        <button id="playToggle">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                    </div> -->
                 </div>
                 <button class="gallery-nav gallery-prev" onclick="moveGallery(-1)">
                     <i class="fas fa-chevron-left"></i>
@@ -815,6 +876,7 @@
                                 <a href="https://www.instagram.com/so_u_learn/" style="width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: transform 0.3s ease;">
                                     <i class="fab fa-instagram"></i>
                                 </a>
+                                <img src="img/log.png" alt="SoUL Logo" style="width: 50px; height: 50px; object-fit: contain;">
                             </div>
                         </div>
                     </div>
@@ -851,6 +913,7 @@
                         <a href="#" class="footer-social-icon">
                             <i class="fab fa-twitter"></i>
                         </a>
+                        <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain;">
                     </div>
                 </div>
 
