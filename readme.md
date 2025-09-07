@@ -6,6 +6,8 @@ A modern, responsive website for SoUL (So U Learn) Organization - a voluntary st
 
 SoUL Organization is a non-governmental voluntary student organization formed on February 9th, 2014, with the mission of "Educating minds, Empowering lives." This website serves as the digital presence for the organization, showcasing their initiatives, team members, and community impact.
 
+## Live Demo : https://priyankapinky2004.github.io/SoUL/
+
 ## ✨ Features
 
 ### 🎨 Modern Design
