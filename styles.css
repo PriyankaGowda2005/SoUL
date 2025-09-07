@@ -23,10 +23,10 @@
     --text-gray: #6B5B63;              /* Better contrast pink-tinted gray */
     
     /* UI Elements */
-    --border-color: #EFD6E3;           /* Slightly darker border for definition */
-    --card-bg: #FFFFFF;                /* Pure white cards for maximum contrast */
-    --bg-light: #FEFCFD;              /* Barely tinted background */
-    
+    --border-color: #EFD6E3;            /* Slightly darker border for definition */
+    --card-bg: #FFFFFF;                 /* Pure white cards for maximum contrast */
+    --bg-light: #FEFCFD;               /* Barely tinted background */
+
     /* Interactive States */
     --hover-bg: #F8EDF2;              /* Subtle hover background */
     --active-bg: #F3E1EA;             /* Active state background */
@@ -1205,12 +1205,19 @@
         }
 
         /* Contact Form */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
         .contact-form {
             background: var(--card-bg);
