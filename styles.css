@@ -1078,7 +1078,7 @@
 
         .tabs-nav {
             display: flex;
-            gap: 0.5rem;
+            gap: 3.7rem;
             border-bottom: 2px solid var(--border-color);
             margin-bottom: 2rem;
             overflow-x: auto;
@@ -1219,12 +1219,21 @@
   }
 }
 
+
         .contact-form {
             background: var(--card-bg);
             border-radius: 20px;
             padding: 2.5rem;
             box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
             border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            
+        }
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .form-group {
