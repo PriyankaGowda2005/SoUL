@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoUL Organization - Volunteer Login</title>
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* SoUL Organization Official Theme */
+        :root {
+            /* Light Theme - Pink Base */
+            --primary-color: #D91A60;
+            --secondary-color: #E91E63;
+            --accent-color: #FF6B9D;
+            --bg-primary: #FEFBFC;
+            --bg-secondary: #FDF7F9;
+            --bg-tertiary: #FBF1F5;
+            --text-primary: #1A0D13;
+            --text-secondary: #2D1B24;
+            --text-muted: #5D4A52;
+            --text-dark: #0F080B;
+            --border-color: #EFD6E3;
+            --card-bg: #FFFFFF;
+            --hover-bg: #F8EDF2;
+            --active-bg: #F3E1EA;
+            --card-shadow: 0 4px 12px rgba(26, 13, 19, 0.1), 0 2px 6px rgba(26, 13, 19, 0.08);
+            --card-hover-shadow: 0 8px 25px rgba(26, 13, 19, 0.15), 0 4px 10px rgba(26, 13, 19, 0.1);
+            --gradient-primary: linear-gradient(135deg, #E91E63 0%, #D91A60 50%, #C2185B 100%);
+            --gradient-soft: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+        }
+
+        /* Dark theme */
+        [data-theme="dark"] {
+            --primary-color: #14B8A6;
+            --secondary-color: #06B6D4;
+            --accent-color: #22D3EE;
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #E2E8F0;
+            --text-muted: #94A3B8;
+            --text-dark: #FFFFFF;
+            --border-color: #475569;
+            --card-bg: #1E293B;
+            --hover-bg: #334155;
+            --active-bg: #475569;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(20, 184, 166, 0.15);
+            --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(20, 184, 166, 0.25);
+            --gradient-primary: linear-gradient(135deg, #0891B2 0%, #14B8A6 50%, #10B981 100%);
+            --gradient-soft: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            background: var(--gradient-soft);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-primary);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: scale(1.1) rotate(15deg);
+            border-color: var(--primary-color);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .back-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 200px);
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary-color);
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape1 { width: 100px; height: 100px; top: 15%; left: 10%; animation-delay: 0s; }
+        .shape2 { width: 150px; height: 150px; top: 25%; right: 15%; animation-delay: 2s; }
+        .shape3 { width: 80px; height: 80px; bottom: 20%; left: 20%; animation-delay: 4s; }
+        .shape4 { width: 120px; height: 120px; bottom: 30%; right: 25%; animation-delay: 1s; }
+        .shape5 { width: 60px; height: 60px; top: 60%; left: 50%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
+            33% { transform: translateY(-30px) rotate(120deg); opacity: 0.12; }
+            66% { transform: translateY(15px) rotate(240deg); opacity: 0.06; }
+        }
+
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+            padding: 50px 45px;
+            width: 90%;
+            max-width: 480px;
+            position: relative;
+            animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+        }
+
+        .container:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        @keyframes slideInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo-icon-main {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo-icon-main:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .logo-section h1 {
+            color: var(--text-dark);
+            font-size: 32px;
+            margin-bottom: 8px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .logo-section p {
+            color: var(--text-muted);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .tab-container {
+            display: flex;
+            margin-bottom: 35px;
+            border-radius: 16px;
+            background: var(--bg-tertiary);
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 14px 16px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-muted);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .tab:hover::before {
+            left: 100%;
+        }
+
+        .tab.active {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--card-shadow);
+            transform: translateY(-2px);
+        }
+
+        .tab:hover:not(.active) {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+            transform: translateY(-1px);
+        }
+
+        .form-container {
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(217, 26, 96, 0.1);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="dark"] .form-group input:focus {
+            box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 6px;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+            background: var(--hover-bg);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .error-message, .success-message {
+            padding: 16px 20px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            display: none;
+            border: 1px solid;
+            font-weight: 500;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            color: #DC2626;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            min-height: 100vh;
+            background: var(--bg-primary);
+        }
+
+        .dashboard-header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .dashboard-main {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .welcome-card {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" fill-opacity="0.1"/><circle cx="80" cy="40" r="0.5" fill="white" fill-opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" fill-opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .welcome-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(217, 26, 96, 0.05), transparent);
+            transition: left 0.5s;
+        }
+
+        .resource-card:hover::before {
+            left: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .logout-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            color: white;
+            padding: 4rem 0 1.5rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .footer-social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 35px 25px;
+                margin: 15px;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+            
+            .dashboard-main {
+                padding: 0 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+                padding: 0 1.5rem 3rem;
+            }
+
+            .main-content {
+                min-height: calc(100vh - 160px);
+                padding: 20px 15px;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+                max-width: 95%;
+            }
+
+            .logo-section h1 {
+                font-size: 28px;
+            }
+
+            .logo-icon-main {
+                width: 75px;
+                height: 75px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">SoUL Organization</span>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="bg-animation">
+            <div class="floating-shape shape1"></div>
+            <div class="floating-shape shape2"></div>
+            <div class="floating-shape shape3"></div>
+            <div class="floating-shape shape4"></div>
+            <div class="floating-shape shape5"></div>
+        </div>
+
+        <!-- Login/Signup Container -->
+        <div class="container" id="authContainer">
+            <div class="logo-section">
+                <div class="logo-icon-main">SoUL</div>
+                <h1>SoUL Organization</h1>
+                <p>Volunteer Portal</p>
+            </div>
+
+            <div class="tab-container">
+                <button class="tab active" onclick="showLogin()">Login</button>
+                <button class="tab" onclick="showSignup()">Sign Up</button>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="form-container" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="loginPassword" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                            <i class="fas fa-eye" id="loginPasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span id="loginBtnText">Sign In</span>
+                    <div class="loading" id="loginLoading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="form-container" style="display: none;" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="signupPassword" required minlength="8">
+                        <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                            <i class="fas fa-eye" id="signupPasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-field">
+                        <input type="password" id="confirmPassword" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                            <i class="fas fa-eye" id="confirmPasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span id="signupBtnText">Create Account</span>
+                    <div class="loading" id="signupLoading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard (Hidden initially) -->
+    <div class="dashboard" id="dashboard">
+        <header class="dashboard-header">
+            <div class="logo">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">SoUL</div>
+                    <div>
+                        <h1 style="font-size: 1.5rem; margin: 0; font-family: 'Poppins', sans-serif;">SoUL Organization</h1>
+                        <p style="margin: 0; color: var(--text-muted); font-size: 14px;">Volunteer Dashboard</p>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <span id="welcomeText" style="font-weight: 600; color: var(--text-primary);">Welcome!</span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="welcome-card">
+                <h2 id="dashboardWelcome" style="font-size: 2.5rem; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Welcome to SoUL Dashboard!</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">Ready to make a difference in education and empowerment?</p>
+            </div>
+
+            <div class="resource-grid">
+                <div class="resource-card" onclick="navigateToSection('alumni')">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">👥</div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Alumni Network</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Connect with our alumni community, share experiences, and explore networking opportunities with past volunteers.</p>
+                    <button class="btn">Explore Network</button>
+                </div>
+                
+                <div class="resource-card" onclick="navigateToSection('reports')">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Annual Report & Documents</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Access comprehensive annual reports, impact studies, and organizational transparency materials.</p>
+                    <button class="btn">View Reports</button>
+                </div>
+                
+                <div class="resource-card" onclick="navigateToSection('training')">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎓</div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Training Materials</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Enhance your volunteer skills with comprehensive training modules and educational resources.</p>
+                    <button class="btn">Access Training</button>
+                </div>
+                
+                <div class="resource-card" onclick="navigateToSection('guidelines')">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📋</div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Event Guidelines</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Complete guidelines for organizing events, protocols, and best practices for SoUL activities.</p>
+                    <button class="btn">View Guidelines</button>
+                </div>
+                
+                <div class="resource-card" onclick="navigateToSection('handbook')">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📄</div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Volunteer Handbook</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Complete guide for all SoUL volunteers with updated protocols and essential information.</p>
+                    <button class="btn">Download Handbook</button>
+                </div>
+                
+                <div class="resource-card" onclick="navigateToSection('students')">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">👨‍🎓</div>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Student Details</h3>
+                    <p style="color: var(--text-muted); line-height: 1.6;">Access student profiles, progress tracking, and academic performance data.</p>
+                    <button class="btn">View Students</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Logo and Description -->
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-graduation-cap" style="color: #fbbf24; background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px; line-height: 1.6;">
+                    Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+                </p>
+                <div class="footer-socials">
+                    <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/so_u_learn/" target="_blank" class="footer-social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px;">
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#members">Our Team</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Contact Info</h3>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-map-marker-alt" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>Hassan, Karnataka</span>
+                    </li>
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-phone" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>+91 6366761006</span>
+                    </li>
+                    <li style="display: flex; align-items: center;">
+                        <i class="fas fa-envelope" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>soulearnofficial@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <p>
+                &copy; 2025 SoUL Organization. All rights reserved.
+                <br>
+                <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Volunteer database with 6 section access
+        let volunteers = [
+            { name: "Subhash H S", email: "hssubhashgowda@gmail.com", password: "Subhash@2004" },
+            { name: "Pooja k v", email: "poojadayana2004@gmail.com", password: "Poojakvmoolya123456" },
+            { name: "Priyanka", email: "priyanka.636192@gmail.com", password: "Priya@soul" },
+            { name: "Tanvi B", email: "tanvibalaji15@gmail.com", password: "Tanvisoul15" },
+            { name: "Varshitha D", email: "dvarshitha36@gmail.com", password: "Varshitha@1" },
+            { name: "Hima K R", email: "hhimakr@gmail.com", password: "Himakr@2620" },
+            { name: "Abhishek K H", email: "abhi8861375377@gmail.com", password: "200414" },
+            { name: "Lingesha M N", email: "mnlingesh535@gmail.com", password: "Lingu@109" },
+            { name: "Mary Rodriguez", email: "mary.rodriguez@email.com", password: "Lives456$" },
+            { name: "Robert Wilson", email: "robert.wilson@email.com", password: "SoUL@2024" },
+            { name: "Shreyas SM", email: "ssm83105@gmail.com", password: "Shreyas@SoulS" },
+            { name: "Manya C S", email: "manyasrinivasa073@gmail.com", password: "ma@SoUL" },
+            { name: "Manjushree", email: "manjushree@example.com", password: "shree162005" },
+            { name: "Sushmitha HP", email: "sushmithaparamesh04@gmail.com", password: "Godblessyou" },
+            { name: "Sinchana K", email: "sinchanakgowda58@gmail.com", password: "Sinchu@111" },
+            { name: "Suchithra H K", email: "suchithrahk05@gmail.com", password: "suchu@123" },
+            { name: "Nitravatti Shireesha", email: "shireeshanitravatti3@gmail.com", password: "Password@54321" },
+            { name: "Shivanand Bentur", email: "shivanandbentur2004@gmail.com", password: "Shivanand2003#" },
+            { name: "Kishan Devangas", email: "kishandevangas@gmail.com", password: "kishan@123" },
+            { name: "Vaibhav B S", email: "bsvaibhav074@gmail.com", password: "Vaibhav@soul" },
+            { name: "Kruthika N P", email: "kruthikakruthika12@gmail.com", password: "Kruthi12#" },
+            { name: "Thrisha R", email: "thrishar524@gmail.com", password: "3sh@3130" },
+            { name: "Manoj Kumar K M", email: "mmanojmuddappa@gmail.com", password: "Manoj962084." },
+            { name: "Ranjitha V", email: "ranjithav3838@gmail.com", password: "Ranjitha@1234" },
+            { name: "Akash Manjunath", email: "koushikakash477@gmail.com", password: "akash123" },
+            { name: "Lakshmi M.V", email: "lakshmimv006@gmail.com", password: "Nisu._.gowda.03" },
+            { name: "Kumuda Priya NP", email: "kumudapriya2006@gmail.com", password: "psky2029" }
+        ];
+
+        // Theme functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-moon';
+                sessionStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                sessionStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load
+        function loadTheme() {
+            const savedTheme = sessionStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        // Password toggle functionality
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const icon = document.getElementById(fieldId + 'Icon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                passwordField.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+
+        // Tab switching
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+            document.querySelectorAll('.tab')[0].classList.add('active');
+            document.querySelectorAll('.tab')[1].classList.remove('active');
+            clearMessages();
+        }
+
+        function showSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+            document.querySelectorAll('.tab')[0].classList.remove('active');
+            document.querySelectorAll('.tab')[1].classList.add('active');
+            clearMessages();
+        }
+
+        // Message functions
+        function clearMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // Login handler
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value.toLowerCase().trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                showError('Please fill in all fields.');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loginBtnText').style.display = 'none';
+            document.getElementById('loginLoading').style.display = 'block';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Check credentials
+                const volunteer = volunteers.find(v => 
+                    v.email.toLowerCase() === email && v.password === password
+                );
+                
+                if (volunteer) {
+                    // Store session
+                    sessionStorage.setItem('currentUser', JSON.stringify({
+                        name: volunteer.name,
+                        email: volunteer.email,
+                        loginTime: new Date().toISOString()
+                    }));
+                    
+                    showSuccess(`Welcome back, ${volunteer.name}!`);
+                    
+                    // Show dashboard after 1 second
+                    setTimeout(() => {
+                        showDashboard(volunteer);
+                    }, 1000);
+                } else {
+                    showError('Invalid email or password. Please check your credentials.');
+                }
+                
+                // Hide loading
+                document.getElementById('loginBtnText').style.display = 'block';
+                document.getElementById('loginLoading').style.display = 'none';
+            }, 1500);
+        }
+
+        // Signup handler
+        function handleSignup(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.toLowerCase().trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Validation
+            if (!name || !email || !password || !confirmPassword) {
+                showError('Please fill in all fields.');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showError('Passwords do not match.');
+                return;
+            }
+            
+            if (!isValidPassword(password)) {
+                showError('Password must be at least 8 characters with uppercase, lowercase, number, and special character.');
+                return;
+            }
+            
+            // Check if email exists
+            if (volunteers.find(v => v.email.toLowerCase() === email)) {
+                showError('Email already registered. Please login instead.');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('signupBtnText').style.display = 'none';
+            document.getElementById('signupLoading').style.display = 'block';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Add new volunteer
+                volunteers.push({ name, email, password });
+                
+                showSuccess('Account created successfully! You can now login.');
+                
+                // Switch to login after 2 seconds and prefill email
+                setTimeout(() => {
+                    showLogin();
+                    document.getElementById('loginEmail').value = email;
+                    document.getElementById('signupForm').reset();
+                }, 2000);
+                
+                // Hide loading
+                document.getElementById('signupBtnText').style.display = 'block';
+                document.getElementById('signupLoading').style.display = 'none';
+            }, 1500);
+        }
+
+        // Password validation
+        function isValidPassword(password) {
+            return password.length >= 8 &&
+                   /[a-z]/.test(password) &&
+                   /[A-Z]/.test(password) &&
+                   /[0-9]/.test(password) &&
+                   /[^a-zA-Z0-9]/.test(password);
+        }
+
+        // Show dashboard
+        function showDashboard(user) {
+            // Hide auth container and show dashboard
+            document.getElementById('authContainer').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.querySelector('.main-content').style.display = 'none';
+            document.querySelector('.footer').style.display = 'none';
+            
+            // Update welcome messages
+            document.getElementById('welcomeText').textContent = `Welcome, ${user.name.split(' ')[0]}!`;
+            document.getElementById('dashboardWelcome').textContent = `Welcome back, ${user.name}!`;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Navigate to section (placeholder - you can create separate pages)
+        function navigateToSection(section) {
+            // For now, just show an alert. In a real application, you would navigate to separate pages
+            const sectionNames = {
+                'alumni': 'Alumni Network',
+                'reports': 'Annual Reports & Documents',
+                'training': 'Training Materials',
+                'guidelines': 'Event Guidelines',
+                'handbook': 'Volunteer Handbook',
+                'students': 'Student Details'
+            };
+            
+            alert(`Navigating to ${sectionNames[section]} section. This would redirect to a dedicated page in a full implementation.`);
+            
+            // In a real application, you would do:
+            // window.location.href = `${section}.html`;
+        }
+
+        // Logout function
+        function logout() {
+            // Clear session storage
+            sessionStorage.removeItem('currentUser');
+            
+            // Show auth container and hide dashboard
+            document.getElementById('authContainer').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'flex';
+            document.querySelector('.footer').style.display = 'block';
+            
+            // Reset forms and show login tab
+            showLogin();
+            document.getElementById('loginForm').reset();
+            document.getElementById('signupForm').reset();
+            
+            // Clear messages and show success
+            clearMessages();
+            showSuccess('Logged out successfully!');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Check for existing session on page load
+        window.addEventListener('load', function() {
+            loadTheme();
+            
+            // Check if we're returning from dashboard with logout
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('logout') === 'true') {
+                showSuccess('Successfully logged out from dashboard!');
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (currentUser) {
+                try {
+                    const user = JSON.parse(currentUser);
+                    // Check if session is still valid (less than 24 hours old)
+                    const loginTime = new Date(user.loginTime);
+                    const now = new Date();
+                    const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
+                    
+                    if (hoursSinceLogin < 24) {
+                        // Redirect to dashboard if still logged in
+                        showDashboard(user);
+                    } else {
+                        // Session expired, remove it
+                        sessionStorage.removeItem('currentUser');
+                    }
+                } catch (e) {
+                    // Invalid session data, remove it
+                    sessionStorage.removeItem('currentUser');
+                }
+            }
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            // Alt + T to toggle theme
+            if (event.altKey && event.key === 't') {
+                event.preventDefault();
+                toggleTheme();
+            }
+            
+            // Escape key to logout from dashboard
+            if (event.key === 'Escape' && document.getElementById('dashboard').style.display === 'block') {
+                logout();
+            }
+        });
+
+        // Console info
+        console.log('🚀 SoUL Organization - Complete Volunteer Login Portal with 6 Sections');
+        console.log('✨ Features: Login/Signup, Dashboard, Theme Toggle, Session Management');
+        console.log('📋 Sections: Alumni, Reports, Training, Guidelines, Handbook, Students');
+        console.log('⌨️ Shortcuts: Alt+T (Toggle Theme), Escape (Logout from Dashboard)');
+        console.log('📧 Contact: soulearnofficial@gmail.com');
+    </script>
+</body>
+</html>
