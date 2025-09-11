@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Guidelines - SoUL Organization</title>
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(26, 35, 50, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 3rem;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .quick-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(32, 211, 194, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .quick-link:hover {
+            transform: translateY(-5px);
+            border-color: #20d3c2;
+            box-shadow: 0 15px 35px rgba(32, 211, 194, 0.2);
+        }
+
+        .quick-link-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-link-title {
+            font-weight: 600;
+            color: #20d3c2;
+        }
+
+        .event-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(32, 211, 194, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-color: #20d3c2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .guideline-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guideline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(32, 211, 194, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .guideline-card:hover::before {
+            left: 100%;
+        }
+
+        .guideline-card:hover {
+            transform: translateY(-8px);
+            border-color: #20d3c2;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .guideline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guideline-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .guideline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #20d3c2;
+        }
+
+        .guideline-description {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #20d3c2;
+        }
+
+        .checklist-icon {
+            color: #20d3c2;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .checklist-text {
+            flex: 1;
+            color: #e2e8f0;
+        }
+
+        .timeline-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #20d3c2;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #20d3c2, #17a2b8);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #20d3c2;
+            border-radius: 50%;
+            border: 3px solid #1a2332;
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: #20d3c2;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #20d3c2;
+        }
+
+        .timeline-task {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .timeline-description {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .resources-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .resources-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #20d3c2;
+            text-align: center;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: #20d3c2;
+        }
+
+        .resource-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #20d3c2;
+        }
+
+        .resource-description {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .resource-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(32, 211, 194, 0.4);
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #20d3c2;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(32, 211, 194, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: #20d3c2;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        .footer-text {
+            color: #a0aec0;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #20d3c2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #17a2b8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .guidelines-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .event-categories {
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">📅</div>
+            <h1>SoUL Organization</h1>
+        </div>
+        <a href="#" class="home-btn">🏠 Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Event Guidelines</h1>
+        <p class="page-subtitle">Complete guidelines for organizing events, protocols, and best practices for SoUL activities</p>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <a href="#planning" class="quick-link">
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon">🎨</div>
+                        <div class="guideline-title">Cultural Showcase Planning</div>
+                    </div>
+                    <div class="guideline-description">
+                        Guidelines for organizing cultural exhibitions, art displays, and heritage showcases.
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Curate diverse cultural representations and activities</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Set up interactive cultural experience zones</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Arrange traditional craft demonstrations</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Coordinate cultural food stalls and vendors</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Document cultural activities for future reference</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Workshops -->
+        <div class="category-content" id="workshops">
+            <div class="guidelines-grid">
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon">🛠️</div>
+                        <div class="guideline-title">Skill Development Workshops</div>
+                    </div>
+                    <div class="guideline-description">
+                        Guidelines for organizing hands-on workshops, training sessions, and skill-building activities.
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Identify target audience and skill levels</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Prepare workshop materials and tools in advance</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Limit participant numbers for effective learning</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Arrange practice sessions and feedback rounds</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Provide take-home resources and follow-up support</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="guideline-card">
+                    <div class="guideline-header">
+                        <div class="guideline-icon">💻</div>
+                        <div class="guideline-title">Technical Workshops</div>
+                    </div>
+                    <div class="guideline-description">
+                        Specialized guidelines for technology, digital skills, and technical training workshops.
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Ensure adequate computing equipment and internet connectivity</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Prepare software installations and technical setup</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Have technical support staff available</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Create step-by-step tutorial materials</span>
+                        </li>
+                        <li class="checklist-item">
+                            <span class="checklist-icon">✓</span>
+                            <span class="checklist-text">Plan troubleshooting procedures for common issues</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Timeline -->
+        <div class="timeline-section" id="timeline">
+            <h3 class="timeline-title">⏰ Event Planning Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">8-12 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Initial Planning & Concept Development</div>
+                        <div class="timeline-description">Define event objectives, target audience, budget allocation, and form planning committee</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">6-8 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Venue & Vendor Booking</div>
+                        <div class="timeline-description">Secure venue, book catering, entertainment, and technical equipment</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">4-6 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Marketing & Promotion</div>
+                        <div class="timeline-description">Launch promotional campaign, create marketing materials, and open registration</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">2-4 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Logistics Coordination</div>
+                        <div class="timeline-description">Finalize volunteer assignments, confirm vendors, and prepare event materials</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">1 Week Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Final Preparations</div>
+                        <div class="timeline-description">Conduct final briefings, confirm attendee count, and prepare contingency plans</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Event Day</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Event Execution</div>
+                        <div class="timeline-description">Setup, coordinate activities, manage volunteers, and ensure smooth operations</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">Post-Event</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Wrap-up & Evaluation</div>
+                        <div class="timeline-description">Cleanup, thank stakeholders, document lessons learned, and evaluate success</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="resources-section" id="resources">
+            <h3 class="resources-title">📚 Event Resources & Templates</h3>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📋</div>
+                    <div class="resource-title">Event Planning Checklist</div>
+                    <div class="resource-description">Comprehensive checklist covering all aspects of event planning from conception to execution.</div>
+                    <button class="resource-btn" onclick="downloadResource('event-planning-checklist.pdf')">Download PDF</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">💰</div>
+                    <div class="resource-title">Budget Template</div>
+                    <div class="resource-description">Excel template for event budget planning, expense tracking, and financial management.</div>
+                    <button class="resource-btn" onclick="downloadResource('event-budget-template.xlsx')">Download Excel</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">📝</div>
+                    <div class="resource-title">Vendor Agreement Forms</div>
+                    <div class="resource-description">Legal templates for vendor contracts, service agreements, and terms of engagement.</div>
+                    <button class="resource-btn" onclick="downloadResource('vendor-agreements.zip')">Download Pack</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <div class="resource-title">Post-Event Report Template</div>
+                    <div class="resource-description">Structured template for documenting event outcomes, feedback, and recommendations.</div>
+                    <button class="resource-btn" onclick="downloadResource('post-event-report.docx')">Download Word</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🎨</div>
+                    <div class="resource-title">Marketing Materials Kit</div>
+                    <div class="resource-description">Design templates for posters, flyers, social media posts, and promotional materials.</div>
+                    <button class="resource-btn" onclick="downloadResource('marketing-kit.zip')">Download Kit</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">👥</div>
+                    <div class="resource-title">Volunteer Coordination Guide</div>
+                    <div class="resource-description">Best practices for recruiting, training, and managing volunteers for events.</div>
+                    <button class="resource-btn" onclick="downloadResource('volunteer-guide.pdf')">Download Guide</button>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🔒</div>
+                    <div class="resource-title">Risk Management Framework</div>
+                    <div class="resource-description">Comprehensive risk assessment templates and safety protocols for event management.</div>
+                    <button class="resource-btn" onclick="downloadResource('risk-management.pdf')">Download PDF</button>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📱</div>
+                    <div class="resource-title">Social Media Guidelines</div>
+                    <div class="resource-description">Best practices for event promotion, live coverage, and post-event engagement on social platforms.</div>
+                    <button class="resource-btn" onclick="downloadResource('social-media-guide.pdf')">Download Guide</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" id="forms">
+            <h3 class="contact-title">📞 Event Coordination Contacts</h3>
+            <p class="page-subtitle">Need help with event planning? Contact our specialized teams for guidance and support.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">🎭</div>
+                    <div class="resource-title">Cultural Events Team</div>
+                    <div class="resource-description">Specialized support for cultural celebrations, performances, and traditional events</div>
+                    <div style="margin-top: 1rem;">
+                        <div>📧 cultural@soul.org</div>
+                        <div>📱 +91-XXXX-XXXX-01</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📚</div>
+                    <div class="resource-title">Educational Programs</div>
+                    <div class="resource-description">Support for workshops, seminars, and educational outreach activities</div>
+                    <div style="margin-top: 1rem;">
+                        <div>📧 education@soul.org</div>
+                        <div>📱 +91-XXXX-XXXX-02</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🤝</div>
+                    <div class="resource-title">Community Service</div>
+                    <div class="resource-description">Coordination for volunteer drives and community outreach programs</div>
+                    <div style="margin-top: 1rem;">
+                        <div>📧 community@soul.org</div>
+                        <div>📱 +91-XXXX-XXXX-03</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🛠️</div>
+                    <div class="resource-title">Technical Support</div>
+                    <div class="resource-description">Audio-visual equipment, technical setup, and IT support for events</div>
+                    <div style="margin-top: 1rem;">
+                        <div>📧 tech@soul.org</div>
+                        <div>📱 +91-XXXX-XXXX-04</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-text">
+            © 2024 SoUL Organization. All rights reserved. | Building stronger communities through cultural unity.
+        </div>
+         <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#members">Our Team</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Category switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const categoryContents = document.querySelectorAll('.category-content');
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Remove active class from all buttons and contents
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    categoryContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const targetContent = document.getElementById(category);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scrolling for quick links
+            const quickLinks = document.querySelectorAll('.quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Enhanced animation effects
+            const cards = document.querySelectorAll('.guideline-card, .resource-card, .contact-item');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize cards with fade-in animation
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Add loading animation to resource buttons
+            const resourceBtns = document.querySelectorAll('.resource-btn');
+            resourceBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const originalText = this.textContent;
+                    this.textContent = 'Preparing Download...';
+                    this.style.opacity = '0.7';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Download Complete!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.style.opacity = '1';
+                        }, 2000);
+                    }, 1500);
+                });
+            });
+        });
+
+        // Resource download function
+        function downloadResource(filename) {
+            // Simulate download process
+            console.log(`Downloading: ${filename}`);
+            
+            // In a real implementation, this would trigger actual file download
+            // For demo purposes, we'll show a notification
+            showNotification(`Downloading ${filename}...`);
+        }
+
+        // Notification system
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #20d3c2, #17a2b8);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+                z-index: 1000;
+                font-weight: 600;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add dynamic background effects
+        function createFloatingElements() {
+            const container = document.body;
+            
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.style.cssText = `
+                    position: fixed;
+                    width: ${Math.random() * 100 + 50}px;
+                    height: ${Math.random() * 100 + 50}px;
+                    background: rgba(32, 211, 194, 0.05);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: -1;
+                    animation: float ${Math.random() * 10 + 10}s ease-in-out infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                `;
+                container.appendChild(element);
+            }
+        }
+
+        // Add CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                33% { transform: translateY(-30px) rotate(120deg); }
+                66% { transform: translateY(30px) rotate(240deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize floating elements
+        createFloatingElements();
+
+        // Add responsive menu functionality for mobile
+        function addMobileMenuSupport() {
+            const eventCategories = document.querySelector('.event-categories');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            
+            if (window.innerWidth <= 768) {
+                categoryBtns.forEach(btn => {
+                    btn.style.fontSize = '0.8rem';
+                    btn.style.padding = '6px 12px';
+                });
+            }
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', addMobileMenuSupport);
+        addMobileMenuSupport();
+    </script>
+</body>
+</html> 

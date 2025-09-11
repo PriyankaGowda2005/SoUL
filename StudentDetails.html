@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details - SoUL Organization</title>
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(26, 35, 50, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 2rem;
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(32, 211, 194, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #20d3c2;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #20d3c2;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #a0aec0;
+            font-size: 1.1rem;
+        }
+
+        .filters-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .filters-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #20d3c2;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            color: #a0aec0;
+            font-weight: 600;
+        }
+
+        .filter-select,
+        .filter-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .filter-select option {
+            background: #2d3748;
+            color: white;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .students-table-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+
+        .students-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .students-table th,
+        .students-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .students-table th {
+            background: rgba(32, 211, 194, 0.1);
+            color: #20d3c2;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+        }
+
+        .students-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .student-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .progress-bar {
+            width: 100px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .status-active {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+
+        .status-graduate {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+
+        .status-dropout {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+
+        .view-details-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-details-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .page-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-color: #20d3c2;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .stats-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .students-table-container {
+                padding: 1rem;
+            }
+
+            .students-table {
+                font-size: 0.9rem;
+            }
+
+            .students-table th,
+            .students-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">👨‍🎓</div>
+            <h1>SoUL Organization</h1>
+        </div>
+        <a href="#" class="home-btn">🏠 Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Student Details</h1>
+        <p class="page-subtitle">Access student profiles, progress tracking, and academic performance data</p>
+
+        <!-- Statistics Overview -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <div class="stat-number">45</div>
+                <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">38</div>
+                <div class="stat-label">Active Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Graduates</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">On Leave</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">87%</div>
+                <div class="stat-label">Avg Progress</div>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <h3 class="filters-title">🔍 Search & Filter Students</h3>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label class="filter-label">Student ID</label>
+                    <input type="text" class="filter-input" placeholder="Enter Student ID" id="studentIdFilter">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Name</label>
+                    <input type="text" class="filter-input" placeholder="Enter Student Name" id="nameFilter">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Year</label>
+                    <select class="filter-select" id="yearFilter">
+                        <option value="">All Years</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Status</label>
+                    <select class="filter-select" id="statusFilter">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="dropout">Dropout</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <button class="search-btn" onclick="filterStudents()">🔍 Search</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Table -->
+        <div class="students-table-container">
+            <h3 class="filters-title">📚 Student Database</h3>
+            <div style="overflow-x: auto;">
+                <table class="students-table" id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Year</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Progress</th>
+                            <th>GPA</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="student-photo">AK</div></td>
+                            <td>STU001</td>
+                            <td>Arun Kumar</td>
+                            <td>4th Year</td>
+                            <td>Computer Science</td>
+                            <td>arun.kumar@email.com</td>
+                            <td>+91 98765 43210</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                                <small>95%</small>
+                            </td>
+                            <td>8.9</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU001')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">PS</div></td>
+                            <td>STU002</td>
+                            <td>Priya Sharma</td>
+                            <td>3rd Year</td>
+                            <td>Information Technology</td>
+                            <td>priya.sharma@email.com</td>
+                            <td>+91 98765 43211</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87%"></div>
+                                </div>
+                                <small>87%</small>
+                            </td>
+                            <td>8.5</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU002')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">RG</div></td>
+                            <td>STU003</td>
+                            <td>Rahul Gupta</td>
+                            <td>2nd Year</td>
+                            <td>Electronics</td>
+                            <td>rahul.gupta@email.com</td>
+                            <td>+91 98765 43212</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                                <small>78%</small>
+                            </td>
+                            <td>7.8</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU003')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">SK</div></td>
+                            <td>STU004</td>
+                            <td>Sneha Kumari</td>
+                            <td>1st Year</td>
+                            <td>Mechanical</td>
+                            <td>sneha.kumari@email.com</td>
+                            <td>+91 98765 43213</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                                <small>65%</small>
+                            </td>
+                            <td>7.2</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU004')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">VJ</div></td>
+                            <td>STU005</td>
+                            <td>Vijay Joshi</td>
+                            <td>Graduate</td>
+                            <td>Computer Science</td>
+                            <td>vijay.joshi@email.com</td>
+                            <td>+91 98765 43214</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                <small>100%</small>
+                            </td>
+                            <td>9.1</td>
+                            <td><span class="status-badge status-graduate">Graduate</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU005')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">AM</div></td>
+                            <td>STU006</td>
+                            <td>Amit Mehta</td>
+                            <td>4th Year</td>
+                            <td>Civil Engineering</td>
+                            <td>amit.mehta@email.com</td>
+                            <td>+91 98765 43215</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                                <small>92%</small>
+                            </td>
+                            <td>8.7</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU006')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">NK</div></td>
+                            <td>STU007</td>
+                            <td>Neha Kapoor</td>
+                            <td>3rd Year</td>
+                            <td>Biotechnology</td>
+                            <td>neha.kapoor@email.com</td>
+                            <td>+91 98765 43216</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 89%"></div>
+                                </div>
+                                <small>89%</small>
+                            </td>
+                            <td>8.3</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU007')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="student-photo">DS</div></td>
+                            <td>STU008</td>
+                            <td>Deepak Singh</td>
+                            <td>2nd Year</td>
+                            <td>Electrical</td>
+                            <td>deepak.singh@email.com</td>
+                            <td>+91 98765 43217</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 74%"></div>
+                                </div>
+                                <small>74%</small>
+                            </td>
+                            <td>7.5</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td><button class="view-details-btn" onclick="viewStudent('STU008')">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for demonstration
+        const studentsData = [
+            { id: 'STU001', name: 'Arun Kumar', year: '4', department: 'Computer Science', email: 'arun.kumar@email.com', phone: '+91 98765 43210', progress: 95, gpa: 8.9, status: 'active' },
+            { id: 'STU002', name: 'Priya Sharma', year: '3', department: 'Information Technology', email: 'priya.sharma@email.com', phone: '+91 98765 43211', progress: 87, gpa: 8.5, status: 'active' },
+            { id: 'STU003', name: 'Rahul Gupta', year: '2', department: 'Electronics', email: 'rahul.gupta@email.com', phone: '+91 98765 43212', progress: 78, gpa: 7.8, status: 'active' },
+            // Add more student data as needed
+        ];
+
+        // Filter functionality
+        function filterStudents() {
+            const studentId = document.getElementById('studentIdFilter').value.toLowerCase();
+            const name = document.getElementById('nameFilter').value.toLowerCase();
+            const year = document.getElementById('yearFilter').value;
+            const status = document.getElementById('statusFilter').value;
+
+            const rows = document.querySelectorAll('#studentsTable tbody tr');
+            
+            rows.forEach(row => {
+                const rowData = {
+                    id: row.cells[1].textContent.toLowerCase(),
+                    name: row.cells[2].textContent.toLowerCase(),
+                    year: row.cells[3].textContent,
+                    status: row.cells[9].textContent.toLowerCase()
+                };
+
+                let showRow = true;
+
+                if (studentId && !rowData.id.includes(studentId)) showRow = false;
+                if (name && !rowData.name.includes(name)) showRow = false;
+                if (year && !rowData.year.includes(year)) showRow = false;
+                if (status && !rowData.status.includes(status)) showRow = false;
+
+                row.style.display = showRow ? '' : 'none';
+            });
+        }
+
+        // View student details
+        function viewStudent(studentId) {
+            alert(`Opening detailed view for Student ID: ${studentId}\n\nThis would typically open a modal or navigate to a detailed student profile page with:\n- Academic history\n- Course enrollments\n- Performance analytics\n- Contact information\n- Documents and certificates`);
+        }
+
+        // Add smooth animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-card, .filters-section, .students-table-container').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Pagination functionality
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Here you would typically load the corresponding page data
+            });
+        });
+    </script>
+</body>
+</html>

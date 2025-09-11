@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network - SoUL Organization</title>
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(26, 35, 50, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 3rem;
+        }
+
+        .batch-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .batch-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(32, 211, 194, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .batch-btn:hover,
+        .batch-btn.active {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-color: #20d3c2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .batch-section {
+            display: none;
+        }
+
+        .batch-section.active {
+            display: block;
+        }
+
+        .batch-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #20d3c2;
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .alumni-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alumni-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(32, 211, 194, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .alumni-card:hover::before {
+            left: 100%;
+        }
+
+        .alumni-card:hover {
+            transform: translateY(-8px);
+            border-color: #20d3c2;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .alumni-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .alumni-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #20d3c2;
+        }
+
+        .alumni-designation {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .alumni-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            color: #20d3c2;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(32, 211, 194, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #20d3c2;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #20d3c2;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .alumni-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .batch-selector {
+                gap: 0.5rem;
+            }
+
+            .batch-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">🎓</div>
+            <h1>SoUL Organization</h1>
+        </div>
+        <a href="index.html" class="home-btn">🏠 Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Alumni Network</h1>
+        <p class="page-subtitle">Connect with our distinguished alumni community across different batches</p>
+
+        <div class="batch-selector">
+            <button class="batch-btn active" data-batch="2025">Batch 2025</button>
+            <button class="batch-btn" data-batch="2024">Batch 2024</button>
+            <button class="batch-btn" data-batch="2023">Batch 2023</button>
+            <button class="batch-btn" data-batch="2022">Batch 2022</button>
+            <button class="batch-btn" data-batch="2021">Batch 2021</button>
+            <button class="batch-btn" data-batch="2020">Batch 2020</button>
+            <button class="batch-btn" data-batch="2019">Batch 2019</button>
+            <button class="batch-btn" data-batch="2018">Batch 2018</button>
+            <button class="batch-btn" data-batch="2017">Batch 2017</button>
+            <button class="batch-btn" data-batch="2016">Batch 2016</button>
+            <button class="batch-btn" data-batch="2015">Batch 2015</button>
+            <button class="batch-btn" data-batch="2014">Batch 2014</button>
+        </div>
+
+        <!-- Batch 2025 Section -->
+        <div class="batch-section active" id="batch-2025">
+            <h2 class="batch-title">Batch 2025 - Recent Graduates</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">SP</div>
+                    <div class="alumni-name">Sneha Patel</div>
+                    <div class="alumni-designation">Data Analyst at Infosys</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>sneha.patel@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">RK</div>
+                    <div class="alumni-name">Rajesh Kumar</div>
+                    <div class="alumni-designation">Product Manager at Wipro</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>rajesh.kumar@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Batch 2024 Section -->
+        <div class="batch-section" id="batch-2024">
+            <h2 class="batch-title">Batch 2024 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">PS</div>
+                    <div class="alumni-name">Priya Sharma</div>
+                    <div class="alumni-designation">Senior Developer at Microsoft</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>priya.sharma@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional batch sections would follow the same pattern -->
+        <div class="batch-section" id="batch-2023">
+            <h2 class="batch-title">Batch 2023 - Industry Leaders</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">SK</div>
+                    <div class="alumni-name">Suresh Kumar</div>
+                    <div class="alumni-designation">Tech Lead at Facebook</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>suresh.kumar@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 9, Graduated 2023</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Logo and Description -->
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-graduation-cap" style="color: #fbbf24; background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px; line-height: 1.6;">
+                    Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+                </p>
+                <div class="footer-socials">
+                    <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/so_u_learn/" target="_blank" class="footer-social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px;">
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#members">Our Team</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Contact Info</h3>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-map-marker-alt" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>Hassan, Karnataka</span>
+                    </li>
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-phone" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>+91 6366761006</span>
+                    </li>
+                    <li style="display: flex; align-items: center;">
+                        <i class="fas fa-envelope" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>soulearnofficial@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <p>
+                &copy; 2025 SoUL Organization. All rights reserved.
+                <br>
+                <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Batch selector functionality
+        const batchButtons = document.querySelectorAll('.batch-btn');
+        const batchSections = document.querySelectorAll('.batch-section');
+
+        batchButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and sections
+                batchButtons.forEach(btn => btn.classList.remove('active'));
+                batchSections.forEach(section => section.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Show corresponding section
+                const batchYear = button.getAttribute('data-batch');
+                const targetSection = document.getElementById(`batch-${batchYear}`);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            });
+        });
+
+        // Add smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all alumni cards
+        document.querySelectorAll('.alumni-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
