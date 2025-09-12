@@ -807,7 +807,7 @@
     </button>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">
@@ -819,7 +819,7 @@
                 <i class="fas fa-home"></i> Back to Home
             </a>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Main Content -->
     <div class="main-content">
@@ -913,18 +913,22 @@
         <header class="dashboard-header">
             <div class="logo">
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">SoUL</div>
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;"><i class="fas fa-graduation-cap"></i></div>
                     <div>
                         <h1 style="font-size: 1.5rem; margin: 0; font-family: 'Poppins', sans-serif;">SoUL Organization</h1>
                         <p style="margin: 0; color: var(--text-muted); font-size: 14px;">Volunteer Dashboard</p>
                     </div>
                 </div>
             </div>
+            
             <div style="display: flex; align-items: center; gap: 1.5rem;">
                 <span id="welcomeText" style="font-weight: 600; color: var(--text-primary);">Welcome!</span>
                 <button class="logout-btn" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
             </div>
         </header>
 
@@ -966,7 +970,7 @@
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎓</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Training Materials</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Enhance your volunteer skills with comprehensive training modules and educational resources.</p>
-                    <a href="TrainingMaterials.html" target="_blank">
+                    <a href="Material.pdf" target="_blank">
                          <button class="btn">Access Training</button>
                     </a>
                 </div>
@@ -984,12 +988,80 @@
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">📄</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Volunteer Handbook</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Complete guide for all SoUL volunteers with updated protocols and essential information.</p>
-                    <a href="guidelines.html" target="_blank">
+                    <a href="Guidelines.pdf" target="_blank">
                          <button class="btn">View Guidelines</button>
                     </a>
                 </div>
             </div>
-        </main>
+                 <footer class="footer">
+        <div class="footer-content">
+            <!-- Logo and Description -->
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-graduation-cap" style="color: #fbbf24; background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px; line-height: 1.6;">
+                    Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+                </p>
+                <div class="footer-socials">
+                    <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/so_u_learn/" target="_blank" class="footer-social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px;">
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#members">Our Team</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Contact Info</h3>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-map-marker-alt" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>Hassan, Karnataka</span>
+                    </li>
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-phone" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>+91 6366761006</span>
+                    </li>
+                    <li style="display: flex; align-items: center;">
+                        <i class="fas fa-envelope" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>soulearnofficial@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <p>
+                &copy; 2025 SoUL Organization. All rights reserved.
+                <br>
+                <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
+            </p>
+        </div>
+    </footer>
+    </main>
     </div>
 
     <!-- Footer -->
@@ -1093,7 +1165,8 @@
             { name: "Akash Manjunath", email: "koushikakash477@gmail.com", password: "akash123" },
             { name: "Lakshmi M.V", email: "lakshmimv006@gmail.com", password: "Nisu._.gowda.03" },
             { name: "Kumuda Priya NP", email: "kumudapriya2006@gmail.com", password: "psky2029" },
-            { name: "H C Priya", email: "priyasoul2k5@gmail.com", password: "priya@SoUL" }
+            { name: "H C Priya", email: "priyasoul2k5@gmail.com", password: "priya@SoUL" },
+            {name: "Keerthesh", email: "keertheesh.kk@gmail.com", password: "Keerthesh@123"}
         ];
 
         // Theme functionality

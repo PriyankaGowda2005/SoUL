@@ -152,6 +152,109 @@
             position: relative;
             overflow: hidden;
         }
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            color: white;
+            padding: 4rem 0 1.5rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .footer-social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
 
         .alumni-card::before {
             content: '';
@@ -325,6 +428,139 @@
                         <a href="#" class="social-link">📧</a>
                     </div>
                 </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AR</div>
+                    <div class="alumni-name">Arjun Reddy</div>
+                    <div class="alumni-designation">Software Engineer at TCS</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>arjun.reddy@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 11, Graduated 2025</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
 
                 <div class="alumni-card">
                     <div class="alumni-photo">SP</div>
@@ -411,6 +647,124 @@
                         <a href="#" class="social-link">📧</a>
                     </div>
                 </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
+                <div class="alumni-card">
+                    <div class="alumni-photo">VG</div>
+                    <div class="alumni-name">Vikram Gupta</div>
+                    <div class="alumni-designation">Team Lead at Amazon</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>vikram.gupta@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+
 
                 <div class="alumni-card">
                     <div class="alumni-photo">AN</div>
@@ -439,17 +793,17 @@
             <h2 class="batch-title">Batch 2023 - Industry Leaders</h2>
             <div class="alumni-grid">
                 <div class="alumni-card">
-                    <div class="alumni-photo">SK</div>
-                    <div class="alumni-name">Suresh Kumar</div>
-                    <div class="alumni-designation">Tech Lead at Facebook</div>
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
                     <div class="alumni-details">
                         <div class="detail-item">
                             <span class="detail-icon">📧</span>
-                            <span>suresh.kumar@email.com</span>
+                            <span>anjali.nair@email.com</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-icon">🎓</span>
-                            <span>Batch 9, Graduated 2023</span>
+                            <span>Batch 10, Graduated 2024</span>
                         </div>
                     </div>
                     <div class="social-links">
@@ -457,9 +811,1757 @@
                         <a href="#" class="social-link">📧</a>
                     </div>
                 </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Additional batch sections would follow the same pattern -->
+        <div class="batch-section" id="batch-2022">
+            <h2 class="batch-title">Batch 2022 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2021">
+            <h2 class="batch-title">Batch 2021 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2020">
+            <h2 class="batch-title">Batch 2020 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2019">
+            <h2 class="batch-title">Batch 2019 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2018">
+            <h2 class="batch-title">Batch 2018 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2017">
+            <h2 class="batch-title">Batch 2017 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2016">
+            <h2 class="batch-title">Batch 2016 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2015">
+            <h2 class="batch-title">Batch 2015 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="batch-section" id="batch-2014">
+            <h2 class="batch-title">Batch 2014 - Experienced Professionals</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <div class="alumni-photo">AN</div>
+                    <div class="alumni-name">Anjali Nair</div>
+                    <div class="alumni-designation">UX Designer at Google</div>
+                    <div class="alumni-details">
+                        <div class="detail-item">
+                            <span class="detail-icon">📧</span>
+                            <span>anjali.nair@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <span>Batch 10, Graduated 2024</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">💼</a>
+                        <a href="#" class="social-link">📧</a>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <!-- Logo and Description -->
@@ -528,7 +2630,6 @@
             </p>
         </div>
     </footer>
-
     <script>
         // Batch selector functionality
         const batchButtons = document.querySelectorAll('.batch-btn');
