@@ -11,6 +11,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            /* Light Theme - Pink Base */
+            --primary-color: #D91A60;
+            --secondary-color: #E91E63;
+            --accent-color: #FF6B9D;
+            --bg-primary: #FEFBFC;
+            --bg-secondary: #FDF7F9;
+            --bg-tertiary: #FBF1F5;
+            --text-primary: #1A0D13;
+            --text-secondary: #2D1B24;
+            --text-muted: #5D4A52;
+            --text-dark: #0F080B;
+            --border-color: #EFD6E3;
+            --card-bg: #FFFFFF;
+            --hover-bg: #F8EDF2;
+            --active-bg: #F3E1EA;
+            --card-shadow: 0 4px 12px rgba(26, 13, 19, 0.1), 0 2px 6px rgba(26, 13, 19, 0.08);
+            --card-hover-shadow: 0 8px 25px rgba(26, 13, 19, 0.15), 0 4px 10px rgba(26, 13, 19, 0.1);
+            --gradient-primary: linear-gradient(135deg, #E91E63 0%, #D91A60 50%, #C2185B 100%);
+            --gradient-soft: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+            --header-bg: rgba(26, 35, 50, 0.95);
+            --footer-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            --body-bg: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+        }
+
+        /* Dark theme */
+        [data-theme="dark"] {
+            --primary-color: #14B8A6;
+            --secondary-color: #06B6D4;
+            --accent-color: #22D3EE;
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #E2E8F0;
+            --text-muted: #94A3B8;
+            --text-dark: #FFFFFF;
+            --border-color: #475569;
+            --card-bg: #1E293B;
+            --hover-bg: #334155;
+            --active-bg: #475569;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(20, 184, 166, 0.15);
+            --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(20, 184, 166, 0.25);
+            --gradient-primary: linear-gradient(135deg, #0891B2 0%, #14B8A6 50%, #10B981 100%);
+            --gradient-soft: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --footer-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            --body-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -445,16 +495,66 @@
             .students-table td {
                 padding: 0.5rem;
             }
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                top: 15px;
+                right: 15px;
+            }
+            theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--card-hover-shadow);
+            transform: scale(1.1) rotate(15deg);
+            border-color: var(--primary-color);
+        }
+
+        .header {
+            background: var(--header-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
     <div class="header">
         <div class="logo-section">
             <div class="logo">👨‍🎓</div>
             <h1>SoUL Organization</h1>
         </div>
-        <a href="#" class="home-btn">🏠 Back to Home</a>
+        <div class="header-actions">
+            <span class="back-btn" onclick="goBack()">← Back</span>
+            <a href="index.html" class="home-btn">🏠 Home</a>
+        </div>
     </div>
 
     <div class="container">
@@ -700,10 +800,69 @@
                 row.style.display = showRow ? '' : 'none';
             });
         }
+        // Theme functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+        
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            
+            // Smooth animations for document cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+
+        // Navigation function
+        function goBack() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
 
         // View student details
         function viewStudent(studentId) {
-            alert(Opening detailed view for Student ID: ${studentId}\n\nThis would typically open a modal or navigate to a detailed student profile page with:\n- Academic history\n- Course enrollments\n- Performance analytics\n- Contact information\n- Documents and certificates);
+            alert(`Opening detailed view for Student ID: ${studentId}\n\nThis would typically open a modal or navigate to a detailed student profile page with:\n- Academic history\n- Course enrollments\n- Performance analytics\n- Contact information\n- Documents and certificates`);
         }
 
         // Add smooth animations
