@@ -312,6 +312,109 @@
             background: linear-gradient(135deg, #20d3c2, #17a2b8);
             border-color: #20d3c2;
         }
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            color: white;
+            padding: 4rem 0 1.5rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .footer-social-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
 
         @media (max-width: 768px) {
             .container {
@@ -426,178 +529,140 @@
                 <table class="students-table" id="studentsTable">
                     <thead>
                         <tr>
-                            <th>Photo</th>
+                           
                             <th>ID</th>
                             <th>Full Name</th>
-                            <th>Year</th>
-                            <th>Department</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th>Class</th>
                             <th>Progress</th>
-                            <th>GPA</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><div class="student-photo">AK</div></td>
-                            <td>STU001</td>
-                            <td>Arun Kumar</td>
-                            <td>4th Year</td>
-                            <td>Computer Science</td>
-                            <td>arun.kumar@email.com</td>
-                            <td>+91 98765 43210</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 95%"></div>
-                                </div>
-                                <small>95%</small>
-                            </td>
-                            <td>8.9</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU001')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">PS</div></td>
-                            <td>STU002</td>
-                            <td>Priya Sharma</td>
-                            <td>3rd Year</td>
-                            <td>Information Technology</td>
-                            <td>priya.sharma@email.com</td>
-                            <td>+91 98765 43211</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 87%"></div>
-                                </div>
-                                <small>87%</small>
-                            </td>
-                            <td>8.5</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU002')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">RG</div></td>
-                            <td>STU003</td>
-                            <td>Rahul Gupta</td>
-                            <td>2nd Year</td>
-                            <td>Electronics</td>
-                            <td>rahul.gupta@email.com</td>
-                            <td>+91 98765 43212</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 78%"></div>
-                                </div>
-                                <small>78%</small>
-                            </td>
-                            <td>7.8</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU003')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">SK</div></td>
-                            <td>STU004</td>
-                            <td>Sneha Kumari</td>
-                            <td>1st Year</td>
-                            <td>Mechanical</td>
-                            <td>sneha.kumari@email.com</td>
-                            <td>+91 98765 43213</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 65%"></div>
-                                </div>
-                                <small>65%</small>
-                            </td>
-                            <td>7.2</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU004')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">VJ</div></td>
-                            <td>STU005</td>
-                            <td>Vijay Joshi</td>
-                            <td>Graduate</td>
-                            <td>Computer Science</td>
-                            <td>vijay.joshi@email.com</td>
-                            <td>+91 98765 43214</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 100%"></div>
-                                </div>
-                                <small>100%</small>
-                            </td>
-                            <td>9.1</td>
-                            <td><span class="status-badge status-graduate">Graduate</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU005')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">AM</div></td>
-                            <td>STU006</td>
-                            <td>Amit Mehta</td>
-                            <td>4th Year</td>
-                            <td>Civil Engineering</td>
-                            <td>amit.mehta@email.com</td>
-                            <td>+91 98765 43215</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 92%"></div>
-                                </div>
-                                <small>92%</small>
-                            </td>
-                            <td>8.7</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU006')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">NK</div></td>
-                            <td>STU007</td>
-                            <td>Neha Kapoor</td>
-                            <td>3rd Year</td>
-                            <td>Biotechnology</td>
-                            <td>neha.kapoor@email.com</td>
-                            <td>+91 98765 43216</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 89%"></div>
-                                </div>
-                                <small>89%</small>
-                            </td>
-                            <td>8.3</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU007')">View</button></td>
-                        </tr>
-                        <tr>
-                            <td><div class="student-photo">DS</div></td>
-                            <td>STU008</td>
-                            <td>Deepak Singh</td>
-                            <td>2nd Year</td>
-                            <td>Electrical</td>
-                            <td>deepak.singh@email.com</td>
-                            <td>+91 98765 43217</td>
-                            <td>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 74%"></div>
-                                </div>
-                                <small>74%</small>
-                            </td>
-                            <td>7.5</td>
-                            <td><span class="status-badge status-active">Active</span></td>
-                            <td><button class="view-details-btn" onclick="viewStudent('STU008')">View</button></td>
-                        </tr>
-                    </tbody>
+  <tr><td>STU001</td><td>Aditya Sharma</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div><small>92%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU002</td><td>Priya Verma</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div><small>88%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU003</td><td>Rahul Gupta</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div><small>75%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU004</td><td>Neha Singh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:81%"></div></div><small>81%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU005</td><td>Aryan Kumar</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:67%"></div></div><small>67%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU006</td><td>Sneha Reddy</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div><small>95%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU007</td><td>Karthik Nair</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div><small>62%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU008</td><td>Ishita Mehra</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:89%"></div></div><small>89%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU009</td><td>Rohan Das</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div><small>70%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU010</td><td>Ananya Iyer</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div><small>85%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU011</td><td>Vikram Joshi</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:77%"></div></div><small>77%</small></td><td><span class="status-badge status-graduate">Graduate</span></td></tr>
+  <tr><td>STU012</td><td>Meera Patil</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div><small>91%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU013</td><td>Aman Yadav</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:73%"></div></div><small>73%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU014</td><td>Kavya Menon</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:96%"></div></div><small>96%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU015</td><td>Harsh Vardhan</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div><small>65%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU016</td><td>Shreya Rao</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div><small>82%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU017</td><td>Manish Jain</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:74%"></div></div><small>74%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU018</td><td>Divya Kapoor</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:84%"></div></div><small>84%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU019</td><td>Rajesh Pillai</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:69%"></div></div><small>69%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU020</td><td>Nikita Agarwal</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:97%"></div></div><small>97%</small></td><td><span class="status-badge status-graduate">Graduate</span></td></tr>
+  <tr><td>STU021</td><td>Sahil Khan</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU022</td><td>Pooja Desai</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:86%"></div></div><small>86%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU023</td><td>Ashwin Shetty</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU024</td><td>Sonia Dutta</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:93%"></div></div><small>93%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU025</td><td>Arjun Malhotra</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:71%"></div></div><small>71%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU026</td><td>Simran Gill</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:89%"></div></div><small>89%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU027</td><td>Mohit Saini</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:64%"></div></div><small>64%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU028</td><td>Aditi Saxena</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:94%"></div></div><small>94%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU029</td><td>Farhan Ali</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:76%"></div></div><small>76%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU030</td><td>Nandini Ghosh</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div><small>90%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU031</td><td>Dev Patel</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div><small>68%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+  <tr><td>STU032</td><td>Ritika Bansal</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div><small>92%</small></td><td><span class="status-badge status-graduate">Graduate</span></td></tr>
+  <tr><td>STU033</td><td>Abhinav Mishra</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:83%"></div></div><small>83%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU034</td><td>Tanvi Kulkarni</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:98%"></div></div><small>98%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU035</td><td>Sameer Chawla</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:79%"></div></div><small>79%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+  <tr><td>STU036</td><td>Gauri Deshmukh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:87%"></div></div><small>87%</small></td><td><span class="status-badge status-active">Active</span></td></tr>    
+  <tr><td>STU037</td><td>Vivek Chandra</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div><small>72%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+    <tr><td>STU038</td><td>Bhavna Joshi</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div><small>91%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+    <tr><td>STU039</td><td>Yash Thakur</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:66%"></div></div><small>66%</small></td><td><span class="status-badge status-dropout">Dropout</span></td></tr>
+    <tr><td>STU040</td><td>Deepika Singh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div><small>88%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+
+</tbody>
+
                 </table>
             </div>
 
             <!-- Pagination -->
-            <div class="pagination">
+            <!-- <div class="pagination">
                 <button class="page-btn active">1</button>
                 <button class="page-btn">2</button>
                 <button class="page-btn">3</button>
                 <button class="page-btn">4</button>
                 <button class="page-btn">5</button>
-            </div>
+            </div> -->
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Logo and Description -->
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-graduation-cap" style="color: #fbbf24; background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
+                </div>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px; line-height: 1.6;">
+                    Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+                </p>
+                <div class="footer-socials">
+                    <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.instagram.com/so_u_learn/" target="_blank" class="footer-social-icon" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px;">
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Our Services</a></li>
+                    <li><a href="index.html#events">Events</a></li>
+                    <li><a href="index.html#members">Our Team</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Contact Info</h3>
+                <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-map-marker-alt" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>Hassan, Karnataka</span>
+                    </li>
+                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                        <i class="fas fa-phone" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>+91 6366761006</span>
+                    </li>
+                    <li style="display: flex; align-items: center;">
+                        <i class="fas fa-envelope" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                        <span>soulearnofficial@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <p>
+                &copy; 2025 SoUL Organization. All rights reserved.
+                <br>
+                <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
+            </p>
+        </div>
+    </footer>
 
     <script>
         // Sample data for demonstration
@@ -638,7 +703,7 @@
 
         // View student details
         function viewStudent(studentId) {
-            alert(`Opening detailed view for Student ID: ${studentId}\n\nThis would typically open a modal or navigate to a detailed student profile page with:\n- Academic history\n- Course enrollments\n- Performance analytics\n- Contact information\n- Documents and certificates`);
+            alert(Opening detailed view for Student ID: ${studentId}\n\nThis would typically open a modal or navigate to a detailed student profile page with:\n- Academic history\n- Course enrollments\n- Performance analytics\n- Contact information\n- Documents and certificates);
         }
 
         // Add smooth animations
@@ -665,13 +730,13 @@
         });
 
         // Pagination functionality
-        document.querySelectorAll('.page-btn').forEach(btn => {
+        <!-- document.querySelectorAll('.page-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 // Here you would typically load the corresponding page data
             });
-        });
+        }); -->
     </script>
 </body>
 </html>

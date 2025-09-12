@@ -110,6 +110,7 @@
             align-items: center;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
 
         .logo-section {
@@ -131,7 +132,9 @@
         }
 
         .logo-section h1 {
-            color: var(--text-primary);
+            color: #FFFFFF;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .header-actions {
@@ -571,6 +574,7 @@
             padding-left: 2rem;
             padding-right: 2rem;
         }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -602,12 +606,24 @@
                 flex-direction: column;
             }
 
+            .header {
+                padding: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
             .header-actions {
                 gap: 0.5rem;
+                flex-wrap: wrap;
             }
 
             .back-btn {
                 padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .home-btn {
+                padding: 8px 16px;
                 font-size: 0.9rem;
             }
 
@@ -631,6 +647,40 @@
                 font-size: 18px;
                 top: 15px;
                 right: 15px;
+            }
+
+            .logo-section h1 {
+                font-size: 1.2rem;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .theme-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-left: auto;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header-actions {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .logo-section {
+                justify-content: center;
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -659,11 +709,11 @@
         <div class="stats-section">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">14</div>
+                    <div class="stat-number">15</div>
                     <div class="stat-label">Annual Reports</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">25+</div>
+                    <div class="stat-number">30+</div>
                     <div class="stat-label">Documents</div>
                 </div>
                 <div class="stat-item">
@@ -671,7 +721,7 @@
                     <div class="stat-label">Since Year</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">5.2MB</div>
+                    <div class="stat-number">8.5MB</div>
                     <div class="stat-label">Total Size</div>
                 </div>
             </div>
@@ -689,6 +739,7 @@
                 <span class="filter-tag" data-filter="event">Event Reports</span>
                 <span class="filter-tag" data-filter="celebration">Celebrations</span>
                 <span class="filter-tag" data-filter="activity">Activities</span>
+                <span class="filter-tag" data-filter="fest">Festivals</span>
             </div>
         </div>
 
@@ -715,31 +766,67 @@
                         <div class="document-description">
                             Comprehensive annual report covering organizational activities, impact metrics, financial transparency, and future roadmap for 2024-25.
                         </div>
-                        <div class="document-meta">
-                        </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('Doc/Soul-Report-2024-25.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL_REPORT 2024-25.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('Doc/Soul-Report-2024-25.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL_REPORT 2024-25.pdf')">
                                 👀 Preview
                             </button>
                         </div>
                     </div>
 
-                    <div class="document-card" data-type="activity">
-                        <div class="document-icon">🍎</div>
-                        <div class="document-title">Food Drive 2023</div>
+                    <div class="document-card" data-type="celebration">
+                        <div class="document-icon">🎉</div>
+                        <div class="document-title">Independence Day 2025</div>
                         <div class="document-description">
-                            Impact report from our annual food drive initiative, including donation statistics, beneficiary information, and volunteer contributions.
-                        </div>
-                        <div class="document-meta">
+                            Patriotic celebration documentation featuring flag hoisting ceremony, cultural programs, and community participation in Independence Day festivities.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('food-drive-2023.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/Independence day 2025.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('food-drive-2023.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/Independence day 2025.pdf')">
+                                👀 Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2024 Documents -->
+        <div class="year-content" id="year-2024">
+            <div class="year-section">
+                <h2 class="section-title">2024 Documents</h2>
+                <div class="documents-grid">
+                    <div class="document-card" data-type="report">
+                        <div class="document-icon">📊</div>
+                        <div class="document-title">SoUL Annual Report 2023-24</div>
+                        <div class="document-description">
+                            Detailed annual organizational report highlighting achievements, community impact, financial transparency, and strategic planning for 2023-24.
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2023-24.pdf')">
+                                ⬇️ Download
+                            </button>
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2023-24.pdf')">
+                                👀 Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="document-card" data-type="celebration">
+                        <div class="document-icon">🪔</div>
+                        <div class="document-title">Deepavali Celebration 2024</div>
+                        <div class="document-description">
+                            Festival of lights celebration documentation including cultural programs, community participation, traditional activities, and festive highlights.
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" onclick="downloadDocument('Doc/Deepavali Celebration 2024.pdf')">
+                                ⬇️ Download
+                            </button>
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/Deepavali Celebration 2024.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -751,13 +838,11 @@
                         <div class="document-description">
                             Annual reflection event documentation featuring keynote speeches, member testimonials, and organizational milestone celebrations.
                         </div>
-                        <div class="document-meta">
-                        </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('reflection-2024.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/Reflection 2024.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('reflection-2024.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/Reflection 2024.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -778,10 +863,10 @@
                             Annual organizational report highlighting key achievements, financial transparency, member engagement, and strategic planning for 2022-23.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2022-23.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2022-23.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2022-23.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2022-23.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -794,10 +879,26 @@
                             Community service report documenting our cloth donation drive, including collection statistics, distribution details, and beneficiary feedback.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('cloth-drive-2023.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT cloth drive 2023.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('cloth-drive-2023.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT cloth drive 2023.pdf')">
+                                👀 Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="document-card" data-type="activity">
+                        <div class="document-icon">🍎</div>
+                        <div class="document-title">Food Drive 2023</div>
+                        <div class="document-description">
+                            Impact report from our annual food drive initiative, including donation statistics, beneficiary information, and volunteer contributions.
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" onclick="downloadDocument('Doc/Food Drive 2023.pdf')">
+                                ⬇️ Download
+                            </button>
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/Food Drive 2023.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -810,10 +911,41 @@
                             Documentation of community temple service activities, volunteer participation, and cultural preservation initiatives undertaken in 2023.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('temple-drive-2023.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/temaple drive 2023.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('temple-drive-2023.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/temaple drive 2023.pdf')">
+                                👀 Preview
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="document-card" data-type="event">
+                        <div class="document-icon">📋</div>
+                        <div class="document-title">General Document 2023</div>
+                        <div class="document-description">
+                            Miscellaneous organizational document containing important information, guidelines, and references for the year 2023.
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" onclick="downloadDocument('Doc/DOC-20230115-WA0019-.pdf')">
+                                ⬇️ Download
+                            </button>
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/DOC-20230115-WA0019..pdf')">
+                                👀 Preview
+                            </button>
+                        </div>
+                    </div>
+                    <div class="document-card" data-type="fest">
+                        <div class="document-icon">🎊</div>
+                        <div class="document-title">Malnad Fest</div>
+                        <div class="document-description">
+                            Regional cultural festival documentation featuring traditional performances, cultural exhibitions, and community celebrations from the Malnad region.
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" onclick="downloadDocument('Doc/MALNAD FEST.pdf')">
+                                ⬇️ Download
+                            </button>
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/MALNAD FEST.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -822,7 +954,7 @@
             </div>
         </div>
 
-        <!-- Additional years would follow similar pattern -->
+        <!-- 2022 Documents -->
         <div class="year-content" id="year-2022">
             <div class="year-section">
                 <h2 class="section-title">2022 Documents</h2>
@@ -834,10 +966,10 @@
                             Comprehensive annual report covering organizational growth, member achievements, financial health, and community impact for 2021-22.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2021-22.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2021-22.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2021-22.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2021-22.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -846,7 +978,7 @@
             </div>
         </div>
 
-        <!-- Continue for other years... -->
+        <!-- 2021 Documents -->
         <div class="year-content" id="year-2021">
             <div class="year-section">
                 <h2 class="section-title">2021 Documents</h2>
@@ -858,10 +990,10 @@
                             Annual report highlighting pandemic response, virtual engagement initiatives, member support programs, and organizational resilience in 2020-21.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2020-21.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2020-21.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2020-21.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2020-21.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -870,7 +1002,7 @@
             </div>
         </div>
 
-        <!-- 2020, 2019, 2018 would follow similar patterns -->
+        <!-- 2020 Documents -->
         <div class="year-content" id="year-2020">
             <div class="year-section">
                 <h2 class="section-title">2020 Documents</h2>
@@ -882,10 +1014,10 @@
                             Pre-pandemic annual report showcasing traditional events, in-person activities, member achievements, and organizational milestones for 2019-20.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2019-20.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2018-19.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2019-20.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2018-19.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -894,6 +1026,7 @@
             </div>
         </div>
 
+        <!-- 2019 Documents -->
         <div class="year-content" id="year-2019">
             <div class="year-section">
                 <h2 class="section-title">2019 Documents</h2>
@@ -905,10 +1038,10 @@
                             Foundation year annual report documenting organizational establishment, initial member recruitment, first events, and strategic vision for SoUL.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2018-19.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2018-19.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2018-19.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2018-19.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -917,7 +1050,8 @@
             </div>
         </div>
 
-        <div class="year-content" id="year-2018">
+        <!-- 2018 Documents -->
+         <div class="year-content" id="year-2018">
             <div class="year-section">
                 <h2 class="section-title">2018 Documents</h2>
                 <div class="documents-grid">
@@ -928,10 +1062,32 @@
                             National Assessment and Accreditation Council (NAAC) documentation and quality assurance report for SoUL Organization's educational initiatives.
                         </div>
                         <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-naac-report.pdf')">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT NAAC.pdf')">
                                 ⬇️ Download
                             </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-naac-report.pdf')">
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT NAAC.pdf')">
+                                👀 Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="year-content" id="year-2018">
+            <div class="year-section">
+                <h2 class="section-title">2018 Documents</h2>
+                <div class="documents-grid">
+                    <div class="document-card" data-type="report">
+                        <div class="document-icon">📊</div>
+                        <div class="document-title">SoUL Annual Report 2018-19</div>
+                        <div class="document-description">
+                            Foundation year annual report documenting organizational establishment, initial member recruitment, first events, and strategic vision for SoUL.
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" onclick="downloadDocument('Doc/SoUL REPORT 2018-19.pdf')">
+                                ⬇️ Download
+                            </button>
+                            <button class="action-btn secondary" onclick="previewDocument('Doc/SoUL REPORT 2018-19.pdf')">
                                 👀 Preview
                             </button>
                         </div>
@@ -1113,11 +1269,18 @@
 
         // Document actions
         function downloadDocument(filename) {
-            alert(`Downloading: ${filename}\n\nThis would typically trigger a file download from the server.`);
+            // Create a temporary link element and trigger download
+            const link = document.createElement('a');
+            link.href = filename;
+            link.download = filename.split('/').pop(); // Get just the filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         function previewDocument(filename) {
-            alert(`Opening preview for: ${filename}\n\nThis would typically open a PDF viewer or modal with the document content.`);
+            // Open document in a new window/tab for preview
+            window.open(filename, '_blank');
         }
 
         // Search on Enter key
@@ -1157,152 +1320,3 @@
     </script>
 </body>
 </html>
-<!-- </html><div class="meta-item">
-                                <span>📅</span>
-                                <span>Published: March 2025</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📄</span>
-                                <span>45 pages • 1.8MB</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>👁️</span>
-                                <span>1,247 views</span>
-                            </div>
-                        </div>
-                        <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2024-25.pdf')">
-                                ⬇️ Download
-                            </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2024-25.pdf')">
-                                👀 Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="document-card" data-type="celebration">
-                        <div class="document-icon">🪔</div>
-                        <div class="document-title">Deepavali Celebration 2024</div>
-                        <div class="document-description">
-                            Photo gallery and event report from our annual Deepavali celebration, featuring cultural performances, traditional activities, and community participation.
-                        </div>
-                        <div class="document-meta">
-                            <div class="meta-item">
-                                <span>📅</span>
-                                <span>Published: November 2024</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📄</span>
-                                <span>32 pages • 22.7MB</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>👁️</span>
-                                <span>892 views</span>
-                            </div>
-                        </div>
-                        <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('deepavali-2024.pdf')">
-                                ⬇️ Download
-                            </button>
-                            <button class="action-btn secondary" onclick="previewDocument('deepavali-2024.pdf')">
-                                👀 Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="document-card" data-type="event">
-                        <div class="document-icon">🏛️</div>
-                        <div class="document-title">Independence Day 2025</div>
-                        <div class="document-description">
-                            Documentation of our Independence Day celebration including flag hoisting ceremony, patriotic performances, and community awards.
-                        </div>
-                        <div class="document-meta">
-                            <div class="meta-item">
-                                <span>📅</span>
-                                <span>Published: August 2025</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📄</span>
-                                <span>28 pages • 173KB</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>👁️</span>
-                                <span>654 views</span>
-                            </div>
-                        </div>
-                        <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('independence-day-2025.pdf')">
-                                ⬇️ Download
-                            </button>
-                            <button class="action-btn secondary" onclick="previewDocument('independence-day-2025.pdf')">
-                                👀 Preview
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        2024 Documents -->
-        <!-- <div class="year-content" id="year-2024">
-            <div class="year-section">
-                <h2 class="section-title">2024 Documents</h2>
-                <div class="documents-grid">
-                    <div class="document-card" data-type="report">
-                        <div class="document-icon">📈</div>
-                        <div class="document-title">SoUL Annual Report 2023-24</div>
-                        <div class="document-description">
-                            Complete annual report showcasing achievements, financial statements, member growth, and strategic initiatives for the year 2023-24.
-                        </div>
-                        <div class="document-meta">
-                            <div class="meta-item">
-                                <span>📅</span>
-                                <span>Published: March 2024</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📄</span>
-                                <span>52 pages • 1.1MB</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>👁️</span>
-                                <span>2,156 views</span>
-                            </div>
-                        </div>
-                        <div class="document-actions">
-                            <button class="action-btn" onclick="downloadDocument('soul-report-2023-24.pdf')">
-                                ⬇️ Download
-                            </button>
-                            <button class="action-btn secondary" onclick="previewDocument('soul-report-2023-24.pdf')">
-                                👀 Preview
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="document-card" data-type="event">
-                        <div class="document-icon">🎯</div>
-                        <div class="document-title">MALNAD FEST 2024</div>
-                        <div class="document-description">
-                            Comprehensive report covering MALNAD FEST 2024 - cultural competitions, technical events, guest lectures, and participation statistics.
-                        </div>
-                        <div class="document-meta">
-                            <div class="meta-item">
-                                <span>📅</span>
-                                <span>Published: February 2024</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📄</span>
-                                <span>38 pages • 2.3MB</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>👁️</span>
-                                <span>1,478 views</span>
-                            </div>  
-                        </div>
-                        <div class="document-actions">      
-
-                            <button class="action-btn" onclick="downloadDocument('malnad-fest-2024.pdf')">
-                                ⬇️ Download
-                            </button>
-                            <button class="action-btn secondary" onclick="previewDocument('malnad-fest-2024.pdf')">
-                                👀 Preview
-                            </button> -->
