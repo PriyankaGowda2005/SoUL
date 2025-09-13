@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
        :root {
             /* Light Theme - Pink Base */
@@ -32,7 +31,7 @@
             --gradient-primary: linear-gradient(135deg, #E91E63 0%, #D91A60 50%, #C2185B 100%);
             --gradient-soft: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
             --header-bg: rgba(26, 35, 50, 0.95);
-            --footer-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            --footer-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
             --body-bg: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
         }
 
@@ -144,7 +143,7 @@
 
         .back-btn {
             background: var(--primary-color);
-            border: 1px solid var(--border-color);
+            border: none;
             padding: 10px 20px;
             border-radius: 8px;
             color: white;
@@ -158,44 +157,9 @@
         }
 
         .back-btn:hover {
-            background: var(--hover-bg);
-            border-color: var(--primary-color);
+            background: var(--secondary-color);
             box-shadow: var(--card-hover-shadow);
             transform: translateY(-2px);
-        }
-
-        .home-btn {
-            background: var(--gradient-primary);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .home-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
-        }
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
         }
 
         .home-btn {
@@ -215,45 +179,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
         }
-
-        .back-btn {
-            background: var(--primary-color);
-            border: 1px solid var(--border-color);
-            padding: 10px 20px;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-        .back-btn:hover {
-            background: var(--hover-bg);
-            border-color: var(--primary-color);
-            box-shadow: var(--card-hover-shadow);
-            transform: translateY(-2px);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        /* .header {
-            background: rgba(26, 35, 50, 0.95);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        } */
-        
 
         .container {
             max-width: 1400px;
@@ -274,7 +199,7 @@
         .page-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: #a0aec0;
+            color: var(--text-muted);
             margin-bottom: 2rem;
         }
 
@@ -286,18 +211,19 @@
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
             text-align: center;
-            border: 1px solid rgba(32, 211, 194, 0.3);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
-            border-color: #20d3c2;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .stat-number {
@@ -308,16 +234,17 @@
         }
 
         .stat-label {
-            color: #a0aec0;
+            color: var(--text-muted);
             font-size: 1.1rem;
         }
 
         .filters-section {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
             margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
         }
 
         .filters-title {
@@ -340,23 +267,23 @@
         }
 
         .filter-label {
-            color: #a0aec0;
+            color: var(--text-muted);
             font-weight: 600;
         }
 
         .filter-select,
         .filter-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 12px;
-            color: white;
+            color: var(--text-primary);
             font-size: 1rem;
         }
 
         .filter-select option {
-            background: #2d3748;
-            color: white;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .search-btn {
@@ -376,11 +303,12 @@
         }
 
         .students-table-container {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             overflow-x: auto;
+            box-shadow: var(--card-shadow);
         }
 
         .students-table {
@@ -393,11 +321,11 @@
         .students-table td {
             padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .students-table th {
-            background: rgba(32, 211, 194, 0.1);
+            background: var(--bg-secondary);
             color: #20d3c2;
             font-weight: 700;
             position: sticky;
@@ -405,7 +333,7 @@
         }
 
         .students-table tr:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--hover-bg);
         }
 
         .student-photo {
@@ -423,7 +351,7 @@
         .progress-bar {
             width: 100px;
             height: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--bg-secondary);
             border-radius: 4px;
             overflow: hidden;
         }
@@ -476,30 +404,8 @@
             transform: scale(1.05);
         }
 
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-
-        .page-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 16px;
-            border-radius: 6px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .page-btn:hover,
-        .page-btn.active {
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
-            border-color: #20d3c2;
-        }
         .footer {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            background: var(--footer-gradient);
             color: white;
             padding: 4rem 0 1.5rem;
             margin-top: auto;
@@ -631,21 +537,21 @@
             .students-table td {
                 padding: 0.5rem;
             }
-
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+    <button class="theme-toggle" id="theme-toggle">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
+    
     <div class="header">
         <div class="logo-section">
             <div class="logo">👨‍🎓</div>
             <h1>SoUL Organization</h1>
         </div>
         <div class="header-actions">
-            <span class="back-btn" onclick="goBack()">← Back</span>
+            <button class="back-btn" id="back-btn">← Back</button>
             <a href="index.html" class="home-btn">🏠 Home</a>
         </div>
     </div>
@@ -661,11 +567,11 @@
                 <div class="stat-label">Total Students</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">26</div>
+                <div class="stat-number">27</div>
                 <div class="stat-label">Active Students</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">9</div>
+                <div class="stat-number">8</div>
                 <div class="stat-label">Graduates</div>
             </div>
             <div class="stat-card">
@@ -673,7 +579,7 @@
                 <div class="stat-label">Level</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">87%</div>
+                <div class="stat-number">68%</div>
                 <div class="stat-label">Avg Progress</div>
             </div>
         </div>
@@ -692,18 +598,17 @@
                 </div>
                 <div class="filter-group">
                     <label class="filter-label">Class</label>
-                    <select class="filter-select" id="yearFilter">
+                    <select class="filter-select" id="classFilter">
                         <option value="">All Classes</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                        <option value="4">4th</option>
-                        <option value="5">5th</option>
-                        <option value="6">6th</option>
-                        <option value="7">7th</option>
-                        <option value="8">8th</option>
-                        <option value="9">9th</option>
-                        <option value="10">10th</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th">4th</option>
+                        <option value="5th">5th</option>
+                        <option value="6th">6th</option>
+                        <option value="7th">7th</option>
+                        <option value="8th">8th</option>
+                        <option value="9th">9th</option>
+                        <option value="10th">10th</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -716,7 +621,7 @@
                     </select>
                 </div>
                 <div class="filter-group">
-                    <button class="search-btn" onclick="filterStudents()">🔍 Search</button>
+                    <button class="search-btn" id="searchBtn">🔍 Search</button>
                 </div>
             </div>
         </div>
@@ -728,69 +633,47 @@
                 <table class="students-table" id="studentsTable">
                     <thead>
                         <tr>
-                           
                             <th>ID</th>
                             <th>Full Name</th>
                             <th>Class</th>
                             <th>Progress</th>
                             <th>Status</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
-<tr><td>001</td><td>Aditya</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>002</td><td>Manjunath</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>003</td><td>Preetham</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>004</td><td>Ganesh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>005</td><td>Rajesh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>006</td><td>Darshan</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>007</td><td>Santhosh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>008</td><td>Chandra</td><td>5th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>009</td><td>Akul</td><td>5th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>010</td><td>Chandru</td><td>5th</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>011</td><td>Adithya</td><td>6th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>012</td><td>Arya</td><td>6th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>013</td><td>Surya</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>014</td><td>Irfan</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>015</td><td>Tanvir</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>016</td><td>Sanjay</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>017</td><td>Santhosh</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>018</td><td>Tharun</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>019</td><td>Harshavardhan</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div><small>90%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>020</td><td>Manju</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>021</td><td>Lohith</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>022</td><td>Hemanth</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>023</td><td>Somashaker</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>024</td><td>Sudeep</td><td>9th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>025</td><td>Charan</td><td>9th</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>026</td><td>Siddapaji</td><td>9th</td><td><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div><small>90%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-<tr><td>027</td><td>Sharath</td><td>10th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <!-- <tr><td>031</td><td>Dev Patel</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div><small>68%</small></td><td><span class="status-badge status-dropout">Active</span></td></tr>
-  <tr><td>032</td><td>Ritika Bansal</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div><small>92%</small></td><td><span class="status-badge status-graduate">Active</span></td></tr>
-  <tr><td>033</td><td>Abhinav Mishra</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:83%"></div></div><small>83%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <tr><td>034</td><td>Tanvi Kulkarni</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:98%"></div></div><small>98%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <tr><td>035</td><td>Sameer Chawla</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:79%"></div></div><small>79%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <tr><td>036</td><td>Gauri Deshmukh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:87%"></div></div><small>87%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <tr><td>037</td><td>Vivek Chandra</td><td>1st</td><td><div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div><small>72%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <tr><td>038</td><td>Bhavna Joshi</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div><small>91%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
-  <tr><td>039</td><td>Yash Thakur</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:66%"></div></div><small>66%</small></td><td><span class="status-badge status-dropout">Active</span></td></tr>
-  <tr><td>040</td><td>Deepika Singh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div><small>88%</small></td><td><span class="status-badge status-active">Active</span></td></tr> -->
-
-</tbody>
-
+                        <tr><td>001</td><td>Aditya</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>002</td><td>Manjunath</td><td>2nd</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>003</td><td>Preetham</td><td>3rd</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>004</td><td>Ganesh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>005</td><td>Rajesh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>006</td><td>Darshan</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>007</td><td>Santhosh</td><td>4th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>008</td><td>Chandra</td><td>5th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>009</td><td>Akul</td><td>5th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>010</td><td>Chandru</td><td>5th</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>011</td><td>Adithya</td><td>6th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>012</td><td>Arya</td><td>6th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>013</td><td>Surya</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>014</td><td>Irfan</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>015</td><td>Tanvir</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>016</td><td>Sanjay</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>017</td><td>Santhosh</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>018</td><td>Tharun</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>019</td><td>Harshavardhan</td><td>7th</td><td><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div><small>90%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>020</td><td>Manju</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>021</td><td>Lohith</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div><small>40%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>022</td><td>Hemanth</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><small>60%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>023</td><td>Somashaker</td><td>8th</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>024</td><td>Sudeep</td><td>9th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>025</td><td>Charan</td><td>9th</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div><small>80%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>026</td><td>Siddapaji</td><td>9th</td><td><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div><small>90%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                        <tr><td>027</td><td>Sharath</td><td>10th</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div><small>20%</small></td><td><span class="status-badge status-active">Active</span></td></tr>
+                    </tbody>
                 </table>
             </div>
-
-            <!-- Pagination -->
-            <!-- <div class="pagination">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn">4</button>
-                <button class="page-btn">5</button>
-            </div> -->
         </div>
     </div>
+    
     <footer class="footer">
         <div class="footer-content">
             <!-- Logo and Description -->
@@ -861,48 +744,6 @@
     </footer>
 
     <script>
-        // Sample data for demonstration
-        const studentsData = [
-            { id: 'STU001', name: 'Arun Kumar', year: '4', department: 'Computer Science', email: 'arun.kumar@email.com', phone: '+91 98765 43210', progress: 95, gpa: 8.9, status: 'active' },
-            { id: 'STU002', name: 'Priya Sharma', year: '3', department: 'Information Technology', email: 'priya.sharma@email.com', phone: '+91 98765 43211', progress: 87, gpa: 8.5, status: 'active' },
-            { id: 'STU003', name: 'Rahul Gupta', year: '2', department: 'Electronics', email: 'rahul.gupta@email.com', phone: '+91 98765 43212', progress: 78, gpa: 7.8, status: 'active' },
-            // Add more student data as needed
-        ];
-        function goBack() {
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.history.back();
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
-
-        // Filter functionality
-        function filterStudents() {
-            const studentId = document.getElementById('studentIdFilter').value.toLowerCase();
-            const name = document.getElementById('nameFilter').value.toLowerCase();
-            const year = document.getElementById('yearFilter').value;
-            const status = document.getElementById('statusFilter').value;
-
-            const rows = document.querySelectorAll('#studentsTable tbody tr');
-            
-            rows.forEach(row => {
-                const rowData = {
-                    id: row.cells[1].textContent.toLowerCase(),
-                    name: row.cells[2].textContent.toLowerCase(),
-                    year: row.cells[3].textContent,
-                    status: row.cells[9].textContent.toLowerCase()
-                };
-
-                let showRow = true;
-
-                if (studentId && !rowData.id.includes(studentId)) showRow = false;
-                if (name && !rowData.name.includes(name)) showRow = false;
-                if (year && !rowData.year.includes(year)) showRow = false;
-                if (status && !rowData.status.includes(status)) showRow = false;
-
-                row.style.display = showRow ? '' : 'none';
-            });
-        }
         // Theme functionality
         function toggleTheme() {
             const body = document.body;
@@ -933,12 +774,78 @@
                 themeIcon.className = 'fas fa-moon';
             }
         }
-        
-        // Initialize theme on page load
+
+        // Go back functionality
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Filter functionality
+        function filterStudents() {
+            const studentId = document.getElementById('studentIdFilter').value.toLowerCase().trim();
+            const name = document.getElementById('nameFilter').value.toLowerCase().trim();
+            const classValue = document.getElementById('classFilter').value.toLowerCase().trim();
+            const status = document.getElementById('statusFilter').value.toLowerCase().trim();
+
+            const rows = document.querySelectorAll('#studentsTable tbody tr');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const cells = row.cells;
+                const rowData = {
+                    id: cells[0].textContent.toLowerCase().trim(),
+                    name: cells[1].textContent.toLowerCase().trim(),
+                    class: cells[2].textContent.toLowerCase().trim(),
+                    status: cells[4].textContent.toLowerCase().trim()
+                };
+
+                let showRow = true;
+
+                if (studentId && !rowData.id.includes(studentId)) showRow = false;
+                if (name && !rowData.name.includes(name)) showRow = false;
+                if (classValue && !rowData.class.includes(classValue)) showRow = false;
+                if (status && !rowData.status.includes(status)) showRow = false;
+
+                if (showRow) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            // Update statistics based on visible rows
+            updateStats(visibleCount);
+        }
+
+        // Update statistics
+        function updateStats(visibleCount) {
+            const statCards = document.querySelectorAll('.stat-number');
+            if (visibleCount !== undefined) {
+                statCards[0].textContent = visibleCount; // Total Students
+                statCards[1].textContent = visibleCount; // Active Students (assuming all are active)
+            }
+        }
+
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            // Load theme
             loadTheme();
             
-            // Smooth animations for document cards
+            // Add event listeners
+            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+            document.getElementById('back-btn').addEventListener('click', goBack);
+            document.getElementById('searchBtn').addEventListener('click', filterStudents);
+            
+            // Add real-time search on input for name only
+            document.getElementById('nameFilter').addEventListener('input', filterStudents);
+            document.getElementById('classFilter').addEventListener('change', filterStudents);
+            
+            // Smooth animations for cards
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -952,37 +859,13 @@
                     }
                 });
             }, observerOptions);
-            
 
-        // Navigation function
-        function goBack() {
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.history.back();
-            } else {
-                window.location.href = 'index.html';
-            }
-        }
-
-        // View student details
-        function viewStudent(studentId) {
-            alert(`Opening detailed view for Student ID: ${studentId}\n\nThis would typically open a modal or navigate to a detailed student profile page with:\n- Academic history\n- Course enrollments\n- Performance analytics\n- Contact information\n- Documents and certificates`);
-        }
-
-        
-        // Observe elements for animation
-        document.querySelectorAll('.stat-card, .filters-section, .students-table-container').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'all 0.6s ease';
-            observer.observe(element);
-        });
-
-        // Pagination functionality
-        // document.querySelectorAll('.page-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                // Here you would typically load the corresponding page data
+            // Observe elements for animation
+            document.querySelectorAll('.stat-card, .filters-section, .students-table-container').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
+                observer.observe(element);
             });
         });
     </script>

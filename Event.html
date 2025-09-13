@@ -9,8 +9,57 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            /* Light Theme - Pink Base */
+            --primary-color: #D91A60;
+            --secondary-color: #E91E63;
+            --accent-color: #FF6B9D;
+            --bg-primary: #FEFBFC;
+            --bg-secondary: #FDF7F9;
+            --bg-tertiary: #FBF1F5;
+            --text-primary: #1A0D13;
+            --text-secondary: #2D1B24;
+            --text-muted: #5D4A52;
+            --text-dark: #0F080B;
+            --border-color: #EFD6E3;
+            --card-bg: #FFFFFF;
+            --hover-bg: #F8EDF2;
+            --active-bg: #F3E1EA;
+            --card-shadow: 0 4px 12px rgba(26, 13, 19, 0.1), 0 2px 6px rgba(26, 13, 19, 0.08);
+            --card-hover-shadow: 0 8px 25px rgba(26, 13, 19, 0.15), 0 4px 10px rgba(26, 13, 19, 0.1);
+            --gradient-primary: linear-gradient(135deg, #E91E63 0%, #D91A60 50%, #C2185B 100%);
+            --gradient-soft: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+            --header-bg: rgba(254, 251, 252, 0.95);
+            --footer-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            --body-bg: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+        }
+
+        /* Dark theme */
+        [data-theme="dark"] {
+            --primary-color: #14B8A6;
+            --secondary-color: #06B6D4;
+            --accent-color: #22D3EE;
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #E2E8F0;
+            --text-muted: #94A3B8;
+            --text-dark: #FFFFFF;
+            --border-color: #475569;
+            --card-bg: #1E293B;
+            --hover-bg: #334155;
+            --active-bg: #475569;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(20, 184, 166, 0.15);
+            --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(20, 184, 166, 0.25);
+            --gradient-primary: linear-gradient(135deg, #0891B2 0%, #14B8A6 50%, #10B981 100%);
+            --gradient-soft: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --footer-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            --body-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,19 +68,23 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
-            color: #fff;
+            background: var(--body-bg);
+            color: var(--text-primary);
             min-height: 100vh;
+            transition: all 0.3s ease;
         }
 
         .header {
-            background: rgba(26, 35, 50, 0.95);
+            background: var(--header-bg);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo-section {
@@ -43,16 +96,85 @@
         .logo {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
+            color: white;
+        }
+
+        .logo-section h1 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            padding: 8px 40px 8px 16px;
+            width: 250px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            width: 300px;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
 
         .home-btn {
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background: var(--gradient-primary);
             border: none;
             padding: 12px 24px;
             border-radius: 8px;
@@ -60,13 +182,15 @@
             cursor: pointer;
             font-weight: 600;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             transition: all 0.3s ease;
         }
 
         .home-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+            box-shadow: 0 8px 25px rgba(217, 26, 96, 0.3);
         }
 
         .container {
@@ -79,7 +203,7 @@
             text-align: center;
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background: var(--gradient-primary);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -88,8 +212,42 @@
         .page-subtitle {
             text-align: center;
             font-size: 1.2rem;
-            color: #a0aec0;
+            color: var(--text-muted);
             margin-bottom: 3rem;
+        }
+
+        .search-results {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .search-result-item {
+            padding: 0.8rem;
+            border-left: 3px solid var(--primary-color);
+            background: var(--hover-bg);
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: var(--active-bg);
+            transform: translateX(5px);
         }
 
         .quick-links {
@@ -100,21 +258,22 @@
         }
 
         .quick-link {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(32, 211, 194, 0.3);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            color: white;
+            color: var(--text-primary);
+            box-shadow: var(--card-shadow);
         }
 
         .quick-link:hover {
             transform: translateY(-5px);
-            border-color: #20d3c2;
-            box-shadow: 0 15px 35px rgba(32, 211, 194, 0.2);
+            border-color: var(--primary-color);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .quick-link-icon {
@@ -124,7 +283,7 @@
 
         .quick-link-title {
             font-weight: 600;
-            color: #20d3c2;
+            color: var(--primary-color);
         }
 
         .event-categories {
@@ -136,11 +295,11 @@
         }
 
         .category-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(32, 211, 194, 0.3);
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
             padding: 12px 24px;
             border-radius: 8px;
-            color: white;
+            color: var(--text-primary);
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -148,10 +307,11 @@
 
         .category-btn:hover,
         .category-btn.active {
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
-            border-color: #20d3c2;
+            background: var(--gradient-primary);
+            border-color: var(--primary-color);
+            color: white;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+            box-shadow: 0 8px 25px rgba(217, 26, 96, 0.3);
         }
 
         .category-content {
@@ -170,14 +330,15 @@
         }
 
         .guideline-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--card-shadow);
         }
 
         .guideline-card::before {
@@ -187,7 +348,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(32, 211, 194, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(217, 26, 96, 0.1), transparent);
             transition: left 0.5s;
         }
 
@@ -197,8 +358,8 @@
 
         .guideline-card:hover {
             transform: translateY(-8px);
-            border-color: #20d3c2;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .guideline-header {
@@ -211,22 +372,23 @@
         .guideline-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background: var(--gradient-primary);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
+            color: white;
         }
 
         .guideline-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #20d3c2;
+            color: var(--primary-color);
         }
 
         .guideline-description {
-            color: #a0aec0;
+            color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
@@ -242,34 +404,35 @@
             gap: 0.8rem;
             margin-bottom: 0.8rem;
             padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--hover-bg);
             border-radius: 8px;
-            border-left: 3px solid #20d3c2;
+            border-left: 3px solid var(--primary-color);
         }
 
         .checklist-icon {
-            color: #20d3c2;
+            color: var(--primary-color);
             font-weight: bold;
             margin-top: 2px;
         }
 
         .checklist-text {
             flex: 1;
-            color: #e2e8f0;
+            color: var(--text-secondary);
         }
 
         .timeline-section {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
             margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
         }
 
         .timeline-title {
             font-size: 1.8rem;
             margin-bottom: 2rem;
-            color: #20d3c2;
+            color: var(--primary-color);
             text-align: center;
         }
 
@@ -285,7 +448,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, #20d3c2, #17a2b8);
+            background: var(--gradient-primary);
         }
 
         .timeline-item {
@@ -301,116 +464,59 @@
             top: 8px;
             width: 12px;
             height: 12px;
-            background: #20d3c2;
+            background: var(--primary-color);
             border-radius: 50%;
-            border: 3px solid #1a2332;
+            border: 3px solid var(--bg-primary);
         }
 
         .timeline-time {
             font-weight: bold;
-            color: #20d3c2;
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
 
         .timeline-content {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--hover-bg);
             padding: 1rem;
             border-radius: 8px;
-            border-left: 3px solid #20d3c2;
+            border-left: 3px solid var(--primary-color);
         }
 
         .timeline-task {
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #e2e8f0;
+            color: var(--text-secondary);
         }
 
         .timeline-description {
-            color: #a0aec0;
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        .resources-section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .timeline-description ul {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
         }
 
-        .resources-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #20d3c2;
-            text-align: center;
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .resource-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            border-color: #20d3c2;
-        }
-
-        .resource-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .resource-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #20d3c2;
-        }
-
-        .resource-description {
-            color: #a0aec0;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .resource-btn {
-            background: linear-gradient(135deg, #20d3c2, #17a2b8);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .resource-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(32, 211, 194, 0.4);
+        .timeline-description li {
+            margin-bottom: 0.25rem;
+            color: var(--text-secondary);
         }
 
         .contact-section {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 2rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             text-align: center;
+            box-shadow: var(--card-shadow);
         }
 
         .contact-title {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: #20d3c2;
+            color: var(--primary-color);
         }
 
         .contact-info {
@@ -421,16 +527,16 @@
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--hover-bg);
             padding: 1.5rem;
             border-radius: 12px;
-            border: 1px solid rgba(32, 211, 194, 0.3);
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
-            border-color: #20d3c2;
+            border-color: var(--primary-color);
         }
 
         .contact-icon {
@@ -438,17 +544,28 @@
             margin-bottom: 0.5rem;
         }
 
+        .resource-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .resource-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
         .footer {
             text-align: center;
             padding: 2rem;
-            background: rgba(26, 35, 50, 0.95);
+            background: var(--header-bg);
             backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-color);
             margin-top: 2rem;
         }
 
         .footer-text {
-            color: #a0aec0;
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
 
@@ -457,19 +574,39 @@
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
+            list-style: none;
         }
 
         .footer-link {
-            color: #20d3c2;
+            color: var(--primary-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-link:hover {
-            color: #17a2b8;
+            color: var(--secondary-color);
         }
 
         @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-box {
+                width: 200px;
+            }
+
+            .search-box:focus {
+                width: 220px;
+            }
+
             .container {
                 padding: 1rem;
             }
@@ -496,10 +633,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .resources-grid {
-                grid-template-columns: 1fr;
-            }
-
             .timeline {
                 padding-left: 1.5rem;
             }
@@ -512,26 +645,65 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .highlight {
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
     </style>
 </head>
-<body>
+<body data-theme="light">
     <div class="header">
         <div class="logo-section">
             <div class="logo"><i class="fas fa-graduation-cap"></i></div>
             <h1>SoUL Organization</h1>
         </div>
-        <a href="#" class="home-btn">🏠 Back to Home</a>
+        <div class="header-controls">
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="home-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
     </div>
 
     <div class="container">
         <h1 class="page-title">Event Guidelines</h1>
         <p class="page-subtitle">Complete guidelines for organizing events, protocols, and best practices for SoUL activities</p>
 
+        <!-- Search Results -->
+        <div class="search-results" id="searchResults">
+            <h3><i class="fas fa-search"></i> Search Results</h3>
+            <div id="searchResultsContent"></div>
+        </div>
+
         <!-- Quick Links -->
-        <!-- Quick Links -->
-<div class="quick-links">
-    <a href="#planning" class="quick-link">
-        <div class="guideline-card">
+        <div class="quick-links" id="quickLinks">
+            <a href="#planning" class="quick-link">
+                <div class="quick-link-icon">📋</div>
+                <div class="quick-link-title">Event Planning</div>
+            </a>
+            <a href="#timeline" class="quick-link">
+                <div class="quick-link-icon">⏰</div>
+                <div class="quick-link-title">Timeline</div>
+            </a>
+            <a href="#forms" class="quick-link">
+                <div class="quick-link-icon">📞</div>
+                <div class="quick-link-title">Contact</div>
+            </a>
+        </div>
+
+        <!-- Guidelines Section -->
+        <div class="guideline-card" id="planning">
             <div class="guideline-header">
                 <div class="guideline-icon">🎨</div>
                 <div class="guideline-title">Guidelines for organizing events</div>
@@ -559,174 +731,111 @@
                 </li>
             </ul>
         </div>
-    </a>
-</div>
+        <br>
+<br>
+<br>
 
-
+        <!-- Timeline Section -->
         <div class="timeline-section" id="timeline">
-    <h3 class="timeline-title">⏰ NGO Event Planning Timeline</h3>
-    <div class="timeline">
+            <h3 class="timeline-title">⏰ Event Planning Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">8-12 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Vision & Objective Setting</div>
+                        <div class="timeline-description">
+                            Define the purpose of the event (Reflection / SoUL Day), expected number of kids & schools, 
+                            outline budget, and form organizing committees (logistics, cultural, sponsorship, media).
+                        </div>
+                    </div>
+                </div>
 
-        <!-- 8-12 Weeks Before -->
-        <div class="timeline-item">
-            <div class="timeline-time">8-12 Weeks Before</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Vision & Objective Setting</div>
-                <div class="timeline-description">
-                    Define the purpose of the event (Reflection / SoUL Day), expected number of kids & schools, 
-                    outline budget, and form organizing committees (logistics, cultural, sponsorship, media).
+                <div class="timeline-item">
+                    <div class="timeline-time">6-8 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Venue & Resource Booking</div>
+                        <div class="timeline-description">
+                            Book school auditorium / community hall / open ground. 
+                            Arrange catering, sound systems, projectors, stage setup, and decorations. 
+                            Contact judges, trainers, and workshop facilitators.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">4-6 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Invitations & Publicity</div>
+                        <div class="timeline-description">
+                            Send invitations to schools, NGOs, and local communities. 
+                            Design posters, brochures, and digital invites. 
+                            Start registrations for competitions, workshops, and performances.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2-4 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Program & Logistics Coordination</div>
+                        <div class="timeline-description">
+                            Finalize event schedule (dance, song, games, workshops, prize distribution). 
+                            Assign volunteers for stage management, hospitality, and technical support. 
+                            Confirm judges, guests, and performers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">1 Week Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Rehearsals & Dry Run</div>
+                        <div class="timeline-description">
+                            Conduct full-day rehearsal with performers, volunteers, and technical team. 
+                            Test audio/visual equipment, finalize seating arrangements, and prepare emergency kits.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">Event Day(s)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Event Execution</div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Welcome & Team Division for kids/volunteers</li>
+                                <li>Opening ceremony with chief guest & cultural act</li>
+                                <li>Competitions / Performances + Workshops (SoUL Day)</li>
+                                <li>Games & fun activities</li>
+                                <li>Food & refreshment distribution</li>
+                                <li>Prize distribution & closing ceremony</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">Post-Event</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Wrap-up & Impact Evaluation</div>
+                        <div class="timeline-description">
+                            Cleanup venue, thank volunteers/judges/partners. 
+                            Share highlights on social media & website. 
+                            Collect feedback from kids, schools, and parents. 
+                            Prepare event report with impact assessment & lessons learned.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- 6-8 Weeks Before -->
-        <div class="timeline-item">
-            <div class="timeline-time">6-8 Weeks Before</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Venue & Resource Booking</div>
-                <div class="timeline-description">
-                    Book school auditorium / community hall / open ground. 
-                    Arrange catering, sound systems, projectors, stage setup, and decorations. 
-                    Contact judges, trainers, and workshop facilitators.
-                </div>
-            </div>
-        </div>
-
-        <!-- 4-6 Weeks Before -->
-        <div class="timeline-item">
-            <div class="timeline-time">4-6 Weeks Before</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Invitations & Publicity</div>
-                <div class="timeline-description">
-                    Send invitations to schools, NGOs, and local communities. 
-                    Design posters, brochures, and digital invites. 
-                    Start registrations for competitions, workshops, and performances.
-                </div>
-            </div>
-        </div>
-
-        <!-- 2-4 Weeks Before -->
-        <div class="timeline-item">
-            <div class="timeline-time">2-4 Weeks Before</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Program & Logistics Coordination</div>
-                <div class="timeline-description">
-                    Finalize event schedule (dance, song, games, workshops, prize distribution). 
-                    Assign volunteers for stage management, hospitality, and technical support. 
-                    Confirm judges, guests, and performers.
-                </div>
-            </div>
-        </div>
-
-        <!-- 1 Week Before -->
-        <div class="timeline-item">
-            <div class="timeline-time">1 Week Before</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Rehearsals & Dry Run</div>
-                <div class="timeline-description">
-                    Conduct full-day rehearsal with performers, volunteers, and technical team. 
-                    Test audio/visual equipment, finalize seating arrangements, and prepare emergency kits.
-                </div>
-            </div>
-        </div>
-
-        <!-- Event Day(s) -->
-        <div class="timeline-item">
-            <div class="timeline-time">Event Day(s)</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Event Execution</div>
-                <div class="timeline-description">
-                    <ul>
-                        <li>Welcome & registration desk for kids/schools</li>
-                        <li>Opening ceremony with chief guest & cultural act</li>
-                        <li>Competitions  / Performances + Workshops (SoUL Day)</li>
-                        <li>Games & fun activities</li>
-                        <li>Food & refreshment distribution</li>
-                        <li>Prize distribution & closing ceremony</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Post-Event -->
-        <div class="timeline-item">
-            <div class="timeline-time">Post-Event</div>
-            <div class="timeline-content">
-                <div class="timeline-task">Wrap-up & Impact Evaluation</div>
-                <div class="timeline-description">
-                    Cleanup venue, thank volunteers/judges/partners. 
-                    Share highlights on social media & website. 
-                    Collect feedback from kids, schools, and parents. 
-                    Prepare event report with impact assessment & lessons learned.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-        <!-- Resources Section -->
-        <!-- <div class="resources-section" id="resources">
-            <h3 class="resources-title">📚 Event Resources & Templates</h3> -->
-            <!-- <div class="resources-grid">
-                <div class="resource-card">
-                    <div class="resource-icon">📋</div>
-                    <div class="resource-title">Event Planning Checklist</div>
-                    <div class="resource-description">Comprehensive checklist covering all aspects of event planning from conception to execution.</div>
-                    <button class="resource-btn" onclick="downloadResource('event-planning-checklist.pdf')">Download PDF</button>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">💰</div>
-                    <div class="resource-title">Budget Template</div>
-                    <div class="resource-description">Excel template for event budget planning, expense tracking, and financial management.</div>
-                    <button class="resource-btn" onclick="downloadResource('event-budget-template.xlsx')">Download Excel</button>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">📝</div>
-                    <div class="resource-title">Vendor Agreement Forms</div>
-                    <div class="resource-description">Legal templates for vendor contracts, service agreements, and terms of engagement.</div>
-                    <button class="resource-btn" onclick="downloadResource('vendor-agreements.zip')">Download Pack</button>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">📊</div>
-                    <div class="resource-title">Post-Event Report Template</div>
-                    <div class="resource-description">Structured template for documenting event outcomes, feedback, and recommendations.</div>
-                    <button class="resource-btn" onclick="downloadResource('post-event-report.docx')">Download Word</button>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">🎨</div>
-                    <div class="resource-title">Marketing Materials Kit</div>
-                    <div class="resource-description">Design templates for posters, flyers, social media posts, and promotional materials.</div>
-                    <button class="resource-btn" onclick="downloadResource('marketing-kit.zip')">Download Kit</button>
-                </div>
-                
-                <div class="resource-card">
-                    <div class="resource-icon">👥</div>
-                    <div class="resource-title">Volunteer Coordination Guide</div>
-                    <div class="resource-description">Best practices for recruiting, training, and managing volunteers for events.</div>
-                    <button class="resource-btn" onclick="downloadResource('volunteer-guide.pdf')">Download Guide</button>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">🔒</div>
-                    <div class="resource-title">Risk Management Framework</div>
-                    <div class="resource-description">Comprehensive risk assessment templates and safety protocols for event management.</div>
-                    <button class="resource-btn" onclick="downloadResource('risk-management.pdf')">Download PDF</button>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">📱</div>
-                    <div class="resource-title">Social Media Guidelines</div>
-                    <div class="resource-description">Best practices for event promotion, live coverage, and post-event engagement on social platforms.</div>
-                    <button class="resource-btn" onclick="downloadResource('social-media-guide.pdf')">Download Guide</button>
-                </div>
-            </div>
-        </div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
         <!-- Contact Section -->
         <div class="contact-section" id="forms">
             <h3 class="contact-title">📞 Event Coordination Contacts</h3>
@@ -762,41 +871,61 @@
         <div class="footer-text">
             © 2025 SoUL Organization. All rights reserved. | Building stronger communities through cultural unity.
         </div>
-         <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#services">Our Services</a></li>
-                    <li><a href="index.html#events">Events</a></li>
-                    <li><a href="index.html#members">Our Team</a></li>
+        <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="index.html#about" class="footer-link">About Us</a></li>
+            <li><a href="index.html#services" class="footer-link">Our Services</a></li>
+            <li><a href="index.html#events" class="footer-link">Events</a></li>
+            <li><a href="index.html#members" class="footer-link">Our Team</a></li>
         </ul>
     </div>
 
     <script>
-        // Category switching functionality
+        // Theme management
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme on page load
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            body.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Back button functionality
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Fallback to home page if no history
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Smooth scrolling for quick links
         document.addEventListener('DOMContentLoaded', function() {
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const categoryContents = document.querySelectorAll('.category-content');
-
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    // Remove active class from all buttons and contents
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    categoryContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show corresponding content
-                    const targetContent = document.getElementById(category);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
-                });
-            });
-
-            // Smooth scrolling for quick links
+            loadTheme();
+            
             const quickLinks = document.querySelectorAll('.quick-link');
             quickLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -814,7 +943,7 @@
             });
 
             // Enhanced animation effects
-            const cards = document.querySelectorAll('.guideline-card, .resource-card, .contact-item');
+            const cards = document.querySelectorAll('.guideline-card, .contact-item, .timeline-item');
             
             const observerOptions = {
                 threshold: 0.1,
@@ -837,71 +966,7 @@
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
-
-            // Add loading animation to resource buttons
-            const resourceBtns = document.querySelectorAll('.resource-btn');
-            resourceBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const originalText = this.textContent;
-                    this.textContent = 'Preparing Download...';
-                    this.style.opacity = '0.7';
-                    
-                    setTimeout(() => {
-                        this.textContent = 'Download Complete!';
-                        setTimeout(() => {
-                            this.textContent = originalText;
-                            this.style.opacity = '1';
-                        }, 2000);
-                    }, 1500);
-                });
-            });
         });
-
-        // Resource download function
-        function downloadResource(filename) {
-            // Simulate download process
-            console.log(`Downloading: ${filename}`);
-            
-            // In a real implementation, this would trigger actual file download
-            // For demo purposes, we'll show a notification
-            showNotification(`Downloading ${filename}...`);
-        }
-
-        // Notification system
-        function showNotification(message) {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(135deg, #20d3c2, #17a2b8);
-                color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
-                box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
-                z-index: 1000;
-                font-weight: 600;
-                transform: translateX(400px);
-                transition: transform 0.3s ease;
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(400px)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
 
         // Add dynamic background effects
         function createFloatingElements() {
@@ -913,7 +978,8 @@
                     position: fixed;
                     width: ${Math.random() * 100 + 50}px;
                     height: ${Math.random() * 100 + 50}px;
-                    background: rgba(32, 211, 194, 0.05);
+                    background: var(--primary-color);
+                    opacity: 0.05;
                     border-radius: 50%;
                     pointer-events: none;
                     z-index: -1;
@@ -933,6 +999,25 @@
                 33% { transform: translateY(-30px) rotate(120deg); }
                 66% { transform: translateY(30px) rotate(240deg); }
             }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                background: var(--active-bg);
+            }
+            
+            .checklist-item:hover {
+                transform: translateX(5px);
+                background: var(--active-bg);
+            }
+            
+            .contact-item:hover .contact-icon {
+                transform: scale(1.2);
+                transition: transform 0.3s ease;
+            }
+            
+            .guideline-card:hover .guideline-icon {
+                transform: rotate(10deg) scale(1.1);
+                transition: transform 0.3s ease;
+            }
         `;
         document.head.appendChild(style);
 
@@ -941,20 +1026,203 @@
 
         // Add responsive menu functionality for mobile
         function addMobileMenuSupport() {
-            const eventCategories = document.querySelector('.event-categories');
-            const categoryBtns = document.querySelectorAll('.category-btn');
+            const headerControls = document.querySelector('.header-controls');
             
             if (window.innerWidth <= 768) {
-                categoryBtns.forEach(btn => {
-                    btn.style.fontSize = '0.8rem';
-                    btn.style.padding = '6px 12px';
-                });
+                headerControls.style.flexWrap = 'wrap';
+            } else {
+                headerControls.style.flexWrap = 'nowrap';
             }
         }
 
         // Handle window resize
         window.addEventListener('resize', addMobileMenuSupport);
-        addMobileMenuSupport();
+        window.addEventListener('load', addMobileMenuSupport);
+
+        // Add scroll-based header effects
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Add click effects to interactive elements
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.quick-link, .home-btn, .theme-toggle')) {
+                const ripple = document.createElement('span');
+                const rect = e.target.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    left: ${x}px;
+                    top: ${y}px;
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                const rippleStyle = document.createElement('style');
+                rippleStyle.textContent = `
+                    @keyframes ripple {
+                        0% { transform: scale(0); opacity: 1; }
+                        100% { transform: scale(2); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(rippleStyle);
+                
+                e.target.style.position = 'relative';
+                e.target.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+        });
+
+        // Add parallax effect to timeline
+        window.addEventListener('scroll', function() {
+            const timeline = document.querySelector('.timeline');
+            if (timeline) {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.1;
+                timeline.style.transform = `translateY(${parallax}px)`;
+            }
+        });
+
+        // Add typewriter effect to title
+        function typewriterEffect() {
+            const title = document.querySelector('.page-title');
+            const text = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, 100);
+        }
+
+        // Initialize typewriter effect on load
+        window.addEventListener('load', function() {
+            setTimeout(typewriterEffect, 500);
+        });
+
+        // Add progress indicator for timeline
+        function updateTimelineProgress() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            
+            timelineItems.forEach((item, index) => {
+                const itemTop = item.offsetTop;
+                const itemHeight = item.offsetHeight;
+                
+                if (scrollTop + windowHeight > itemTop + itemHeight / 2) {
+                    item.classList.add('visible');
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                } else {
+                    item.classList.remove('visible');
+                }
+            });
+        }
+
+        // Initialize timeline items with animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-50px)';
+                item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            });
+            
+            window.addEventListener('scroll', updateTimelineProgress);
+            updateTimelineProgress(); // Initial check
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'Escape':
+                    goBack();
+                    break;
+                case 't':
+                case 'T':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        toggleTheme();
+                    }
+                    break;
+                case 'h':
+                case 'H':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        document.querySelector('.page-title').scrollIntoView({ behavior: 'smooth' });
+                    }
+                    break;
+            }
+        });
+
+        // Add performance optimization
+        let ticking = false;
+        
+        function updateOnScroll() {
+            updateTimelineProgress();
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+
+        // Add accessibility improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add ARIA labels
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.setAttribute('aria-label', 'Toggle dark/light theme');
+            
+            const homeBtn = document.querySelector('.home-btn');
+            homeBtn.setAttribute('aria-label', 'Go back to previous page');
+            
+            // Add focus indicators
+            const focusableElements = document.querySelectorAll('button, a, input');
+            focusableElements.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--primary-color)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                el.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        });
     </script>
 </body>
-</html> 
+</html>
