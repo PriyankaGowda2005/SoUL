@@ -499,7 +499,7 @@
         </div>
 
     <!-- Batch 2025 Section -->
-    <div class="batch-section" id="batch-2025">
+    <div class="batch-section active" id="batch-2025">
     <h2 class="batch-title">Batch 2025 - Industry Leaders</h2>
     <div class="alumni-grid">
 
@@ -1789,17 +1789,22 @@
                 localStorage.setItem('theme', 'dark');
             }
         }
+        // Load saved theme and initialize default batch
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
+    }
 
-        // Load saved theme
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme');
-            const themeIcon = document.getElementById('theme-icon');
-            
-            if (savedTheme === 'dark') {
-                document.body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
-            }
-        });
+    // Show 2025 batch by default
+    const defaultSection = document.getElementById('batch-2025');
+    if (defaultSection) {
+        defaultSection.classList.add('active');
+    }
+});
 
         // Batch selector functionality
         const batchButtons = document.querySelectorAll('.batch-btn');
