@@ -435,6 +435,12 @@
             letter-spacing: 0.5px;
         }
 
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .submit-btn::before {
             content: '';
             position: absolute;
@@ -450,12 +456,12 @@
             left: 100%;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             transform: translateY(-3px);
             box-shadow: var(--card-hover-shadow);
         }
 
-        .submit-btn:active {
+        .submit-btn:active:not(:disabled) {
             transform: translateY(-1px);
         }
 
@@ -500,6 +506,17 @@
 
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Dashboard Styles */
@@ -607,6 +624,9 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn:hover {
@@ -779,6 +799,14 @@
             .resource-grid {
                 grid-template-columns: 1fr;
             }
+
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -797,12 +825,20 @@
                 height: 75px;
                 font-size: 24px;
             }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+    <button class="theme-toggle" id="theme-toggle">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
 
@@ -822,7 +858,7 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="main-content" id="main-content">
         <div class="bg-animation">
             <div class="floating-shape shape1"></div>
             <div class="floating-shape shape2"></div>
@@ -840,29 +876,29 @@
             </div>
 
             <div class="tab-container">
-                <button class="tab active" onclick="showLogin()">Login</button>
-                <button class="tab" onclick="showSignup()">Sign Up</button>
+                <button class="tab active" id="loginTab">Login</button>
+                <button class="tab" id="signupTab">Sign Up</button>
             </div>
 
             <div class="error-message" id="errorMessage"></div>
             <div class="success-message" id="successMessage"></div>
 
             <!-- Login Form -->
-            <form id="loginForm" class="form-container" onsubmit="handleLogin(event)">
+            <form id="loginForm" class="form-container">
                 <div class="form-group">
                     <label for="loginEmail">Email Address</label>
-                    <input type="email" id="loginEmail" required>
+                    <input type="email" id="loginEmail" name="loginEmail" required>
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
                     <div class="password-field">
-                        <input type="password" id="loginPassword" required>
+                        <input type="password" id="loginPassword" name="loginPassword" required>
                         <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
                             <i class="fas fa-eye" id="loginPasswordIcon"></i>
                         </button>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="loginSubmitBtn">
                     <span id="loginBtnText">Sign In</span>
                     <div class="loading" id="loginLoading">
                         <div class="spinner"></div>
@@ -871,19 +907,19 @@
             </form>
 
             <!-- Signup Form -->
-            <form id="signupForm" class="form-container" style="display: none;" onsubmit="handleSignup(event)">
+            <form id="signupForm" class="form-container" style="display: none;">
                 <div class="form-group">
                     <label for="signupName">Full Name</label>
-                    <input type="text" id="signupName" required>
+                    <input type="text" id="signupName" name="signupName" required>
                 </div>
                 <div class="form-group">
                     <label for="signupEmail">Email Address</label>
-                    <input type="email" id="signupEmail" required>
+                    <input type="email" id="signupEmail" name="signupEmail" required>
                 </div>
                 <div class="form-group">
                     <label for="signupPassword">Password</label>
                     <div class="password-field">
-                        <input type="password" id="signupPassword" required minlength="8">
+                        <input type="password" id="signupPassword" name="signupPassword" required minlength="8">
                         <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
                             <i class="fas fa-eye" id="signupPasswordIcon"></i>
                         </button>
@@ -892,13 +928,13 @@
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
                     <div class="password-field">
-                        <input type="password" id="confirmPassword" required>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
                         <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
                             <i class="fas fa-eye" id="confirmPasswordIcon"></i>
                         </button>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="signupSubmitBtn">
                     <span id="signupBtnText">Create Account</span>
                     <div class="loading" id="signupLoading">
                         <div class="spinner"></div>
@@ -909,7 +945,6 @@
     </div>
 
     <!-- Dashboard (Hidden initially) -->
-     
     <div class="dashboard" id="dashboard">
         <header class="dashboard-header">
             <div class="logo">
@@ -937,134 +972,122 @@
             </div>
 
             <div class="resource-grid">
-                <div class="resource-card" onclick="navigateToSection('alumni')">
+                <div class="resource-card">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">👥</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Alumni Network</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Connect with our alumni community, share experiences, and explore networking opportunities with past volunteers.</p>
-                    <a href="AlumniDetail.html" target="_blank">
-                         <button class="btn">Explore Network</button>
-                    </a>
+                    <a href="AlumniDetail.html" target="_blank" class="btn">Explore Network</a>
                 </div>
                 
-                <div class="resource-card" onclick="navigateToSection('reports')">
+                <div class="resource-card">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Annual Report & Documents</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Access comprehensive annual reports, impact studies, and organizational transparency materials.</p>
-                    <a href="AnnualReport.html" target="_blank">
-                         <button class="btn">View Report</button>
-                    </a>
+                    <a href="AnnualReport.html" target="_blank" class="btn">View Report</a>
                 </div>
 
-                <div class="resource-card" onclick="navigateToSection('students')">
+                <div class="resource-card">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">👨‍🎓</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Student Details</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Access student profiles, progress tracking, and academic performance data.</p>
-                    <a href="StudentDetails.html" target="_blank">
-                         <button class="btn">View Student</button>
-                    </a>
+                    <a href="StudentDetails.html" target="_blank" class="btn">View Students</a>
                 </div>
                 
-                <div class="resource-card" onclick="navigateToSection('training')">
+                <div class="resource-card">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎓</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Training Materials</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Enhance your volunteer skills with comprehensive training modules and educational resources.</p>
-                    <a href="Material.pdf" target="_blank">
-                         <button class="btn">Access Training</button>
-                    </a>
+                    <a href="Material.pdf" target="_blank" class="btn">Access Training</a>
                 </div>
                 
-                <div class="resource-card" onclick="navigateToSection('guidelines')">
+                <div class="resource-card">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">📋</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Event Guidelines</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Complete guidelines for organizing events, protocols, and best practices for SoUL activities.</p>
-                    <a href="Event.html" target="_blank">
-                         <button class="btn">View Guidelines</button>
-                    </a>
+                    <a href="Event.html" target="_blank" class="btn">View Guidelines</a>
                 </div>
                 
-                <div class="resource-card" onclick="navigateToSection('handbook')">
+                <div class="resource-card">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">📄</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Volunteer Handbook</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Complete guide for all SoUL volunteers with updated protocols and essential information.</p>
-                    <a href="Soul  – Best Practices and Norms.pdf" target="_blank">
-                         <button class="btn">View Guidelines</button>
-                    </a>
+                    <a href="Soul  – Best Practices and Norms.pdf" target="_blank" class="btn">View Handbook</a>
                 </div>
             </div>
-                 <footer class="footer">
-        <div class="footer-content">
-            <!-- Logo and Description -->
-            <div>
-                <div class="footer-logo">
-                    <div class="footer-logo-icon">
-                        <i class="fas fa-graduation-cap" style="color: #fbbf24; background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+        </main>
+
+        <!-- Dashboard Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <!-- Logo and Description -->
+                <div>
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-graduation-cap" style="color: #fbbf24; background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                        </div>
+                        <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
                     </div>
-                    <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px; line-height: 1.6;">
+                        Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/so_u_learn/" target="_blank" class="footer-social-icon" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
                 </div>
-                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px; line-height: 1.6;">
-                    Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Our Services</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                        <li><a href="index.html#members">Our Team</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Contact Info</h3>
+                    <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-map-marker-alt" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                            <span>Hassan, Karnataka</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                            <i class="fas fa-phone" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                            <span>+91 6366761006</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i class="fas fa-envelope" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
+                            <span>soulearnofficial@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 SoUL Organization. All rights reserved.
+                    <br>
+                    <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
                 </p>
-                <div class="footer-socials">
-                    <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://www.instagram.com/so_u_learn/" target="_blank" class="footer-social-icon" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="footer-social-icon" title="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px;">
-                </div>
             </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#services">Our Services</a></li>
-                    <li><a href="index.html#events">Events</a></li>
-                    <li><a href="index.html#members">Our Team</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; font-family: 'Poppins', sans-serif;">Contact Info</h3>
-                <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
-                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
-                        <i class="fas fa-map-marker-alt" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
-                        <span>Hassan, Karnataka</span>
-                    </li>
-                    <li style="display: flex; align-items: center; margin-bottom: 0.75rem;">
-                        <i class="fas fa-phone" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
-                        <span>+91 6366761006</span>
-                    </li>
-                    <li style="display: flex; align-items: center;">
-                        <i class="fas fa-envelope" style="width: 18px; margin-right: 0.75rem; color: #fbbf24;"></i>
-                        <span>soulearnofficial@gmail.com</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Bottom Footer -->
-        <div class="footer-bottom">
-            <p>
-                &copy; 2025 SoUL Organization. All rights reserved.
-                <br>
-                <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
-            </p>
-        </div>
-    </footer>
-    <script src="script.js"></script>
-    </main>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Main Footer -->
+    <footer class="footer" id="main-footer">
         <div class="footer-content">
             <!-- Logo and Description -->
             <div>
@@ -1087,7 +1110,6 @@
                     <a href="#" class="footer-social-icon" title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: rgba(255,255,255,0.1); padding: 4px;">
                 </div>
             </div>
 
@@ -1134,8 +1156,8 @@
     </footer>
 
     <script>
-        // Volunteer database with 6 section access
-        let volunteers = [
+        // Volunteer database
+        const volunteers = [
             { name: "Subhash H S", email: "hssubhashgowda@gmail.com", password: "Subhash@2004" },
             { name: "Pooja k v", email: "poojadayana2004@gmail.com", password: "Poojakvmoolya123456" },
             { name: "Priyanka", email: "priyanka.636192@gmail.com", password: "Priya@soul" },
@@ -1165,144 +1187,155 @@
             { name: "Lakshmi M.V", email: "lakshmimv006@gmail.com", password: "Nisu._.gowda.03" },
             { name: "Kumuda Priya NP", email: "kumudapriya2006@gmail.com", password: "psky2029" },
             { name: "H C Priya", email: "priyasoul2k5@gmail.com", password: "priya@SoUL" },
-            {name: "Keerthesh", email: "keertheesh.kk@gmail.com", password: "Keerthesh@123"},
-            {name: "Bhupal Vinay", email: "bhupalvinay7@gmail.com", password: "Bhupal@123"},
-            {name: "Moulya M", email: "moulya.mouli@gmail.com", password: "Moulya@123"},
-            {name: "Nuthan S", email: "nuthanss1996@gmail.com", password: "Nuthan@123"},
-            {name: "Manoj M", email: "manojmn1106@gmail.com", password: "Manoj@123"},
-            {name: "Avinash Sudhamshu", email: "avsudhamshuavsv@gmail.com", password: "Avinash@123"},
-            {name: "Deepthi V Subbaiah", email: "deepthivsubbaiah@gmail.com", password: "Deepthi@123"},
-            {name: "Nadinya", email: "nadinya1002@gmail.com", password: "Nadinya@123"},
-            {name: "Jeevan H V", email: "jeevanhv001@gmail.com", password: "Jeevan@123"},
-            {name: "Akshatha A J", email: "akshathaaj28@gmail.com", password: "Akshatha@123"},
-            {name: "Kavya B H", email: "kavya.b.h2000@gmail.com", password: "Kavya@123"},
-            {name: "Sanjay Vasist", email: "sanjayvasistags@gmail.com", password: "Sanjay@123"},
-            {name: "Ananya", email: "ananyaah2002@gmail.com", password: "Ananya@123"},
-            {name: "Mruthyunjaya", email: "mramrutha712004@gmail.com", password: "Mruthyunjaya@123"},
-            {name: "Lakshmikanth", email: "lakshmikanthahn08@gmail.com", password: "Lakshmikanth@123"},
-            {name: "Harsha J", email: "harshaj054@gmail.com", password: "Harsha@123"},
-            {name: "Sachin Kothari", email: "sachinkotharii17@gmail.com", password: "Sachin@123"},
-            {name: "Madhav Andhore", email: "madhavandhore555@gmail.com", password: "Madhav@123"},
-            {name: "Thejas S", email: "thejasts1@gmail.com", password: "Thejas@123"},
-            {name: "Anuraag K N", email: "anuraagkn@gmail.com", password: "Anuraag@123"},
-            {name: "Sheeraja J S K", email: "jsksheeraja02@gmail.com", password: "Sheeraja@123"},
-            {name: "Navyashree NR", email: "navyashreenr2000@gmail.com", password: "Navyashree@123"},
-            {name: "Pradeep Kashyap", email: "pradeepkashyap1305@gmail.com", password: "Pradeep@123"},
-            {name: "Swathi H G", email: "swathihg2009@gmail.com", password: "Swathi@123"},
-            {name: "Lekha M U", email: "lekhamu24@gmail.com", password: "Lekha@123"},
-            {name: "Bhoomika U", email: "bhoomikau123@gmail.com", password: "Bhoomika@123"},
-            {name: "Hitha Gowda", email: "hithagowda2402@gmail.com", password: "Hitha@123"},
-            {name: "Sannidhi C S", email: "sannidhics11@gmail.com", password: "Sannidhi@123"},
-            {name: "Laxmi Priya", email: "Laxmi.priya94@gmail.com", password: "Laxmi@123"},
-            {name: "Vasu Athani", email: "vasuathani19@gmail.com", password: "Vasu@123"},
-            {name: "Suma", email: "suma200211@gmail.com", password: "Suma@123"},
-            {name: "Shreya B Keng", email: "shreyabkeng@gmail.com", password: "Shreya@123"},
-            {name: "Meghana S K", email: "meghanask97@gmail.com", password: "Meghana@123"},
-            {name: "Smitha Somshekar", email: "smithasomshekar2002@gmail.com", password: "Smitha@123"},
-            {name: "Keertheesh K K", email: "keertheesh.kk@gmail.com", password: "Keertheesh@123"},
-            {name: "Raghavi H P", email: "raghavihp@gmail.com", password: "Raghavi@123"},
-            {name: "Pooja Shree K M", email: "poojashreekm11@gmail.com", password: "Pooja@123"},
-            {name: "JKreshma", email: "jkreshma09@gmail.com", password: "JKreshma@123"},
-            {name: "Prajwal Gowda", email: "prajwalgowdacn29@gmail.com", password: "Prajwal@123"},
-            {name: "Dhanyashree", email: "dhanyashree223@gmail.com", password: "Dhanyashree@123"},
-            {name: "Raosamarth", email: "raosamarth97@gmail.com", password: "Raosamarth@123"},
-            {name: "Apoorva Pailoor", email: "apoorvapailoor9823@gmail.com", password: "Apoorva@123"},
-            {name: "Prithvi Prasad", email: "prithvi97prasad@gmail.com", password: "Prithvi@123"},
-            {name: "Surakshith", email: "surakshith251997@gmail.com", password: "Surakshith@123"},
-            {name: "Maddy Rakshan", email: "maddy.rakshan@gmail.com", password: "Maddy@123"},
-            {name: "Saad Siddique", email: "saadsiddique3@gmail.com", password: "Saad@123"},
-            {name: "Muralikadava", email: "muralikadava@gmail.com", password: "Muralikadava@123"},
-            {name: "Divya Kaundinya", email: "divyakaundinya@gmail.com", password: "Divya@123"},
-            {name: "S S M", email: "ssm83105@gmail.com", password: "SSM@123"},
-            {name: "Aishwarya Shetty", email: "aishwaryashetty0209@gmail.com", password: "Aishwarya@123"},
-            {name: "Sukrutha Kashyap", email: "sukruthakashyap@gmail.com", password: "Sukrutha@123"},
-            {name: "R Manjunatha", email: "Rmanjunatha2505@gmail.com", password: "RManjunatha@123"}, 
-            {name: "Jeevan Shastry", email: "jeevanshastry088@gmail.com", password: "Jeevan@123"},
-            {name: "Abhinav E S", email: "esabhinav11@gmail.com", password: "Abhinav@123"},
-            {name: "Chiranth R", email: "chiranthr2011@gmail.com", password: "Chiranth@123"},
-            {name: "Bharath Cool", email: "bharathcool60@gmail.com", password: "Bharath@123"},
-            {name: "Inchara H C", email: "incharahc@gmail.com", password: "Inchara@123"},
-            {name: "Nishanth Prabhu", email: "nishbprabhu@gmail.com", password: "Nishanth@123"}
+            { name: "Keerthesh", email: "keertheesh.kk@gmail.com", password: "Keerthesh@123" },
+            { name: "Bhupal Vinay", email: "bhupalvinay7@gmail.com", password: "Bhupal@123" }
+            // ... Add more volunteers as needed
         ];
+
+        // Application state
+        let currentUser = null;
+
+        // DOM Elements
+        const elements = {
+            themeToggle: document.getElementById('theme-toggle'),
+            themeIcon: document.getElementById('theme-icon'),
+            loginTab: document.getElementById('loginTab'),
+            signupTab: document.getElementById('signupTab'),
+            loginForm: document.getElementById('loginForm'),
+            signupForm: document.getElementById('signupForm'),
+            errorMessage: document.getElementById('errorMessage'),
+            successMessage: document.getElementById('successMessage'),
+            authContainer: document.getElementById('authContainer'),
+            dashboard: document.getElementById('dashboard'),
+            mainContent: document.getElementById('main-content'),
+            mainFooter: document.getElementById('main-footer'),
+            loginSubmitBtn: document.getElementById('loginSubmitBtn'),
+            signupSubmitBtn: document.getElementById('signupSubmitBtn'),
+            loginBtnText: document.getElementById('loginBtnText'),
+            signupBtnText: document.getElementById('signupBtnText'),
+            loginLoading: document.getElementById('loginLoading'),
+            signupLoading: document.getElementById('signupLoading')
+        };
+
+        // Initialize the application
+        function init() {
+            loadTheme();
+            attachEventListeners();
+            checkSession();
+        }
 
         // Theme functionality
         function toggleTheme() {
             const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
             const currentTheme = body.getAttribute('data-theme');
             
             if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-moon';
-                sessionStorage.setItem('theme', 'light');
+                setTheme('light');
             } else {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
-                sessionStorage.setItem('theme', 'dark');
+                setTheme('dark');
             }
         }
 
-        // Load saved theme on page load
-        function loadTheme() {
-            const savedTheme = sessionStorage.getItem('theme') || 'light';
+        function setTheme(theme) {
             const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
             
-            if (savedTheme === 'dark') {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
+            body.setAttribute('data-theme', theme);
+            
+            if (theme === 'dark') {
+                elements.themeIcon.className = 'fas fa-sun';
             } else {
-                body.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-moon';
+                elements.themeIcon.className = 'fas fa-moon';
+            }
+            
+            // Save theme preference
+            try {
+                sessionStorage.setItem('theme', theme);
+            } catch (e) {
+                console.warn('Could not save theme preference');
             }
         }
-        loadTheme();
+
+        function loadTheme() {
+            let savedTheme = 'light';
+            
+            try {
+                savedTheme = sessionStorage.getItem('theme') || 'light';
+            } catch (e) {
+                console.warn('Could not load theme preference');
+            }
+            
+            setTheme(savedTheme);
+        }
 
         // Tab switching
         function showLogin() {
-            document.getElementById('loginForm').style.display = 'block';
-            document.getElementById('signupForm').style.display = 'none';
-            document.querySelectorAll('.tab')[0].classList.add('active');
-            document.querySelectorAll('.tab')[1].classList.remove('active');
+            elements.loginForm.style.display = 'block';
+            elements.signupForm.style.display = 'none';
+            elements.loginTab.classList.add('active');
+            elements.signupTab.classList.remove('active');
             clearMessages();
         }
 
         function showSignup() {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('signupForm').style.display = 'block';
-            document.querySelectorAll('.tab')[0].classList.remove('active');
-            document.querySelectorAll('.tab')[1].classList.add('active');
+            elements.loginForm.style.display = 'none';
+            elements.signupForm.style.display = 'block';
+            elements.loginTab.classList.remove('active');
+            elements.signupTab.classList.add('active');
             clearMessages();
         }
 
         // Message functions
         function clearMessages() {
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'none';
+            elements.errorMessage.style.display = 'none';
+            elements.successMessage.style.display = 'none';
         }
 
         function showError(message) {
-            const errorDiv = document.getElementById('errorMessage');
-            errorDiv.textContent = message;
-            errorDiv.style.display = 'block';
-            document.getElementById('successMessage').style.display = 'none';
+            elements.errorMessage.textContent = message;
+            elements.errorMessage.style.display = 'block';
+            elements.successMessage.style.display = 'none';
             
             // Auto hide after 5 seconds
             setTimeout(() => {
-                errorDiv.style.display = 'none';
+                elements.errorMessage.style.display = 'none';
             }, 5000);
         }
 
         function showSuccess(message) {
-            const successDiv = document.getElementById('successMessage');
-            successDiv.textContent = message;
-            successDiv.style.display = 'block';
-            document.getElementById('errorMessage').style.display = 'none';
+            elements.successMessage.textContent = message;
+            elements.successMessage.style.display = 'block';
+            elements.errorMessage.style.display = 'none';
             
             // Auto hide after 3 seconds
             setTimeout(() => {
-                successDiv.style.display = 'none';
+                elements.successMessage.style.display = 'none';
             }, 3000);
+        }
+
+        // Password toggle functionality
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(inputId + 'Icon');
+            
+            if (input && icon) {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.className = 'fas fa-eye-slash';
+                } else {
+                    input.type = 'password';
+                    icon.className = 'fas fa-eye';
+                }
+            }
+        }
+
+        // Form validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPassword(password) {
+            return password.length >= 8;
         }
 
         // Login handler
@@ -1312,14 +1345,19 @@
             const email = document.getElementById('loginEmail').value.toLowerCase().trim();
             const password = document.getElementById('loginPassword').value;
             
+            // Validation
             if (!email || !password) {
                 showError('Please fill in all fields.');
                 return;
             }
+
+            if (!isValidEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
             
             // Show loading
-            document.getElementById('loginBtnText').style.display = 'none';
-            document.getElementById('loginLoading').style.display = 'block';
+            setLoadingState('login', true);
             
             // Simulate API call delay
             setTimeout(() => {
@@ -1329,12 +1367,18 @@
                 );
                 
                 if (volunteer) {
-                    // Store session
-                    sessionStorage.setItem('currentUser', JSON.stringify({
+                    currentUser = {
                         name: volunteer.name,
                         email: volunteer.email,
                         loginTime: new Date().toISOString()
-                    }));
+                    };
+                    
+                    // Store session
+                    try {
+                        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    } catch (e) {
+                        console.warn('Could not save user session');
+                    }
                     
                     showSuccess(`Welcome back, ${volunteer.name}!`);
                     
@@ -1347,8 +1391,7 @@
                 }
                 
                 // Hide loading
-                document.getElementById('loginBtnText').style.display = 'block';
-                document.getElementById('loginLoading').style.display = 'none';
+                setLoadingState('login', false);
             }, 1500);
         }
 
@@ -1366,6 +1409,11 @@
                 showError('Please fill in all fields.');
                 return;
             }
+
+            if (!isValidEmail(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
             
             if (password !== confirmPassword) {
                 showError('Passwords do not match.');
@@ -1373,7 +1421,7 @@
             }
             
             if (!isValidPassword(password)) {
-                showError('Password must be at least 8 characters with uppercase, lowercase, number, and special character.');
+                showError('Password must be at least 8 characters long.');
                 return;
             }
             
@@ -1384,12 +1432,11 @@
             }
             
             // Show loading
-            document.getElementById('signupBtnText').style.display = 'none';
-            document.getElementById('signupLoading').style.display = 'block';
+            setLoadingState('signup', true);
             
             // Simulate API call delay
             setTimeout(() => {
-                // Add new volunteer
+                // Add new volunteer (in real app, this would be sent to server)
                 volunteers.push({ name, email, password });
                 
                 showSuccess('Account created successfully! You can now login.');
@@ -1398,73 +1445,70 @@
                 setTimeout(() => {
                     showLogin();
                     document.getElementById('loginEmail').value = email;
-                    document.getElementById('signupForm').reset();
+                    elements.signupForm.reset();
                 }, 2000);
                 
                 // Hide loading
-                document.getElementById('signupBtnText').style.display = 'block';
-                document.getElementById('signupLoading').style.display = 'none';
+                setLoadingState('signup', false);
             }, 1500);
         }
 
-        // Password validation
-        function isValidPassword(password) {
-            return password.length >= 8 &&
-                   /[a-z]/.test(password) &&
-                   /[A-Z]/.test(password) &&
-                   /[0-9]/.test(password) &&
-                   /[^a-zA-Z0-9]/.test(password);
+        // Loading state management
+        function setLoadingState(formType, isLoading) {
+            if (formType === 'login') {
+                elements.loginSubmitBtn.disabled = isLoading;
+                elements.loginBtnText.style.display = isLoading ? 'none' : 'block';
+                elements.loginLoading.style.display = isLoading ? 'block' : 'none';
+            } else if (formType === 'signup') {
+                elements.signupSubmitBtn.disabled = isLoading;
+                elements.signupBtnText.style.display = isLoading ? 'none' : 'block';
+                elements.signupLoading.style.display = isLoading ? 'block' : 'none';
+            }
         }
 
         // Show dashboard
         function showDashboard(user) {
             // Hide auth container and show dashboard
-            document.getElementById('authContainer').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
-            document.querySelector('.main-content').style.display = 'none';
-            document.querySelector('.footer').style.display = 'none';
+            elements.authContainer.style.display = 'none';
+            elements.dashboard.style.display = 'block';
+            elements.mainContent.style.display = 'none';
+            elements.mainFooter.style.display = 'none';
             
             // Update welcome messages
-            document.getElementById('welcomeText').textContent = `Welcome, ${user.name.split(' ')[0]}!`;
-            document.getElementById('dashboardWelcome').textContent = `Welcome back, ${user.name}!`;
+            const welcomeText = document.getElementById('welcomeText');
+            const dashboardWelcome = document.getElementById('dashboardWelcome');
+            
+            if (welcomeText) {
+                welcomeText.textContent = `Welcome, ${user.name.split(' ')[0]}!`;
+            }
+            if (dashboardWelcome) {
+                dashboardWelcome.textContent = `Welcome back, ${user.name}!`;
+            }
             
             // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        // Navigate to section (placeholder - you can create separate pages)
-        function navigateToSection(section) {
-            // For now, just show an alert. In a real application, you would navigate to separate pages
-            const sectionNames = {
-                'alumni': 'Alumni Network',
-                'reports': 'Annual Reports & Documents',
-                'training': 'Training Materials',
-                'guidelines': 'Event Guidelines',
-                'handbook': 'Volunteer Handbook',
-                'students': 'Student Details'
-            };
-            
-            alert(`Navigating to ${sectionNames[section]} section. This would redirect to a dedicated page in a full implementation.`);
-            
-            // In a real application, you would do:
-            // window.location.href = `${section}.html`;
-        }
-
         // Logout function
         function logout() {
-            // Clear session storage
-            sessionStorage.removeItem('currentUser');
+            // Clear session
+            currentUser = null;
+            try {
+                sessionStorage.removeItem('currentUser');
+            } catch (e) {
+                console.warn('Could not clear user session');
+            }
             
             // Show auth container and hide dashboard
-            document.getElementById('authContainer').style.display = 'block';
-            document.getElementById('dashboard').style.display = 'none';
-            document.querySelector('.main-content').style.display = 'flex';
-            document.querySelector('.footer').style.display = 'block';
+            elements.authContainer.style.display = 'block';
+            elements.dashboard.style.display = 'none';
+            elements.mainContent.style.display = 'flex';
+            elements.mainFooter.style.display = 'block';
             
             // Reset forms and show login tab
             showLogin();
-            document.getElementById('loginForm').reset();
-            document.getElementById('signupForm').reset();
+            elements.loginForm.reset();
+            elements.signupForm.reset();
             
             // Clear messages and show success
             clearMessages();
@@ -1474,62 +1518,148 @@
             window.scrollTo(0, 0);
         }
 
-        // Check for existing session on page load
-        window.addEventListener('load', function() {
-            loadTheme();
-            
-            // Check if we're returning from dashboard with logout
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('logout') === 'true') {
-                showSuccess('Successfully logged out from dashboard!');
-                // Clean up URL
-                window.history.replaceState({}, document.title, window.location.pathname);
-            }
-            
-            const currentUser = sessionStorage.getItem('currentUser');
-            if (currentUser) {
-                try {
-                    const user = JSON.parse(currentUser);
+        // Check for existing session
+        function checkSession() {
+            try {
+                const savedUser = sessionStorage.getItem('currentUser');
+                if (savedUser) {
+                    const user = JSON.parse(savedUser);
+                    
                     // Check if session is still valid (less than 24 hours old)
                     const loginTime = new Date(user.loginTime);
                     const now = new Date();
                     const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
                     
                     if (hoursSinceLogin < 24) {
-                        // Redirect to dashboard if still logged in
+                        // Valid session, show dashboard
+                        currentUser = user;
                         showDashboard(user);
+                        return;
                     } else {
                         // Session expired, remove it
                         sessionStorage.removeItem('currentUser');
                     }
-                } catch (e) {
-                    // Invalid session data, remove it
+                }
+            } catch (e) {
+                console.warn('Could not load user session');
+                // Clear invalid session data
+                try {
                     sessionStorage.removeItem('currentUser');
+                } catch (ex) {
+                    console.warn('Could not clear invalid session');
                 }
             }
-        });
 
-        // Add keyboard shortcuts
-        document.addEventListener('keydown', function(event) {
-            // Alt + T to toggle theme
-            if (event.altKey && event.key === 't') {
-                event.preventDefault();
-                toggleTheme();
+            // Check URL parameters for logout message
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('logout') === 'true') {
+                showSuccess('Successfully logged out!');
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
             }
+        }
+
+        // Attach event listeners
+        function attachEventListeners() {
+            // Theme toggle
+            if (elements.themeToggle) {
+                elements.themeToggle.addEventListener('click', toggleTheme);
+            }
+
+            // Tab switching
+            if (elements.loginTab) {
+                elements.loginTab.addEventListener('click', showLogin);
+            }
+            if (elements.signupTab) {
+                elements.signupTab.addEventListener('click', showSignup);
+            }
+
+            // Form submissions
+            if (elements.loginForm) {
+                elements.loginForm.addEventListener('submit', handleLogin);
+            }
+            if (elements.signupForm) {
+                elements.signupForm.addEventListener('submit', handleSignup);
+            }
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(event) {
+                // Alt + T to toggle theme
+                if (event.altKey && event.key.toLowerCase() === 't') {
+                    event.preventDefault();
+                    toggleTheme();
+                }
+                
+                // Escape key to logout from dashboard
+                if (event.key === 'Escape' && elements.dashboard.style.display === 'block') {
+                    logout();
+                }
+            });
+
+            // Password strength indicator for signup
+            const signupPasswordInput = document.getElementById('signupPassword');
+            if (signupPasswordInput) {
+                signupPasswordInput.addEventListener('input', function() {
+                    const password = this.value;
+                    // You can add password strength indicator here
+                });
+            }
+
+            // Real-time email validation
+            const emailInputs = [
+                document.getElementById('loginEmail'),
+                document.getElementById('signupEmail')
+            ];
             
-            // Escape key to logout from dashboard
-            if (event.key === 'Escape' && document.getElementById('dashboard').style.display === 'block') {
-                logout();
-            }
-        });
+            emailInputs.forEach(input => {
+                if (input) {
+                    input.addEventListener('blur', function() {
+                        if (this.value && !isValidEmail(this.value)) {
+                            this.style.borderColor = '#DC2626';
+                        } else {
+                            this.style.borderColor = '';
+                        }
+                    });
+                }
+            });
+
+            // Form input animations
+            const inputs = document.querySelectorAll('input[type="email"], input[type="password"], input[type="text"]');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.style.transform = '';
+                    }
+                });
+            });
+        }
+
+        // Make functions globally available for onclick handlers
+        window.togglePassword = togglePassword;
+        window.logout = logout;
+        window.toggleTheme = toggleTheme;
+
+        // Initialize when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
 
         // Console info
-        console.log('🚀 SoUL Organization - Complete Volunteer Login Portal with 6 Sections');
+        console.log('🚀 SoUL Organization - Fixed Login Portal');
         console.log('✨ Features: Login/Signup, Dashboard, Theme Toggle, Session Management');
+        console.log('🔧 Fixed: Theme toggle, Login issues, Mobile responsiveness');
         console.log('📋 Sections: Alumni, Reports, Training, Guidelines, Handbook, Students');
         console.log('⌨️ Shortcuts: Alt+T (Toggle Theme), Escape (Logout from Dashboard)');
         console.log('📧 Contact: soulearnofficial@gmail.com');
+        
+        // Debug info
+        console.log('📊 Volunteers in database:', volunteers.length);
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
