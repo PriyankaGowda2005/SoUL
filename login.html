@@ -986,7 +986,7 @@
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">📄</div>
                     <h3 style="margin-bottom: 1rem; color: var(--text-dark); font-family: 'Poppins', sans-serif;">Volunteer Handbook</h3>
                     <p style="color: var(--text-muted); line-height: 1.6;">Complete guide for all SoUL volunteers with updated protocols and essential information.</p>
-                    <a href="#" target="_blank">
+                    <a href="Soul  – Best Practices and Norms.pdf" target="_blank">
                          <button class="btn">View Guidelines</button>
                     </a>
                 </div>
@@ -1256,20 +1256,7 @@
                 themeIcon.className = 'fas fa-moon';
             }
         }
-
-        // Password toggle functionality
-        function togglePassword(fieldId) {
-            const passwordField = document.getElementById(fieldId);
-            const icon = document.getElementById(fieldId + 'Icon');
-            
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                icon.className = 'fas fa-eye-slash';
-            } else {
-                passwordField.type = 'password';
-                icon.className = 'fas fa-eye';
-            }
-        }
+        loadTheme();
 
         // Tab switching
         function showLogin() {

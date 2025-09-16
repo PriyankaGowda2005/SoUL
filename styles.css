@@ -1841,110 +1841,433 @@
             }
         }
 
-        /* Extra small devices */
-        @media (max-width: 320px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
+        
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-            .hero h2 {
-                font-size: 1.1rem;
-            }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-            .btn {
-                min-width: 160px;
-                padding: 0.75rem 1.25rem;
-            }
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-            .service-card,
-            .member-card,
-            .card {
-                padding: 1rem;
-            }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { 
+        transform: translate(-50%, 0); 
+    }
+    40% { 
+        transform: translate(-50%, -15px); 
+    }
+    60% { 
+        transform: translate(-50%, -8px); 
+    }
+}
 
-            .modal-content {
-                padding: 1.25rem;
-            }
-        }
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-10px); 
+    }
+}
 
-        /* Landscape mobile orientation */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                height: auto;
-                min-height: 500px;
-                padding: 2rem 0;
-            }
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+    }
+}
 
-            .hero-content {
-                padding: 1rem;
-            }
+/* Enhanced Animation Classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
+.animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-            .hero h2 {
-                font-size: 1.25rem;
-                margin-bottom: 0.75rem;
-            }
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
 
-            .hero-icon {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-            .scroll-indicator {
-                display: none;
-            }
-        }
+/* RESPONSIVE BREAKPOINTS */
 
-        /* Improved touch targets for mobile */
-        @media (pointer: coarse) {
-            .tab-btn,
-            .gallery-dot,
-            .member-social a,
-            .footer-social-icon {
-                min-width: 44px;
-                min-height: 44px;
-            }
+/* Small Mobile (320px and up) */
+@media (max-width: 480px) {
+    :root {
+        --mobile-padding: 0.75rem;
+        --mobile-gap: 0.75rem;
+    }
+    
+    .hero h1 {
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+    }
+    
+    .hero h2 {
+        font-size: clamp(0.9rem, 4vw, 1.5rem);
+    }
+    
+    .hero-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+        min-width: 180px;
+    }
+    
+    .section {
+        padding: 2.5rem 0;
+    }
+    
+    .card,
+    .service-card,
+    .member-card {
+        padding: 1.25rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+        margin: 0.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-slide img {
+        height: 250px;
+    }
+}
 
-            .mobile-menu-btn {
-                min-width: 44px;
-                min-height: 44px;
-            }
+/* Large Mobile (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        min-width: 160px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-slide img {
+        height: 350px;
+    }
+}
 
-            .service-card,
-            .member-card {
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-            }
-        }
+/* Tablet (769px - 1024px) */
+@media (min-width: 769px) {
+    :root {
+        --mobile-padding: 1.5rem;
+    }
+    
+    .navbar {
+        height: 70px;
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    .nav-menu {
+        display: flex;
+    }
+    
+    .hero {
+        padding-top: 70px;
+    }
+    
+    .logo-text {
+        font-size: 1.25rem;
+    }
+    
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .section {
+        padding: 4rem 0;
+    }
+    
+    .section-title {
+        margin-bottom: 3rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr;
+        text-align: left;
+    }
+    
+    .footer-logo {
+        justify-content: flex-start;
+    }
+    
+    .footer-socials {
+        justify-content: flex-start;
+    }
+    
+    .cta-buttons {
+        flex-direction: row;
+    }
+    
+    .gallery-slide img {
+        height: 400px;
+    }
+    
+    .theme-toggle {
+        bottom: 2rem;
+        right: 2rem;
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+    }
+}
 
-        /* Ensure text remains readable on all screen sizes */
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-                line-height: 1.5;
-            }
+/* Desktop (1025px and up) */
+@media (min-width: 1025px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-slide img {
+        height: 500px;
+    }
+    
+    .gallery-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .gallery-prev {
+        left: 1rem;
+    }
+    
+    .gallery-next {
+        right: 1rem;
+    }
+}
 
-            .service-title {
-                font-size: 1.1rem;
-            }
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 2rem;
+    }
+}
 
-            .service-description {
-                font-size: 0.9rem;
-            }
+/* Landscape orientation fixes for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        min-height: 500px;
+        padding: 1rem 0;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+}
 
-            .member-name {
-                font-size: 1rem;
-            }
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-icon,
+    .service-icon,
+    .member-photo-placeholder {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
 
-            .member-position {
-                font-size: 0.85rem;
-            }
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-icon {
+        animation: none;
+    }
+    
+    .scroll-indicator {
+        animation: none;
+    }
+}
 
-            .member-branch {
-                font-size: 0.8rem;
-            }
-        }
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .nav-link {
+        border: 1px solid transparent;
+    }
+    
+    .nav-link:focus {
+        border-color: var(--primary-color);
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 2px;
+    }
+    
+    .mobile-menu-btn {
+        border: 2px solid white;
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Focus management for better keyboard navigation */
+.focusable:focus,
+.nav-link:focus,
+.btn:focus,
+.mobile-menu-btn:focus,
+.theme-toggle:focus,
+.tab-btn:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Ensure touch targets meet accessibility guidelines */
+@media (pointer: coarse) {
+    .tab-btn,
+    .gallery-dot,
+    .member-social a,
+    .footer-social-icon,
+    .social-icon {
+        min-width: var(--touch-target);
+        min-height: var(--touch-target);
+    }
+    
+    .service-card,
+    .member-card,
+    .card {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .mobile-menu,
+    .theme-toggle,
+    .modal {
+        display: none !important;
+    }
+    
+    .hero {
+        height: auto;
+        padding: 2rem 0;
+    }
+    
+    .section {
+        padding: 1rem 0;
+        page-break-inside: avoid;
+    }
+    
+    .card,
+    .service-card,
+    .member-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
