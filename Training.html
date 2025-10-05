@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Materials - SoUL Organization</title>
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(26, 35, 50, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .home-btn {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 3rem;
+        }
+
+        .progress-overview {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(32, 211, 194, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(32, 211, 194, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #20d3c2;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #a0aec0;
+        }
+
+        .overall-progress {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(32, 211, 194, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-color: #20d3c2;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 211, 194, 0.3);
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(32, 211, 194, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .module-card:hover::before {
+            left: 100%;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            border-color: #20d3c2;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .module-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .module-info {
+            flex: 1;
+        }
+
+        .module-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #20d3c2;
+        }
+
+        .module-level {
+            display: inline-block;
+            background: rgba(32, 211, 194, 0.2);
+            color: #20d3c2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .module-description {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #cbd5e0;
+        }
+
+        .module-progress {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(32, 211, 194, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .action-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .learning-path {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .path-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #20d3c2;
+            text-align: center;
+        }
+
+        .path-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .path-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid #20d3c2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #20d3c2, #17a2b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #20d3c2;
+        }
+
+        .step-description {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .category-tabs {
+                gap: 0.5rem;
+            }
+
+            .category-tab {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .module-meta {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .module-actions {
+                flex-direction: column;
+            }
+
+            .progress-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo">📚</div>
+            <h1>SoUL Organization</h1>
+        </div>
+        <a href="#" class="home-btn">🏠 Back to Home</a>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Training Materials</h1>
+        <p class="page-subtitle">Enhance your volunteer skills with comprehensive training modules and educational resources</p>
+
+        <!-- Progress Overview -->
+        <div class="progress-overview">
+            <div class="progress-stats">
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Training Modules</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Active Learners</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.8</div>
+                    <div class="stat-label">Avg Rating</div>
+                </div>
+            </div>
+            <div class="overall-progress">
+                <h3>Your Learning Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                    <span>15 of 24 modules completed</span>
+                    <span>65%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="fundamentals">Fundamentals</button>
+            <button class="category-tab" data-category="leadership">Leadership</button>
+            <button class="category-tab" data-category="communication">Communication</button>
+            <button class="category-tab" data-category="project">Project Management</button>
+            <button class="category-tab" data-category="community">Community Service</button>
+            <button class="category-tab" data-category="technical">Technical Skills</button>
+        </div>
+
+        <!-- Fundamentals Category -->
+        <div class="category-content active" id="fundamentals">
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-icon">🎯</div>
+                        <div class="module-info">
+                            <div class="module-title">SoUL Organization Basics</div>
+                            <span class="module-level">Beginner</span>
+                        </div>
+                    </div>
+                    <div class="module-description">
+                        Learn about SoUL's mission, vision, values, organizational structure, and your role as a volunteer member.
+                    </div>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <span>⏱️</span>
+                            <span>2 hours</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📖</span>
+                            <span>5 lessons</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🎓</span>
+                            <span>Certificate</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span>4.9/5</span>
+                        </div>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <button class="action-btn" onclick="startModule('soul-basics')">
+                            ✅ Completed
+                        </button>
+                        <button class="action-btn secondary" onclick="reviewModule('soul-basics')">
+                            📄 Review
+                        </button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-icon">🤝</div>
+                        <div class="module-info">
+                            <div class="module-title">Volunteer Ethics & Code of Conduct</div>
+                            <span class="module-level">Beginner</span>
+                        </div>
+                    </div>
+                    <div class="module-description">
+                        Understanding ethical responsibilities, professional conduct, confidentiality, and best practices for volunteer work.
+                    </div>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <span>⏱️</span>
+                            <span>1.5 hours</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📖</span>
+                            <span>4 lessons</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🎓</span>
+                            <span>Certificate</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span>4.7/5</span>
+                        </div>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <button class="action-btn" onclick="startModule('volunteer-ethics')">
+                            ▶️ Continue
+                        </button>
+                        <button class="action-btn secondary" onclick="downloadMaterial('volunteer-ethics')">
+                            📥 Resources
+                        </button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-icon">📋</div>
+                        <div class="module-info">
+                            <div class="module-title">Safety & Emergency Procedures</div>
+                            <span class="module-level">Beginner</span>
+                        </div>
+                    </div>
+                    <div class="module-description">
+                        Essential safety protocols, emergency response procedures, risk assessment, and incident reporting guidelines.
+                    </div>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <span>⏱️</span>
+                            <span>3 hours</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📖</span>
+                            <span>7 lessons</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🎓</span>
+                            <span>Certificate</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span>4.8/5</span>
+                        </div>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <button class="action-btn" onclick="startModule('safety-procedures')">
+                            🚀 Start
+                        </button>
+                        <button class="action-btn secondary" onclick="previewModule('safety-procedures')">
+                            👀 Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leadership Category -->
+        <div class="category-content" id="leadership">
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-icon">👑</div>
+                        <div class="module-info">
+                            <div class="module-title">Leadership Fundamentals</div>
+                            <span class="module-level">Intermediate</span>
+                        </div>
+                    </div>
+                    <div class="module-description">
+                        Develop core leadership skills including decision making, team building, conflict resolution, and inspirational leadership techniques.
+                    </div>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <span>⏱️</span>
+                            <span>4 hours</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📖</span>
+                            <span>8 lessons</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🎓</span>
+                            <span>Certificate</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span>4.9/5</span>
+                        </div>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <button class="action-btn" onclick="startModule('leadership-fundamentals')">
+                            ▶️ Continue
+                        </button>
+                        <button class="action-btn secondary" onclick="downloadMaterial('leadership-fundamentals')">
+                            📥 Resources
+                        </button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-icon">🎯</div>
+                        <div class="module-info">
+                            <div class="module-title">Team Management</div>
+                            <span class="module-level">Advanced</span>
+                        </div>
+                    </div>
+                    <div class="module-description">
+                        Advanced team management strategies, delegation techniques, performance management, and creating high-performing teams.
+                    </div>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <span>⏱️</span>
+                            <span>5 hours</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📖</span>
+                            <span>10 lessons</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🎓</span>
+                            <span>Certificate</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span>4.8/5</span>
+                        </div>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <button class="action-btn" onclick="startModule('team-management')">
+                            🚀 Start
+                        </button>
+                        <button class="action-btn secondary" onclick="previewModule('team-management')">
+                            👀 Preview
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Category -->
+        <div class="category-content" id="communication">
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-header">
+                        <div class="module-icon">💬</div>
+                        <div class="module-info">
+                            <div class="module-title">Effective Communication</div>
+                            <span class="module-level">Intermediate</span>
+                        </div>
+                    </div>
+                    <div class="module-description">
+                        Master verbal and non-verbal communication, active listening, public speaking, and cross-cultural communication skills.
+                    </div>
+                    <div class="module-meta">
+                        <div class="meta-item">
+                            <span>⏱️</span>
+                            <span>3.5 hours</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📖</span>
+                            <span>6 lessons</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>🎓</span>
+                            <span>Certificate</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span>4.7/5</span>
+                        </div>
+                    </div>
+                    <div class="module-progress">
+                        <div class="progress-info">
+                            <span>Progress</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="module-actions">
+                        <button class="action-btn" onclick="startModule('effective-communication')">
+                            ▶️ Continue
+                        </button>
+                        <button class="action-btn secondary" onclick="downloadMaterial('effective-communication')">
+                            📥 Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path -->
+        <div class="learning-path">
+            <h3 class="path-title">🛤️ Recommended Learning Path for New Volunteers</h3>
+            <div class="path-steps">
+                <div class="path-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Foundation Knowledge</div>
+                        <div class="step-description">Start with SoUL Organization Basics and Volunteer Ethics</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Safety First</div>
+                        <div class="step-description">Complete Safety & Emergency Procedures training</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Communication Skills</div>
+                        <div class="step-description">Enhance your communication and interpersonal skills</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Specialized Training</div>
+                        <div class="step-description">Choose modules based on your volunteer role and interests</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Leadership Development</div>
+                        <div class="step-description">Advanced training for team leads and coordinators</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo and Description -->
+                <div>
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-graduation-cap" style="color: var(--soul-yellow); background: rgba(255,255,255,0.2); border-radius: 50%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;"></i>
+                        </div>
+                        <span style="font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif;">SoUL Organization</span>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem; max-width: 400px;">
+                        Empowering education and fostering community development through innovative initiatives and dedicated efforts, with the core motto of teaching kids the essential English skills they need.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="mailto:soulearnofficial@gmail.com" class="footer-social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.instagram.com/so_u_learn/" class="footer-social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <img src="img/log.png" alt="SoUL Logo" style="width: 48px; height: 48px; object-fit: contain;">
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#members">Our Team</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Contact Info</h3>
+                    <ul style="list-style: none; color: rgba(255, 255, 255, 0.8);">
+                        <li style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <i class="fas fa-map-marker-alt" style="width: 16px; margin-right: 0.5rem;"></i>
+                            <span>Hassan, Karnataka</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                            <i class="fas fa-phone" style="width: 16px; margin-right: 0.5rem;"></i>
+                            <span>+91 6366761006</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <i class="fas fa-envelope" style="width: 16px; margin-right: 0.5rem;"></i>
+                            <span>soulearnofficial@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 SoUL Organization. <br> All rights reserved. <br>
+                    <span style="margin-left: 0.5rem;">Made with <i class="fas fa-heart" style="color: #ef4444;"></i> for Education & Community</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Category tab functionality
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const categoryContents = document.querySelectorAll('.category-content');
+
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                categoryContents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                const category = tab.getAttribute('data-category');
+                const targetContent = document.getElementById(category);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+
+        // Module actions
+        function startModule(moduleId) {
+            alert(`Starting module: ${moduleId}\n\nThis would typically:\n- Open the learning management system\n- Track progress\n- Present interactive content\n- Record completion status`);
+        }
+
+        function previewModule(moduleId) {
+            alert(`Previewing module: ${moduleId}\n\nThis would show:\n- Module outline\n- Learning objectives\n- Sample content\n- Prerequisites`);
+        }
+
+        function downloadMaterial(moduleId) {
+            alert(`Downloading resources for: ${moduleId}\n\nThis would provide:\n- PDF handouts\n- Practice exercises\n- Reference materials\n- Templates`);
+        }
+
+        function reviewModule(moduleId) {
+            alert(`Reviewing completed module: ${moduleId}\n\nThis would provide:\n- Module summary\n- Key takeaways\n- Certificate download\n- Related modules`);
+        }
+
+        // Smooth animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all module cards
+        document.querySelectorAll('.module-card, .progress-overview, .learning-path').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+    <script src="golden-cursor.js"></script>
+</body>
+</html>

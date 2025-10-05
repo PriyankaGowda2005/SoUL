@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Guidelines - SoUL Organization</title>
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="responsive-system.css">
+    <style>
+        :root {
+            /* Light Theme - Pink Base */
+            --primary-color: #D91A60;
+            --secondary-color: #E91E63;
+            --accent-color: #FF6B9D;
+            --bg-primary: #FEFBFC;
+            --bg-secondary: #FDF7F9;
+            --bg-tertiary: #FBF1F5;
+            --text-primary: #1A0D13;
+            --text-secondary: #2D1B24;
+            --text-muted: #5D4A52;
+            --text-dark: #0F080B;
+            --border-color: #EFD6E3;
+            --card-bg: #FFFFFF;
+            --hover-bg: #F8EDF2;
+            --active-bg: #F3E1EA;
+            --card-shadow: 0 4px 12px rgba(26, 13, 19, 0.1), 0 2px 6px rgba(26, 13, 19, 0.08);
+            --card-hover-shadow: 0 8px 25px rgba(26, 13, 19, 0.15), 0 4px 10px rgba(26, 13, 19, 0.1);
+            --gradient-primary: linear-gradient(135deg, #E91E63 0%, #D91A60 50%, #C2185B 100%);
+            --gradient-soft: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+            --header-bg: rgba(254, 251, 252, 0.95);
+            --footer-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            --body-bg: linear-gradient(135deg, #FEFBFC 0%, #FDF7F9 100%);
+        }
+
+        /* Dark theme */
+        [data-theme="dark"] {
+            --primary-color: #14B8A6;
+            --secondary-color: #06B6D4;
+            --accent-color: #22D3EE;
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F1F5F9;
+            --text-secondary: #E2E8F0;
+            --text-muted: #94A3B8;
+            --text-dark: #FFFFFF;
+            --border-color: #475569;
+            --card-bg: #1E293B;
+            --hover-bg: #334155;
+            --active-bg: #475569;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(20, 184, 166, 0.15);
+            --card-hover-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(20, 184, 166, 0.25);
+            --gradient-primary: linear-gradient(135deg, #0891B2 0%, #14B8A6 50%, #10B981 100%);
+            --gradient-soft: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --footer-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+            --body-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--body-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: var(--header-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .logo-section h1 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            padding: 8px 40px 8px 16px;
+            width: 250px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            width: 300px;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .home-btn {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 26, 96, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .search-results {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .search-result-item {
+            padding: 0.8rem;
+            border-left: 3px solid var(--primary-color);
+            background: var(--hover-bg);
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: var(--active-bg);
+            transform: translateX(5px);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .quick-link {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: var(--card-shadow);
+        }
+
+        .quick-link:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .quick-link-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-link-title {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .event-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--gradient-primary);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(217, 26, 96, 0.3);
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .guideline-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .guideline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(217, 26, 96, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .guideline-card:hover::before {
+            left: 100%;
+        }
+
+        .guideline-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .guideline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guideline-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .guideline-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .guideline-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            padding: 0.8rem;
+            background: var(--hover-bg);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .checklist-icon {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .checklist-text {
+            flex: 1;
+            color: var(--text-secondary);
+        }
+
+        .timeline-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            background: var(--hover-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .timeline-task {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-description ul {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.25rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--hover-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .resource-description {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .footer-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Enhanced Responsive Design System */
+        :root {
+            --mobile-padding: 1rem;
+            --tablet-padding: 1.5rem;
+            --desktop-padding: 2rem;
+            --mobile-gap: 1rem;
+            --tablet-gap: 1.5rem;
+            --desktop-gap: 2rem;
+            --mobile-font-sm: 0.875rem;
+            --mobile-font-base: 1rem;
+            --mobile-font-lg: 1.125rem;
+            --mobile-font-xl: 1.25rem;
+            --mobile-font-2xl: 1.5rem;
+            --mobile-font-3xl: 2rem;
+            --touch-target: 44px;
+        }
+
+        /* Ultra Small Devices (320px - 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--mobile-padding);
+            }
+
+            .header {
+                padding: 0.75rem var(--mobile-padding);
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .logo-section h1 {
+                font-size: var(--mobile-font-lg);
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .page-title {
+                font-size: var(--mobile-font-2xl);
+                margin-bottom: 0.75rem;
+            }
+
+            .page-subtitle {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 2rem;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+                gap: var(--mobile-gap);
+            }
+
+            .quick-link {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .quick-link-icon {
+                font-size: 1.5rem;
+            }
+
+            .quick-link-title {
+                font-size: var(--mobile-font-sm);
+            }
+
+            .event-categories {
+                gap: 0.25rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .category-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: var(--mobile-font-sm);
+                border-radius: 6px;
+            }
+
+            .guidelines-grid {
+                grid-template-columns: 1fr;
+                gap: var(--mobile-gap);
+            }
+
+            .guideline-card {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .guideline-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.75rem;
+            }
+
+            .guideline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+
+            .guideline-title {
+                font-size: var(--mobile-font-lg);
+            }
+
+            .guideline-description {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 1rem;
+            }
+
+            .checklist-item {
+                padding: 0.5rem;
+                font-size: var(--mobile-font-sm);
+            }
+
+            .checklist-icon {
+                font-size: 0.875rem;
+            }
+
+            .timeline-section {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .timeline-title {
+                font-size: var(--mobile-font-xl);
+                margin-bottom: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .timeline-time {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 0.25rem;
+            }
+
+            .timeline-task {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 0.25rem;
+            }
+
+            .timeline-description {
+                font-size: 0.8rem;
+            }
+
+            .contact-section {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .contact-title {
+                font-size: var(--mobile-font-xl);
+                margin-bottom: 0.75rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: var(--mobile-gap);
+            }
+
+            .contact-item {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .contact-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .resource-title {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 0.25rem;
+            }
+
+            .resource-description {
+                font-size: 0.8rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .search-box {
+                width: 200px;
+                padding: 6px 30px 6px 12px;
+                font-size: 0.875rem;
+            }
+
+            .search-box:focus {
+                width: 220px;
+            }
+
+            .search-btn {
+                width: 28px;
+                height: 28px;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .home-btn {
+                padding: 8px 16px;
+                font-size: var(--mobile-font-sm);
+            }
+        }
+
+        /* Large Mobile Devices (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                padding: var(--tablet-padding);
+            }
+
+            .header {
+                padding: 1rem var(--tablet-padding);
+            }
+
+            .page-title {
+                font-size: var(--mobile-font-3xl);
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--tablet-gap);
+            }
+
+            .event-categories {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .category-btn {
+                padding: 0.75rem 1rem;
+                font-size: var(--mobile-font-base);
+            }
+
+            .guidelines-grid {
+                grid-template-columns: 1fr;
+                gap: var(--tablet-gap);
+            }
+
+            .guideline-card {
+                padding: 1.5rem;
+            }
+
+            .timeline-section {
+                padding: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.75rem;
+            }
+
+            .contact-info {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--tablet-gap);
+            }
+
+            .search-box {
+                width: 250px;
+            }
+
+            .search-box:focus {
+                width: 280px;
+            }
+        }
+
+        /* Tablet (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: var(--desktop-padding);
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--desktop-gap);
+            }
+
+            .guidelines-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--desktop-gap);
+            }
+
+            .event-categories {
+                gap: 1rem;
+            }
+
+            .category-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .timeline-section {
+                padding: 2rem;
+            }
+
+            .contact-info {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--desktop-gap);
+            }
+        }
+
+        /* Desktop (1025px and up) */
+        @media (min-width: 1025px) {
+            .quick-links {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--desktop-gap);
+            }
+
+            .guidelines-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--desktop-gap);
+            }
+
+            .event-categories {
+                gap: 1.5rem;
+            }
+
+            .category-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .timeline-section {
+                padding: 2rem;
+            }
+
+            .contact-info {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--desktop-gap);
+            }
+        }
+
+        /* Enhanced Touch Interactions */
+        @media (pointer: coarse) {
+            .category-btn,
+            .quick-link,
+            .checklist-item,
+            .contact-item {
+                min-height: var(--touch-target);
+            }
+
+            .category-btn {
+                padding: 1rem 1.5rem;
+            }
+
+            .quick-link {
+                padding: 1.5rem;
+            }
+
+            .checklist-item {
+                padding: 1rem;
+            }
+
+            .contact-item {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Landscape Mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding: 0.5rem var(--mobile-padding);
+            }
+
+            .page-title {
+                font-size: var(--mobile-font-xl);
+                margin-bottom: 0.5rem;
+            }
+
+            .page-subtitle {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 1rem;
+            }
+
+            .quick-links {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.75rem;
+            }
+
+            .guidelines-grid {
+                gap: 0.75rem;
+            }
+
+            .timeline-section {
+                padding: 1rem;
+            }
+
+            .timeline-item {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .logo,
+            .guideline-icon,
+            .contact-icon {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .guideline-card,
+            .quick-link,
+            .category-btn,
+            .contact-item {
+                border: 2px solid var(--text-primary);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .header,
+            .theme-toggle,
+            .search-container {
+                display: none;
+            }
+
+            .container {
+                padding: 0;
+            }
+
+            .page-title {
+                color: black !important;
+                background: none !important;
+                -webkit-text-fill-color: black !important;
+            }
+
+            .guideline-card,
+            .timeline-section,
+            .contact-section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+
+        .highlight {
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo"><i class="fas fa-graduation-cap"></i></div>
+            <h1>SoUL Organization</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="home-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Event Guidelines</h1>
+        <p class="page-subtitle">Complete guidelines for organizing events, protocols, and best practices for SoUL activities</p>
+
+        <!-- Search Results -->
+        <div class="search-results" id="searchResults">
+            <h3><i class="fas fa-search"></i> Search Results</h3>
+            <div id="searchResultsContent"></div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links" id="quickLinks">
+            <a href="#planning" class="quick-link">
+                <div class="quick-link-icon">📋</div>
+                <div class="quick-link-title">Event Planning</div>
+            </a>
+            <a href="#timeline" class="quick-link">
+                <div class="quick-link-icon">⏰</div>
+                <div class="quick-link-title">Timeline</div>
+            </a>
+            <a href="#forms" class="quick-link">
+                <div class="quick-link-icon">📞</div>
+                <div class="quick-link-title">Contact</div>
+            </a>
+        </div>
+
+        <!-- Guidelines Section -->
+        <div class="guideline-card" id="planning">
+            <div class="guideline-header">
+                <div class="guideline-icon">🎨</div>
+                <div class="guideline-title">Guidelines for organizing events</div>
+            </div>
+            <ul class="checklist">
+                <li class="checklist-item">
+                    <span class="checklist-icon">✓</span>
+                    <span class="checklist-text">Work with volunteers to co-create event concepts, schedules, and resource needs</span>
+                </li>
+                <li class="checklist-item">
+                    <span class="checklist-icon">✓</span>
+                    <span class="checklist-text">Plan and coordinate logistics for drives, celebrations, and special sessions</span>
+                </li>
+                <li class="checklist-item">
+                    <span class="checklist-icon">✓</span>
+                    <span class="checklist-text">Collaborate with the Treasurer to plan and track event budgets</span>
+                </li>
+                <li class="checklist-item">
+                    <span class="checklist-icon">✓</span>
+                    <span class="checklist-text">Ensure that events are inclusive and encourage participation from all volunteers</span>
+                </li>
+                <li class="checklist-item">
+                    <span class="checklist-icon">✓</span>
+                    <span class="checklist-text">Gather feedback after events and share learnings with the team</span>
+                </li>
+            </ul>
+        </div>
+        <br>
+<br>
+<br>
+
+        <!-- Timeline Section -->
+        <div class="timeline-section" id="timeline">
+            <h3 class="timeline-title">⏰ Event Planning Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">8-12 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Vision & Objective Setting</div>
+                        <div class="timeline-description">
+                            Define the purpose of the event (Reflection / SoUL Day), expected number of kids & schools, 
+                            outline budget, and form organizing committees (logistics, cultural, sponsorship, media).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">6-8 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Venue & Resource Booking</div>
+                        <div class="timeline-description">
+                            Book school auditorium / community hall / open ground. 
+                            Arrange catering, sound systems, projectors, stage setup, and decorations. 
+                            Contact judges, trainers, and workshop facilitators.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">4-6 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Invitations & Publicity</div>
+                        <div class="timeline-description">
+                            Send invitations to schools, NGOs, and local communities. 
+                            Design posters, brochures, and digital invites. 
+                            Start registrations for competitions, workshops, and performances.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">2-4 Weeks Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Program & Logistics Coordination</div>
+                        <div class="timeline-description">
+                            Finalize event schedule (dance, song, games, workshops, prize distribution). 
+                            Assign volunteers for stage management, hospitality, and technical support. 
+                            Confirm judges, guests, and performers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">1 Week Before</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Rehearsals & Dry Run</div>
+                        <div class="timeline-description">
+                            Conduct full-day rehearsal with performers, volunteers, and technical team. 
+                            Test audio/visual equipment, finalize seating arrangements, and prepare emergency kits.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">Event Day(s)</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Event Execution</div>
+                        <div class="timeline-description">
+                            <ul>
+                                <li>Welcome & Team Division for kids/volunteers</li>
+                                <li>Opening ceremony with chief guest & cultural act</li>
+                                <li>Competitions / Performances + Workshops (SoUL Day)</li>
+                                <li>Games & fun activities</li>
+                                <li>Food & refreshment distribution</li>
+                                <li>Prize distribution & closing ceremony</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">Post-Event</div>
+                    <div class="timeline-content">
+                        <div class="timeline-task">Wrap-up & Impact Evaluation</div>
+                        <div class="timeline-description">
+                            Cleanup venue, thank volunteers/judges/partners. 
+                            Share highlights on social media & website. 
+                            Collect feedback from kids, schools, and parents. 
+                            Prepare event report with impact assessment & lessons learned.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+        <!-- Contact Section -->
+        <div class="contact-section" id="forms">
+            <h3 class="contact-title">📞 Event Coordination Contacts</h3>
+            <p class="page-subtitle">Need help with event planning? Contact our specialized teams for guidance and support.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">🎭</div>
+                    <div class="resource-title">Events Coordinator Team</div>
+                    <div class="resource-description">Specialized support for cultural celebrations, performances, and traditional events</div>
+                    <div style="margin-top: 1rem;">
+                        <div>📧 Pooja K V</div>
+                        <div>📧 Abhishek K H</div>
+                        <div>📱 +91-9900398553</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📚</div>
+                    <div class="resource-title">Educational Programs</div>
+                    <div class="resource-description">Support for workshops, seminars, and educational outreach activities</div>
+                    <div style="margin-top: 1rem;">
+                        <div>📧 Chithra M N</div>
+                        <div>📱 +91 6360424133</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-text">
+            © 2025 SoUL Organization. All rights reserved. | Building stronger communities through cultural unity.
+        </div>
+        <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="index.html#about" class="footer-link">About Us</a></li>
+            <li><a href="index.html#services" class="footer-link">Our Services</a></li>
+            <li><a href="index.html#events" class="footer-link">Events</a></li>
+            <li><a href="index.html#members" class="footer-link">Our Team</a></li>
+        </ul>
+    </div>
+
+    <script src="error-handler.js"></script>
+    <script src="responsive-utils.js"></script>
+    <script src="ux-enhancements.js"></script>
+    <script>
+        // Enhanced Theme Management with Haptic Feedback
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            // Haptic feedback for mobile devices
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+            
+            // Add visual feedback
+            themeToggle.style.transform = 'scale(1.2) rotate(180deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = 'scale(1) rotate(0deg)';
+            }, 200);
+        }
+
+        // Enhanced Search with Debouncing and Real-time Results
+        let searchTimeout;
+        function performSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = document.querySelector('.search-box').value.toLowerCase().trim();
+                const searchResults = document.getElementById('searchResults');
+                const searchResultsContent = document.getElementById('searchResultsContent');
+                
+                if (searchTerm === '') {
+                    searchResults.classList.remove('active');
+                    return;
+                }
+                
+                // Search through all content
+                const searchableElements = document.querySelectorAll('.guideline-card, .timeline-item, .contact-item, .quick-link');
+                const results = [];
+                
+                searchableElements.forEach(element => {
+                    const text = element.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        results.push({
+                            element: element,
+                            text: text,
+                            title: element.querySelector('.guideline-title, .timeline-task, .resource-title, .quick-link-title')?.textContent || 'Result'
+                        });
+                    }
+                });
+                
+                // Display results
+                if (results.length > 0) {
+                    searchResultsContent.innerHTML = results.map(result => 
+                        `<div class="search-result-item" onclick="scrollToElement('${result.element.id || 'guideline-card'}')">
+                            <strong>${result.title}</strong>
+                            <p>${result.text.substring(0, 100)}...</p>
+                        </div>`
+                    ).join('');
+                    searchResults.classList.add('active');
+                } else {
+                    searchResultsContent.innerHTML = '<div class="no-results">No results found</div>';
+                    searchResults.classList.add('active');
+                }
+            }, 300);
+        }
+
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId) || document.querySelector(`.${elementId}`);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+                
+                // Highlight the element briefly
+                element.style.backgroundColor = 'var(--accent-color)';
+                element.style.color = 'white';
+                setTimeout(() => {
+                    element.style.backgroundColor = '';
+                    element.style.color = '';
+                }, 2000);
+            }
+        }
+
+        // Enhanced Category Switching with Smooth Transitions
+        function switchCategory(categoryName) {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categoryContents = document.querySelectorAll('.category-content');
+            
+            // Remove active class from all buttons and contents
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            categoryContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(20px)';
+            });
+
+            // Add active class to clicked button
+            const activeButton = document.querySelector(`[data-category="${categoryName}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            // Show corresponding content with animation
+            const targetContent = document.querySelector(`[data-content="${categoryName}"]`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                setTimeout(() => {
+                    targetContent.style.opacity = '1';
+                    targetContent.style.transform = 'translateY(0)';
+                }, 50);
+            }
+            
+            // Haptic feedback
+            if ('vibrate' in navigator) {
+                navigator.vibrate(30);
+            }
+        }
+
+        // Enhanced Scroll Animations with Staggered Effects
+        function initializeScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100); // Staggered animation
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all interactive elements
+            document.querySelectorAll('.guideline-card, .timeline-item, .contact-item, .quick-link').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(element);
+            });
+        }
+
+        // Enhanced Mobile Features and Touch Interactions
+        function initializeMobileFeatures() {
+            // Add touch feedback to interactive elements
+            const interactiveElements = document.querySelectorAll('.category-btn, .quick-link, .checklist-item, .contact-item');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                element.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Handle orientation changes
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 500);
+            });
+
+            // Add swipe gestures for timeline navigation
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - next timeline item
+                        scrollToNextTimelineItem();
+                    } else {
+                        // Swipe right - previous timeline item
+                        scrollToPreviousTimelineItem();
+                    }
+                }
+            }
+        }
+
+        function scrollToNextTimelineItem() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const currentItem = document.querySelector('.timeline-item.visible');
+            const currentIndex = Array.from(timelineItems).indexOf(currentItem);
+            
+            if (currentIndex < timelineItems.length - 1) {
+                timelineItems[currentIndex + 1].scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }
+
+        function scrollToPreviousTimelineItem() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const currentItem = document.querySelector('.timeline-item.visible');
+            const currentIndex = Array.from(timelineItems).indexOf(currentItem);
+            
+            if (currentIndex > 0) {
+                timelineItems[currentIndex - 1].scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            }
+        }
+
+        // Performance Optimization
+        function optimizePerformance() {
+            // Lazy load images
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+
+            // Preload critical resources
+            const criticalResources = [
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+            ];
+
+            criticalResources.forEach(resource => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.href = resource;
+                link.as = 'style';
+                document.head.appendChild(link);
+            });
+        }
+
+        // Error Handling and Fallbacks
+        function initializeErrorHandling() {
+            window.addEventListener('error', (event) => {
+                console.error('JavaScript Error:', event.error);
+            });
+
+            window.addEventListener('unhandledrejection', (event) => {
+                console.error('Unhandled Promise Rejection:', event.reason);
+            });
+        }
+
+        // Accessibility Enhancements
+        function enhanceAccessibility() {
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+
+            document.addEventListener('mousedown', () => {
+                document.body.classList.remove('keyboard-navigation');
+            });
+
+            // Add ARIA labels
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.setAttribute('aria-label', `View ${button.textContent} category`);
+            });
+
+            // Add focus indicators
+            const focusableElements = document.querySelectorAll('button, a, input');
+            focusableElements.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--primary-color)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                el.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        }
+
+        // Load saved theme on page load
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            
+            body.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+
+        // Back button functionality
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Fallback to home page if no history
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
+            
+            // Initialize search functionality
+            const searchBox = document.querySelector('.search-box');
+            if (searchBox) {
+                searchBox.addEventListener('input', performSearch);
+            }
+
+            // Initialize category switching
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const categoryName = button.getAttribute('data-category');
+                    switchCategory(categoryName);
+                });
+            });
+
+            // Initialize all enhanced features
+            initializeScrollAnimations();
+            initializeMobileFeatures();
+            optimizePerformance();
+            initializeErrorHandling();
+            enhanceAccessibility();
+
+            // Initialize quick links with smooth scrolling
+            const quickLinks = document.querySelectorAll('.quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Handle window resize for responsive adjustments
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Recalculate layouts if needed
+                const elements = document.querySelectorAll('.guideline-card, .timeline-item, .contact-item');
+                elements.forEach(element => {
+                    element.style.transform = 'translateY(0)';
+                });
+            }, 250);
+        });
+
+        // Add dynamic background effects
+        function createFloatingElements() {
+            const container = document.body;
+            
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.style.cssText = `
+                    position: fixed;
+                    width: ${Math.random() * 100 + 50}px;
+                    height: ${Math.random() * 100 + 50}px;
+                    background: var(--primary-color);
+                    opacity: 0.05;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: -1;
+                    animation: float ${Math.random() * 10 + 10}s ease-in-out infinite;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                `;
+                container.appendChild(element);
+            }
+        }
+
+        // Add CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                33% { transform: translateY(-30px) rotate(120deg); }
+                66% { transform: translateY(30px) rotate(240deg); }
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content {
+                background: var(--active-bg);
+            }
+            
+            .checklist-item:hover {
+                transform: translateX(5px);
+                background: var(--active-bg);
+            }
+            
+            .contact-item:hover .contact-icon {
+                transform: scale(1.2);
+                transition: transform 0.3s ease;
+            }
+            
+            .guideline-card:hover .guideline-icon {
+                transform: rotate(10deg) scale(1.1);
+                transition: transform 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize floating elements
+        createFloatingElements();
+
+        // Add responsive menu functionality for mobile
+        function addMobileMenuSupport() {
+            const headerControls = document.querySelector('.header-controls');
+            
+            if (window.innerWidth <= 768) {
+                headerControls.style.flexWrap = 'wrap';
+            } else {
+                headerControls.style.flexWrap = 'nowrap';
+            }
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', addMobileMenuSupport);
+        window.addEventListener('load', addMobileMenuSupport);
+
+        // Add scroll-based header effects
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Add click effects to interactive elements
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.quick-link, .home-btn, .theme-toggle')) {
+                const ripple = document.createElement('span');
+                const rect = e.target.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    left: ${x}px;
+                    top: ${y}px;
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                const rippleStyle = document.createElement('style');
+                rippleStyle.textContent = `
+                    @keyframes ripple {
+                        0% { transform: scale(0); opacity: 1; }
+                        100% { transform: scale(2); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(rippleStyle);
+                
+                e.target.style.position = 'relative';
+                e.target.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+        });
+
+        // Add parallax effect to timeline
+        window.addEventListener('scroll', function() {
+            const timeline = document.querySelector('.timeline');
+            if (timeline) {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.1;
+                timeline.style.transform = `translateY(${parallax}px)`;
+            }
+        });
+
+        // Add typewriter effect to title
+        function typewriterEffect() {
+            const title = document.querySelector('.page-title');
+            const text = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, 100);
+        }
+
+        // Initialize typewriter effect on load
+        window.addEventListener('load', function() {
+            setTimeout(typewriterEffect, 500);
+        });
+
+        // Add progress indicator for timeline
+        function updateTimelineProgress() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            
+            timelineItems.forEach((item, index) => {
+                const itemTop = item.offsetTop;
+                const itemHeight = item.offsetHeight;
+                
+                if (scrollTop + windowHeight > itemTop + itemHeight / 2) {
+                    item.classList.add('visible');
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                } else {
+                    item.classList.remove('visible');
+                }
+            });
+        }
+
+        // Initialize timeline items with animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-50px)';
+                item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            });
+            
+            window.addEventListener('scroll', updateTimelineProgress);
+            updateTimelineProgress(); // Initial check
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'Escape':
+                    goBack();
+                    break;
+                case 't':
+                case 'T':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        toggleTheme();
+                    }
+                    break;
+                case 'h':
+                case 'H':
+                    if (e.ctrlKey || e.metaKey) {
+                        e.preventDefault();
+                        document.querySelector('.page-title').scrollIntoView({ behavior: 'smooth' });
+                    }
+                    break;
+            }
+        });
+
+        // Add performance optimization
+        let ticking = false;
+        
+        function updateOnScroll() {
+            updateTimelineProgress();
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+
+        // Add accessibility improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add ARIA labels
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.setAttribute('aria-label', 'Toggle dark/light theme');
+            
+            const homeBtn = document.querySelector('.home-btn');
+            homeBtn.setAttribute('aria-label', 'Go back to previous page');
+            
+            // Add focus indicators
+            const focusableElements = document.querySelectorAll('button, a, input');
+            focusableElements.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--primary-color)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                el.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        });
+    </script>
+    <script src="golden-cursor.js"></script>
+</body>
+</html>

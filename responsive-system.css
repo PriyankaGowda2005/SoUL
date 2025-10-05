@@ -1,0 +1,843 @@
+/* 
+ * Unified Responsive Design System for SoUL Website
+ * This file provides consistent responsive design across all pages
+ */
+
+/* CSS Custom Properties for Responsive Design */
+:root {
+    /* Responsive Spacing */
+    --mobile-padding: 1rem;
+    --tablet-padding: 1.5rem;
+    --desktop-padding: 2rem;
+    --mobile-gap: 1rem;
+    --tablet-gap: 1.5rem;
+    --desktop-gap: 2rem;
+    
+    /* Responsive Typography */
+    --mobile-font-xs: 0.75rem;
+    --mobile-font-sm: 0.875rem;
+    --mobile-font-base: 1rem;
+    --mobile-font-lg: 1.125rem;
+    --mobile-font-xl: 1.25rem;
+    --mobile-font-2xl: 1.5rem;
+    --mobile-font-3xl: 2rem;
+    --mobile-font-4xl: 2.5rem;
+    --mobile-font-5xl: 3rem;
+    
+    /* Responsive Containers */
+    --mobile-container-max-width: 100%;
+    --tablet-container-max-width: 768px;
+    --desktop-container-max-width: 1200px;
+    
+    /* Responsive Grid Settings */
+    --mobile-grid-cols: 1;
+    --tablet-grid-cols: 2;
+    --desktop-grid-cols: 3;
+    --wide-grid-cols: 4;
+    
+    /* Touch Targets */
+    --touch-target: 44px;
+    --touch-target-large: 48px;
+    
+    /* Responsive Shadows */
+    --mobile-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --tablet-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --desktop-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    
+    /* Responsive Border Radius */
+    --mobile-radius: 8px;
+    --tablet-radius: 12px;
+    --desktop-radius: 16px;
+    
+    /* Responsive Transitions */
+    --mobile-transition: 0.2s ease;
+    --tablet-transition: 0.3s ease;
+    --desktop-transition: 0.4s ease;
+}
+
+/* Base Responsive Container */
+.responsive-container {
+    width: 100%;
+    max-width: var(--desktop-container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--mobile-padding);
+}
+
+/* Responsive Grid System */
+.responsive-grid {
+    display: grid;
+    gap: var(--mobile-gap);
+    grid-template-columns: repeat(var(--mobile-grid-cols), 1fr);
+}
+
+/* Responsive Card Component */
+.responsive-card {
+    background: var(--card-bg);
+    border-radius: var(--mobile-radius);
+    padding: var(--mobile-padding);
+    box-shadow: var(--mobile-shadow);
+    transition: all var(--mobile-transition);
+    border: 1px solid var(--border-color);
+}
+
+/* Responsive Button Component */
+.responsive-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: var(--mobile-font-sm);
+    font-weight: 600;
+    border-radius: var(--mobile-radius);
+    border: none;
+    cursor: pointer;
+    transition: all var(--mobile-transition);
+    min-height: var(--touch-target);
+    text-decoration: none;
+    gap: 0.5rem;
+}
+
+.responsive-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--tablet-shadow);
+}
+
+.responsive-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Input Component */
+.responsive-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: var(--mobile-font-sm);
+    border: 2px solid var(--border-color);
+    border-radius: var(--mobile-radius);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: all var(--mobile-transition);
+    min-height: var(--touch-target);
+}
+
+.responsive-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+}
+
+/* Responsive Select Component */
+.responsive-select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: var(--mobile-font-sm);
+    border: 2px solid var(--border-color);
+    border-radius: var(--mobile-radius);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: all var(--mobile-transition);
+    min-height: var(--touch-target);
+    cursor: pointer;
+}
+
+.responsive-select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+}
+
+/* Responsive Typography */
+.responsive-heading-1 {
+    font-size: var(--mobile-font-3xl);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.responsive-heading-2 {
+    font-size: var(--mobile-font-2xl);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+}
+
+.responsive-heading-3 {
+    font-size: var(--mobile-font-xl);
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.responsive-text {
+    font-size: var(--mobile-font-base);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.responsive-text-sm {
+    font-size: var(--mobile-font-sm);
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* Responsive Navigation */
+.responsive-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem var(--mobile-padding);
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.responsive-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: var(--mobile-font-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.responsive-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.responsive-nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.responsive-nav-link {
+    padding: 0.5rem 1rem;
+    font-size: var(--mobile-font-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: var(--mobile-radius);
+    transition: all var(--mobile-transition);
+    min-height: var(--touch-target);
+}
+
+.responsive-nav-link:hover {
+    background: var(--hover-bg);
+    color: var(--accent-color);
+}
+
+/* Responsive Section */
+.responsive-section {
+    padding: 3rem var(--mobile-padding);
+}
+
+.responsive-section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Responsive Modal */
+.responsive-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--mobile-transition);
+}
+
+.responsive-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.responsive-modal-content {
+    background: var(--card-bg);
+    border-radius: var(--mobile-radius);
+    padding: var(--mobile-padding);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--desktop-shadow);
+    transform: scale(0.9);
+    transition: all var(--mobile-transition);
+}
+
+.responsive-modal.active .responsive-modal-content {
+    transform: scale(1);
+}
+
+/* Responsive Table */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--mobile-font-sm);
+    background: var(--card-bg);
+    border-radius: var(--mobile-radius);
+    overflow: hidden;
+    box-shadow: var(--mobile-shadow);
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.responsive-table th {
+    background: var(--header-bg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.responsive-table tbody tr:hover {
+    background: var(--hover-bg);
+}
+
+/* Responsive Stats Cards */
+.responsive-stats-grid {
+    display: grid;
+    gap: var(--mobile-gap);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.responsive-stat-card {
+    background: var(--card-bg);
+    border-radius: var(--mobile-radius);
+    padding: var(--mobile-padding);
+    text-align: center;
+    box-shadow: var(--mobile-shadow);
+    border: 1px solid var(--border-color);
+    transition: all var(--mobile-transition);
+}
+
+.responsive-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--tablet-shadow);
+}
+
+.responsive-stat-number {
+    font-size: var(--mobile-font-3xl);
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.responsive-stat-label {
+    font-size: var(--mobile-font-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Responsive Filters */
+.responsive-filters {
+    background: var(--card-bg);
+    border-radius: var(--mobile-radius);
+    padding: var(--mobile-padding);
+    margin-bottom: 2rem;
+    box-shadow: var(--mobile-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.responsive-filters-grid {
+    display: grid;
+    gap: var(--mobile-gap);
+    grid-template-columns: 1fr;
+}
+
+.responsive-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.responsive-filter-label {
+    font-size: var(--mobile-font-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Responsive Gallery */
+.responsive-gallery {
+    display: grid;
+    gap: var(--mobile-gap);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.responsive-gallery-item {
+    aspect-ratio: 1;
+    border-radius: var(--mobile-radius);
+    overflow: hidden;
+    box-shadow: var(--mobile-shadow);
+    transition: all var(--mobile-transition);
+}
+
+.responsive-gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--tablet-shadow);
+}
+
+.responsive-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Timeline */
+.responsive-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.responsive-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent-color);
+}
+
+.responsive-timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.responsive-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.5rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--accent-color);
+    border-radius: 50%;
+    border: 3px solid var(--card-bg);
+}
+
+.responsive-timeline-content {
+    background: var(--card-bg);
+    border-radius: var(--mobile-radius);
+    padding: var(--mobile-padding);
+    box-shadow: var(--mobile-shadow);
+    border: 1px solid var(--border-color);
+}
+
+/* Responsive Footer */
+.responsive-footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 3rem var(--mobile-padding) 1rem;
+}
+
+.responsive-footer-content {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+.responsive-footer-section h3 {
+    font-size: var(--mobile-font-lg);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--footer-text);
+}
+
+.responsive-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.responsive-footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.responsive-footer-links a {
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: var(--mobile-font-sm);
+    transition: color var(--mobile-transition);
+}
+
+.responsive-footer-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Utilities */
+.responsive-hidden-mobile {
+    display: none;
+}
+
+.responsive-hidden-tablet {
+    display: block;
+}
+
+.responsive-hidden-desktop {
+    display: block;
+}
+
+.responsive-text-center {
+    text-align: center;
+}
+
+.responsive-text-left {
+    text-align: left;
+}
+
+.responsive-text-right {
+    text-align: right;
+}
+
+.responsive-mb-1 { margin-bottom: 0.25rem; }
+.responsive-mb-2 { margin-bottom: 0.5rem; }
+.responsive-mb-3 { margin-bottom: 0.75rem; }
+.responsive-mb-4 { margin-bottom: 1rem; }
+.responsive-mb-5 { margin-bottom: 1.25rem; }
+.responsive-mb-6 { margin-bottom: 1.5rem; }
+
+.responsive-mt-1 { margin-top: 0.25rem; }
+.responsive-mt-2 { margin-top: 0.5rem; }
+.responsive-mt-3 { margin-top: 0.75rem; }
+.responsive-mt-4 { margin-top: 1rem; }
+.responsive-mt-5 { margin-top: 1.25rem; }
+.responsive-mt-6 { margin-top: 1.5rem; }
+
+/* Responsive Animations */
+@keyframes responsive-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes responsive-slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes responsive-scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.responsive-fade-in {
+    animation: responsive-fadeIn 0.6s ease-out;
+}
+
+.responsive-slide-in {
+    animation: responsive-slideIn 0.6s ease-out;
+}
+
+.responsive-scale-in {
+    animation: responsive-scaleIn 0.6s ease-out;
+}
+
+/* Responsive Loading States */
+.responsive-loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    border-top-color: var(--accent-color);
+    animation: responsive-spin 1s ease-in-out infinite;
+}
+
+@keyframes responsive-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.responsive-skeleton {
+    background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-highlight) 50%, var(--skeleton-bg) 75%);
+    background-size: 200% 100%;
+    animation: responsive-skeleton-loading 1.5s infinite;
+    border-radius: var(--mobile-radius);
+}
+
+@keyframes responsive-skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Responsive Breakpoints */
+
+/* Ultra Small Devices (320px - 480px) */
+@media (max-width: 480px) {
+    .responsive-container {
+        padding: 0 var(--mobile-padding);
+    }
+    
+    .responsive-grid {
+        grid-template-columns: 1fr;
+        gap: var(--mobile-gap);
+    }
+    
+    .responsive-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .responsive-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .responsive-filters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .responsive-footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .responsive-hidden-mobile {
+        display: none !important;
+    }
+    
+    .responsive-nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .responsive-modal-content {
+        margin: 1rem;
+        max-width: calc(100vw - 2rem);
+    }
+}
+
+/* Large Mobile Devices (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .responsive-container {
+        padding: 0 var(--tablet-padding);
+    }
+    
+    .responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--tablet-gap);
+    }
+    
+    .responsive-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .responsive-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .responsive-filters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .responsive-footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .responsive-hidden-tablet {
+        display: none !important;
+    }
+}
+
+/* Tablet (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .responsive-container {
+        padding: 0 var(--desktop-padding);
+    }
+    
+    .responsive-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--desktop-gap);
+    }
+    
+    .responsive-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .responsive-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .responsive-filters-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .responsive-footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop (1025px and up) */
+@media (min-width: 1025px) {
+    .responsive-container {
+        padding: 0 var(--desktop-padding);
+    }
+    
+    .responsive-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--desktop-gap);
+    }
+    
+    .responsive-stats-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .responsive-gallery {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .responsive-filters-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .responsive-footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .responsive-hidden-desktop {
+        display: none !important;
+    }
+}
+
+/* Enhanced Touch Interactions */
+@media (pointer: coarse) {
+    .responsive-btn,
+    .responsive-input,
+    .responsive-select,
+    .responsive-nav-link {
+        min-height: var(--touch-target-large);
+        padding: 1rem 1.5rem;
+    }
+    
+    .responsive-btn:hover {
+        transform: none;
+    }
+    
+    .responsive-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .responsive-section {
+        padding: 1rem var(--mobile-padding);
+    }
+    
+    .responsive-section-header {
+        margin-bottom: 1rem;
+    }
+    
+    .responsive-nav {
+        padding: 0.5rem var(--mobile-padding);
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .responsive-gallery-item img,
+    .responsive-card img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .responsive-loading {
+        animation: none;
+    }
+    
+    .responsive-skeleton {
+        animation: none;
+        background: var(--skeleton-bg);
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .responsive-card,
+    .responsive-btn,
+    .responsive-input,
+    .responsive-select,
+    .responsive-modal-content {
+        border: 2px solid var(--text-primary);
+    }
+    
+    .responsive-btn:hover {
+        background: var(--text-primary);
+        color: var(--bg-primary);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .responsive-nav,
+    .responsive-modal,
+    .responsive-btn {
+        display: none !important;
+    }
+    
+    .responsive-container {
+        padding: 0;
+        max-width: none;
+    }
+    
+    .responsive-card,
+    .responsive-modal-content {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .responsive-section {
+        padding: 1rem 0;
+    }
+    
+    .responsive-footer {
+        background: none;
+        color: black;
+    }
+}
