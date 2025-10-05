@@ -10,12 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive-system.css">
 </head>
 <body>
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="theme-toggle">
         <i class="fas fa-moon" id="theme-icon"></i>
     </button>
+
+    <!-- Custom Floating Cursor -->
+    <!-- Cursor elements will be created dynamically by custom-cursor.js -->
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -162,13 +166,13 @@ To foster moments of happiness, bring smiles across generations, and build a com
 
             <div class="services-grid">
                 <div class="service-card fade-in" onclick="openServiceModal('Teaching Sessions', 'As the main aim of SoUL is to nurture the kids with knowledge, morals and confidence.\n\nWe conduct sessions every Sunday.\n\nIn sessions we teach them English to improve their vocabulary.\n\nVolunteers will teach children from 1st to 10th as per the pre-scheduled timetable and narrate them a moral story and an activity will be conducted.', 'fa-solid fa-school')">
-                    <div class="service-icon">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);">
                         <i class="fa-solid fa-school"></i>
                     </div>
                     <h3 class="service-title">Teaching Sessions</h3>
                     <p class="service-description">Weekly sessions focused on holistic development, including academics, life skills, and emotional well-being.</p>
                     <a href="#" class="service-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -179,51 +183,51 @@ To foster moments of happiness, bring smiles across generations, and build a com
                     <h3 class="service-title">Reflections</h3>
                     <p class="service-description">An inter-school competition that prepares Balmandir kids to represent themselves confidently.</p>
                     <a href="#" class="service-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
-                <div class="service-card fade-in" onclick="openServiceModal('Fund Raising', 'Since SoUL is a non-governmental organisation, we don\'t get any funds to organise things.\n\nHence, we the volunteers raise the funds so that we get amount for the expenditure of Balmandir kids, SoUL Day and other events of the whole academic year.\n\nFund raising will be done at Malnad College Of Engineering. Food drive is the source where we get our funds raised.', 'fas fa-utensils')">
-                    <div class="service-icon">
-                        <i class="fas fa-utensils"></i>
+                <div class="service-card fade-in" onclick="openServiceModal('Fund Raising', 'Since SoUL is a non-governmental organisation, we don\'t get any funds to organise things.\n\nHence, we the volunteers raise the funds so that we get amount for the expenditure of Balmandir kids, SoUL Day and other events of the whole academic year.\n\nFund raising will be done at Malnad College Of Engineering. Food drive is the source where we get our funds raised.', 'fa-solid fa-hand-holding-dollar')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
                     </div>
                     <h3 class="service-title">Fund Raising</h3>
                     <p class="service-description">Since SoUL is a non-governmental organisation, Fund raising will be done at MCE. Food drive is the source where we get our funds raised.</p>
                     <a href="#" class="service-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
-                <div class="service-card fade-in" onclick="openServiceModal('Cloth Drive', 'Happiness reflects when we shower the love and care to the needed, so we the members of SoUL gave a warmth hug to the shivering soul through donating clothing by organising a cloth drive.\n\nWe collect clothes and segregate them on the requirement and distribute them to the life which was craving for warmth and love.', 'fas fa-tshirt')">
-                    <div class="service-icon" style="background: var(--gradient-secondary);">
-                        <i class="fas fa-tshirt"></i>
+                <div class="service-card fade-in" onclick="openServiceModal('Cloth Drive', 'Happiness reflects when we shower the love and care to the needed, so we the members of SoUL gave a warmth hug to the shivering soul through donating clothing by organising a cloth drive.\n\nWe collect clothes and segregate them on the requirement and distribute them to the life which was craving for warmth and love.', 'fa-solid fa-shirt')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);">
+                        <i class="fa-solid fa-shirt"></i>
                     </div>
                     <h3 class="service-title">Cloth Drive</h3>
                     <p class="service-description">Distributing clothes to those in need, especially during winter seasons, reaching over 150 families.</p>
                     <a href="#" class="service-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
-                <div class="service-card fade-in" onclick="openServiceModal('Paper Drive', 'We promote environmental responsibility by actively encouraging paper recycling within our community.\n\nAlongside this, we run book collection drives where students contribute their used books, which are then carefully sorted to identify reusable ones.\n\nThese books are distributed to underprivileged individuals, helping reduce waste while spreading knowledge and learning opportunities.', 'fas fa-recycle')">
-                    <div class="service-icon" style="background: var(--gradient-accent);">
-                        <i class="fas fa-recycle"></i>
+                <div class="service-card fade-in" onclick="openServiceModal('Paper Drive', 'We promote environmental responsibility by actively encouraging paper recycling within our community.\n\nAlongside this, we run book collection drives where students contribute their used books, which are then carefully sorted to identify reusable ones.\n\nThese books are distributed to underprivileged individuals, helping reduce waste while spreading knowledge and learning opportunities.', 'fa-solid fa-recycle')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                        <i class="fa-solid fa-recycle"></i>
                     </div>
                     <h3 class="service-title">Paper Drive</h3>
                     <p class="service-description">Encouraging paper recycling and sharing knowledge by collecting books from students and donating them to those in need.</p>
                     <a href="#" class="service-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
-<div class="service-card fade-in" onclick="openServiceModal('CleanUp Drive', 'As volunteers, we take the initiative to clean and  public spaces, creating a healthier and more welcoming environment for everyone.\n\nThrough these drives, we aim to inspire communities to take pride in their surroundings and encourage collective responsibility towards maintaining cleanliness.')">
-                    <div class="service-icon" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);">
-                        <i class="fas fa-place-of-worship"></i>
+                <div class="service-card fade-in" onclick="openServiceModal('CleanUp Drive', 'As volunteers, we take the initiative to clean and  public spaces, creating a healthier and more welcoming environment for everyone.\n\nThrough these drives, we aim to inspire communities to take pride in their surroundings and encourage collective responsibility towards maintaining cleanliness.', 'fa-solid fa-broom')">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                        <i class="fa-solid fa-broom"></i>
                     </div>
                     <h3 class="service-title">CleanUp Drive</h3>
-                    <p class="service-description">We, as volunteers, take the initiative to clean  public spaces, inspiring communities to maintain cleanliness and create a healthier environment for everyone.</p>
+                    <p class="service-description">We, as volunteers, take the initiative to clean  public spaces, inspiring communities to maintain cleanliness and create a healthier environment for everyone.</p>
                     <a href="#" class="service-link">
-                        Learn More <i class="fas fa-arrow-right"></i>
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -238,68 +242,73 @@ To foster moments of happiness, bring smiles across generations, and build a com
                 <p>Highlights from our recent activities and community initiatives</p>
             </div>
 
-            <div style="display: grid; gap: 3rem;">
-                <div class="card fade-in">
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;">
-                        <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">SoUL Day</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">The SoUL volunteers organize SoUL Day every year which includes various events such as workshops, literary, cultural and sports. This day is celebrated as a remark of success where all the little kids learn many new things and enjoy a lot.</p>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-secondary); color: white; border-radius: 15px; font-size: 0.875rem;">200+ Students</span>
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-accent); color: white; border-radius: 15px; font-size: 0.875rem;">January 2025</span>
+            <div class="events-grid">
+                <!-- SoUL Day Event -->
+                <div class="event-card fade-in">
+                    <div class="event-content">
+                        <div class="event-text">
+                            <h3 class="event-title">SoUL Day</h3>
+                            <p class="event-description">The SoUL volunteers organize SoUL Day every year which includes various events such as workshops, literary, cultural and sports. This day is celebrated as a remark of success where all the little kids learn many new things and enjoy a lot.</p>
+                            <div class="event-tags">
+                                <span class="event-tag tag-primary">200+ Students</span>
+                                <span class="event-tag tag-secondary">January 2025</span>
                             </div>
                         </div>
-                        <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="img/soulday.png" alt="SoUL Day Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        <div class="event-image">
+                            <img src="img/soulday.png" alt="SoUL Day Image" loading="lazy">
                         </div>
                     </div>
                 </div>
 
-                <div class="card fade-in">
-                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
-                        <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="img/celeb.png" alt="Festivals Celebrations Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                <!-- Festivals Celebrations Event -->
+                <div class="event-card fade-in">
+                    <div class="event-content reverse">
+                        <div class="event-image">
+                            <img src="img/celeb.png" alt="Festivals Celebrations Image" loading="lazy">
                         </div>
-                        <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Festivals Celebrations</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Every year we, volunteers of SoUL celebrate Deepavali and other festivals with the little hearts of Balmandir. It is ensured that the children aren't missing their families during these occasions. We make them feel special by distributing sweets.</p>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-primary); color: white; border-radius: 15px; font-size: 0.875rem;">50+ Families</span>
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-accent); color: white; border-radius: 15px; font-size: 0.875rem;">December 2024</span>
+                        <div class="event-text">
+                            <h3 class="event-title">Festivals Celebrations</h3>
+                            <p class="event-description">Every year we, volunteers of SoUL celebrate Deepavali and other festivals with the little hearts of Balmandir. It is ensured that the children aren't missing their families during these occasions. We make them feel special by distributing sweets.</p>
+                            <div class="event-tags">
+                                <span class="event-tag tag-accent">50+ Families</span>
+                                <span class="event-tag tag-secondary">December 2024</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card fade-in">
-                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: center;">
-                        <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Patriotic Festivities</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Every Independence Day and Republic Day, Balmandir children proudly participate in the parade at the Hassan District Stadium, showcasing their respect for the nation. Their performances honor the sacrifices of our freedom fighters.</p>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-secondary); color: white; border-radius: 15px; font-size: 0.875rem;">100+ Students</span>
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-accent); color: white; border-radius: 15px; font-size: 0.875rem;">November 2024</span>
+
+                <!-- Patriotic Festivities Event -->
+                <div class="event-card fade-in">
+                    <div class="event-content">
+                        <div class="event-text">
+                            <h3 class="event-title">Patriotic Festivities</h3>
+                            <p class="event-description">Every Independence Day and Republic Day, Balmandir children proudly participate in the parade at the Hassan District Stadium, showcasing their respect for the nation. Their performances honor the sacrifices of our freedom fighters.</p>
+                            <div class="event-tags">
+                                <span class="event-tag tag-primary">100+ Students</span>
+                                <span class="event-tag tag-secondary">November 2024</span>
                             </div>
                         </div>
-                        <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="img/patri.png" alt="Patriotic Festivities Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        <div class="event-image">
+                            <img src="img/patri.png" alt="Patriotic Festivities Image" loading="lazy">
                         </div>
                     </div>
                 </div>
-                <div class="card fade-in">
-                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
-                        <div style="width: 100%; height: 200px; background: var(--bg-tertiary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                            <img src="img/alumni.png" alt="Alumni Meet Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+
+                <!-- Alumni Meet Event -->
+                <div class="event-card fade-in">
+                    <div class="event-content reverse">
+                        <div class="event-image">
+                            <img src="img/alumni.png" alt="Alumni Meet Image" loading="lazy">
                         </div>
-                        <div>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Alumni Meet</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">On SoUL Day, the active members organize the SoUL Alumni Meet, bringing together alumni, industry experts, and current members. The event fosters networking, mentorship, and knowledge sharing while also serving as a platform for alumni to provide valuable feedback and suggestions. These insights help drive continuous improvement within SoUL and strengthen the bond between alumni and the organization.</p>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-primary); color: white; border-radius: 15px; font-size: 0.875rem;">100+ alumni</span>
-                                <span style="padding: 0.25rem 0.75rem; background: var(--gradient-accent); color: white; border-radius: 15px; font-size: 0.875rem;">December 2024</span>
+                        <div class="event-text">
+                            <h3 class="event-title">Alumni Meet</h3>
+                            <p class="event-description">On SoUL Day, the active members organize the SoUL Alumni Meet, bringing together alumni, industry experts, and current members. The event fosters networking, mentorship, and knowledge sharing while also serving as a platform for alumni to provide valuable feedback and suggestions.</p>
+                            <div class="event-tags">
+                                <span class="event-tag tag-accent">100+ Alumni</span>
+                                <span class="event-tag tag-secondary">December 2024</span>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -837,6 +846,22 @@ To foster moments of happiness, bring smiles across generations, and build a com
                             <div class="member-position">Volunteer</div>
                             <div class="member-branch">Mechanical</div>
                         </div>
+                        <div class="member-card fade-in">
+                            <div class="member-photo-placeholder">
+                                <img src="img/first/yashwanth.jpg" alt="Yashwanth NR" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div class="member-name">YASHWANTH NR</div>
+                            <div class="member-position">Volunteer</div>
+                            <div class="member-branch">EC</div>
+                        </div>
+                        <div class="member-card fade-in">
+                            <div class="member-photo-placeholder">
+                                <img src="img/first/narasimha.jpg" alt="Narasimha H J" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            </div>
+                            <div class="member-name">NARASIMHA H J</div>
+                            <div class="member-position">Volunteer</div>
+                            <div class="member-branch">CSE</div>
+                        </div>
                     </div>
                 </div>
 
@@ -1214,6 +1239,12 @@ To foster moments of happiness, bring smiles across generations, and build a com
     }
   });
 </script>
+    <script src="error-handler.js"></script>
+    <script src="responsive-utils.js"></script>
+    <script src="ux-enhancements.js"></script>
+    <script src="golden-cursor.js"></script>
     <script src="script.js"></script>
+</body>
+</html>
 </body>
 </html>

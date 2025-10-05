@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="responsive-system.css">
 
     <style>
         :root {
@@ -431,35 +432,321 @@
             padding-left: 2rem;
             padding-right: 2rem;
         }
-        @media (max-width: 768px) {
+        /* Enhanced Responsive Design System */
+        :root {
+            --mobile-padding: 1rem;
+            --tablet-padding: 1.5rem;
+            --desktop-padding: 2rem;
+            --mobile-gap: 1rem;
+            --tablet-gap: 1.5rem;
+            --desktop-gap: 2rem;
+            --mobile-font-sm: 0.875rem;
+            --mobile-font-base: 1rem;
+            --mobile-font-lg: 1.125rem;
+            --mobile-font-xl: 1.25rem;
+            --mobile-font-2xl: 1.5rem;
+            --mobile-font-3xl: 2rem;
+        }
+
+        /* Ultra Small Devices (320px - 480px) */
+        @media (max-width: 480px) {
             .container {
-                padding: 1rem;
+                padding: var(--mobile-padding);
+            }
+
+            .header {
+                padding: 0.75rem var(--mobile-padding);
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .logo-section h1 {
+                font-size: var(--mobile-font-lg);
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
 
             .page-title {
-                font-size: 2rem;
+                font-size: var(--mobile-font-2xl);
+                margin-bottom: 0.75rem;
+            }
+
+            .page-subtitle {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 2rem;
+            }
+
+            .batch-selector {
+                gap: 0.25rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .batch-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: var(--mobile-font-sm);
+                border-radius: 6px;
+            }
+
+            .batch-title {
+                font-size: var(--mobile-font-xl);
+                margin-bottom: 1.5rem;
             }
 
             .alumni-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: var(--mobile-gap);
+                margin-bottom: 2rem;
             }
 
-            .batch-selector {
+            .alumni-card {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .alumni-photo {
+                width: 80px;
+                height: 80px;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .alumni-name {
+                font-size: var(--mobile-font-lg);
+                margin-bottom: 0.25rem;
+            }
+
+            .alumni-designation {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 0.75rem;
+            }
+
+            .alumni-details {
                 gap: 0.5rem;
             }
 
-            .batch-btn {
-                padding: 8px 16px;
-                font-size: 0.9rem;
+            .detail-item {
+                padding: 0.375rem;
+                font-size: var(--mobile-font-sm);
             }
 
-            .header {
-                padding: 1rem;
+            .detail-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .social-links {
+                gap: 0.75rem;
+                margin-top: 1rem;
+            }
+
+            .social-link {
+                width: 35px;
+                height: 35px;
+                font-size: 0.875rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+                padding: 0 var(--mobile-padding);
+            }
+
+            .footer-socials {
+                justify-content: center;
             }
 
             .header-controls {
                 gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Large Mobile Devices (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                padding: var(--tablet-padding);
+            }
+
+            .header {
+                padding: 1rem var(--tablet-padding);
+            }
+
+            .page-title {
+                font-size: var(--mobile-font-3xl);
+            }
+
+            .batch-selector {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            .batch-btn {
+                padding: 0.75rem 1rem;
+                font-size: var(--mobile-font-base);
+            }
+
+            .alumni-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--tablet-gap);
+            }
+
+            .alumni-card {
+                padding: 1.5rem;
+            }
+
+            .alumni-photo {
+                width: 90px;
+                height: 90px;
+                font-size: 1.75rem;
+            }
+
+            .alumni-name {
+                font-size: var(--mobile-font-xl);
+            }
+
+            .alumni-designation {
+                font-size: var(--mobile-font-base);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .header-controls {
+                gap: 0.5rem;
+            }
+        }
+
+        /* Tablet (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: var(--desktop-padding);
+            }
+
+            .alumni-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--desktop-gap);
+            }
+
+            .batch-selector {
+                gap: 1rem;
+            }
+
+            .batch-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Desktop (1025px and up) */
+        @media (min-width: 1025px) {
+            .alumni-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--desktop-gap);
+            }
+
+            .batch-selector {
+                gap: 1.5rem;
+            }
+
+            .batch-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Enhanced Touch Interactions */
+        @media (pointer: coarse) {
+            .batch-btn,
+            .social-link,
+            .alumni-card {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .batch-btn {
+                padding: 1rem 1.5rem;
+            }
+
+            .social-link {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        /* Landscape Mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding: 0.5rem var(--mobile-padding);
+            }
+
+            .page-title {
+                font-size: var(--mobile-font-xl);
+                margin-bottom: 0.5rem;
+            }
+
+            .page-subtitle {
+                font-size: var(--mobile-font-sm);
+                margin-bottom: 1rem;
+            }
+
+            .batch-selector {
+                margin-bottom: 1rem;
+            }
+
+            .alumni-grid {
+                gap: 0.75rem;
+            }
+
+            .alumni-card {
+                padding: 1rem;
+            }
+        }
+
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .alumni-photo,
+            .logo {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .alumni-card {
+                border: 2px solid var(--text-primary);
+            }
+
+            .batch-btn {
+                border: 2px solid var(--text-primary);
+            }
+
+            .social-link {
+                border: 2px solid var(--text-primary);
             }
         }
     </style>
@@ -2120,11 +2407,19 @@
     </footer>
 
 
+    <script src="error-handler.js"></script>
+    <script src="responsive-utils.js"></script>
+    <script src="ux-enhancements.js"></script>
     <script>
-        // Theme toggle functionality
+        // Enhanced Theme Management with Haptic Feedback
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
+            
+            // Haptic feedback for mobile devices
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
             
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
@@ -2135,85 +2430,262 @@
                 themeIcon.className = 'fas fa-sun';
                 localStorage.setItem('theme', 'dark');
             }
-        }
-        // Load saved theme and initialize default batch
-document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme');
-    const themeIcon = document.getElementById('theme-icon');
-    
-    if (savedTheme === 'dark') {
-        document.body.setAttribute('data-theme', 'dark');
-        themeIcon.className = 'fas fa-sun';
-    }
-
-    // Show 2025 batch by default
-    const defaultSection = document.getElementById('batch-2025');
-    if (defaultSection) {
-        defaultSection.classList.add('active');
-    }
-});
-
-        // Batch selector functionality
-        const batchButtons = document.querySelectorAll('.batch-btn');
-        const batchSections = document.querySelectorAll('.batch-section');
-
-        batchButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons and sections
-                batchButtons.forEach(btn => btn.classList.remove('active'));
-                batchSections.forEach(section => section.classList.remove('active'));
-
-                // Add active class to clicked button
-                button.classList.add('active');
-
-                // Show corresponding section
-                const batchYear = button.getAttribute('data-batch');
-                const targetSection = document.getElementById(`batch-${batchYear}`);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-            });
-        });
-
-        // Add smooth animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all alumni cards
-        document.querySelectorAll('.alumni-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Add search functionality
-        function searchAlumni() {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const cards = document.querySelectorAll('.alumni-card');
             
-            cards.forEach(card => {
-                const name = card.querySelector('.alumni-name').textContent.toLowerCase();
-                const designation = card.querySelector('.alumni-designation').textContent.toLowerCase();
+            // Add visual feedback
+            themeIcon.style.transform = 'scale(1.2) rotate(180deg)';
+            setTimeout(() => {
+                themeIcon.style.transform = 'scale(1) rotate(0deg)';
+            }, 200);
+        }
+
+        // Enhanced Batch Selector with Smooth Transitions
+        function switchBatch(batchYear) {
+            const batchButtons = document.querySelectorAll('.batch-btn');
+            const batchSections = document.querySelectorAll('.batch-section');
+            
+            // Remove active class from all buttons and sections
+            batchButtons.forEach(btn => btn.classList.remove('active'));
+            batchSections.forEach(section => {
+                section.classList.remove('active');
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+            });
+
+            // Add active class to clicked button
+            const activeButton = document.querySelector(`[data-batch="${batchYear}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            // Show corresponding section with animation
+            const targetSection = document.getElementById(`batch-${batchYear}`);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                setTimeout(() => {
+                    targetSection.style.opacity = '1';
+                    targetSection.style.transform = 'translateY(0)';
+                }, 50);
+            }
+            
+            // Haptic feedback
+            if ('vibrate' in navigator) {
+                navigator.vibrate(30);
+            }
+        }
+
+        // Enhanced Search with Debouncing
+        let searchTimeout;
+        function searchAlumni() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+                const cards = document.querySelectorAll('.alumni-card');
+                let visibleCount = 0;
                 
-                if (name.includes(searchTerm) || designation.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                cards.forEach(card => {
+                    const name = card.querySelector('.alumni-name').textContent.toLowerCase();
+                    const designation = card.querySelector('.alumni-designation').textContent.toLowerCase();
+                    
+                    if (searchTerm === '' || name.includes(searchTerm) || designation.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Update search results count
+                updateSearchResults(visibleCount);
+            }, 300);
+        }
+
+        function updateSearchResults(count) {
+            const searchResults = document.getElementById('search-results');
+            if (searchResults) {
+                searchResults.textContent = `${count} alumni found`;
+                searchResults.style.opacity = count > 0 ? '1' : '0.5';
+            }
+        }
+
+        // Enhanced Scroll Animations with Staggered Effects
+        function initializeScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100); // Staggered animation
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all interactive elements
+            document.querySelectorAll('.alumni-card, .batch-btn, .stat-card').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(element);
             });
         }
+
+        // Enhanced Mobile Menu and Touch Interactions
+        function initializeMobileFeatures() {
+            // Add touch feedback to interactive elements
+            const interactiveElements = document.querySelectorAll('.batch-btn, .alumni-card, .social-link');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                element.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Handle orientation changes
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 500);
+            });
+        }
+
+        // Performance Optimization
+        function optimizePerformance() {
+            // Lazy load images
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+
+            // Preload critical resources
+            const criticalResources = [
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+            ];
+
+            criticalResources.forEach(resource => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.href = resource;
+                link.as = 'style';
+                document.head.appendChild(link);
+            });
+        }
+
+        // Error Handling and Fallbacks
+        function initializeErrorHandling() {
+            window.addEventListener('error', (event) => {
+                console.error('JavaScript Error:', event.error);
+                // Could implement error reporting here
+            });
+
+            window.addEventListener('unhandledrejection', (event) => {
+                console.error('Unhandled Promise Rejection:', event.reason);
+                // Could implement error reporting here
+            });
+        }
+
+        // Accessibility Enhancements
+        function enhanceAccessibility() {
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+
+            document.addEventListener('mousedown', () => {
+                document.body.classList.remove('keyboard-navigation');
+            });
+
+            // Add ARIA labels
+            const batchButtons = document.querySelectorAll('.batch-btn');
+            batchButtons.forEach(button => {
+                button.setAttribute('aria-label', `View ${button.textContent} batch`);
+            });
+
+            // Add focus indicators
+            const focusableElements = document.querySelectorAll('button, a, input');
+            focusableElements.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '2px solid var(--primary-color)';
+                    this.style.outlineOffset = '2px';
+                });
+                
+                el.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            }
+
+            // Initialize batch selector
+            const batchButtons = document.querySelectorAll('.batch-btn');
+            batchButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const batchYear = button.getAttribute('data-batch');
+                    switchBatch(batchYear);
+                });
+            });
+
+            // Initialize search
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', searchAlumni);
+            }
+
+            // Initialize all enhanced features
+            initializeScrollAnimations();
+            initializeMobileFeatures();
+            optimizePerformance();
+            initializeErrorHandling();
+            enhanceAccessibility();
+
+            // Show default batch (2025)
+            switchBatch('2025');
+        });
+
+        // Handle window resize for responsive adjustments
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Recalculate layouts if needed
+                const cards = document.querySelectorAll('.alumni-card');
+                cards.forEach(card => {
+                    card.style.transform = 'translateY(0)';
+                });
+            }, 250);
+        });
     </script>
+    <script src="golden-cursor.js"></script>
 </body>
 </html>

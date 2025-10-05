@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cursor Test - SoUL Organization</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 2rem;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .test-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .test-button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        .test-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem;
+            display: inline-block;
+        }
+        
+        .test-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .instructions {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .instructions ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .instructions li {
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 1rem;
+            }
+            
+            .test-section {
+                margin: 2rem 0;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <div class="test-container">
+        <h1>🎯 Custom Cursor Test Page</h1>
+        <p>Test the custom animated cursor system on both desktop and mobile devices</p>
+        
+        <div class="instructions">
+            <h3>📋 How to Test:</h3>
+            <ul>
+                <li><strong>Desktop:</strong> Move your mouse around to see the custom cursor with inner dot and outer circle</li>
+                <li><strong>Hover Effects:</strong> Hover over buttons and links to see the cursor enlarge</li>
+                <li><strong>Click Effects:</strong> Click anywhere to see the cursor shrink</li>
+                <li><strong>Idle Timer:</strong> Stop moving for 3+ seconds to see the cursor fade</li>
+                <li><strong>Mobile:</strong> Touch and scroll to see ripple effects</li>
+                <li><strong>Theme Toggle:</strong> Switch between light and dark themes - cursor should be visible in both!</li>
+                <li><strong>Light Mode:</strong> Pink cursor with white outline for visibility</li>
+                <li><strong>Dark Mode:</strong> Teal cursor with difference blend mode</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h2>🎨 Interactive Elements</h2>
+            <p>Hover over these elements to see cursor effects:</p>
+            
+            <button class="test-button">Primary Button</button>
+            <button class="test-button" style="background: var(--gradient-secondary);">Secondary Button</button>
+            <button class="test-button" style="background: var(--gradient-accent); color: var(--text-primary);">Accent Button</button>
+            
+            <br><br>
+            
+            <a href="#" class="test-link">Test Link 1</a>
+            <a href="#" class="test-link">Test Link 2</a>
+            <a href="#" class="test-link">Test Link 3</a>
+        </div>
+        
+        <div class="test-section">
+            <h2>📱 Mobile Testing</h2>
+            <p>On mobile devices, you should see ripple effects when you touch the screen.</p>
+            <p>Try touching different areas and scrolling to see the ripple animations.</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>⚙️ Features Demonstrated</h2>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li>✅ Inner dot (10px) and outer circle (50px) on desktop</li>
+                <li>✅ Smooth easing animations with ease-out transition</li>
+                <li>✅ Mix-blend-mode: difference for visibility on all backgrounds</li>
+                <li>✅ Hover effects that enlarge the outer circle</li>
+                <li>✅ Click effects that shrink the cursor</li>
+                <li>✅ Idle timer that fades cursor after 3 seconds</li>
+                <li>✅ Mobile ripple effects on touch and scroll</li>
+                <li>✅ Theme-aware colors (pink for light, teal for dark)</li>
+                <li>✅ Responsive design (cursor hidden on mobile)</li>
+                <li>✅ Accessibility support (reduced motion, high contrast)</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔗 Navigation</h2>
+            <p>Test the cursor on different pages:</p>
+            <a href="index.html" class="test-link">🏠 Home Page</a>
+            <a href="login.html" class="test-link">🔐 Login Page</a>
+            <a href="AlumniDetail.html" class="test-link">👥 Alumni Page</a>
+        </div>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Guaranteed Working Golden Cursor Script -->
+    <script src="golden-cursor.js"></script>
+    
+    <!-- Theme Toggle Script -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        // Set default theme as dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
