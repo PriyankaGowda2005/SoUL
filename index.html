@@ -76,8 +76,7 @@
       <h1 class="font-poppins">SoUL - So U Learn</h1>
       <h2 class="font-poppins">Educating minds Empowering lives</h2>
       <br>
-      <p>
-“We want that education by which character is formed, strength of mind is increased, the intellect is expanded, and by which one can stand on one’s own feet.” - Swami Vivekananda</p>
+      <p>We want that education by which character is formed, strength of mind is increased, the intellect is expanded, and by which one can stand on oneΓÇÖs own feet.ΓÇ¥ - Swami Vivekananda</p>
       <div class="cta-buttons">
           <a href="#contact" class="btn btn-primary">
               <i class="fas fa-rocket"></i>
@@ -448,7 +447,7 @@ To foster moments of happiness, bring smiles across generations, and build a com
                             <div class="member-photo-placeholder">
                                 <img src="img/conve.png" alt="MADHUSHREE" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                             </div>
-                            <div class="member-name">Mrs. Madhushree C</div>
+                            <div class="member-name">Mrs. Madhushree┬áC</div>
                             <div class="member-position">Convenor</div>
                             <div class="member-branch">Assistant Professor <br> Department of Civil Engineering</div>
                             <span><p>Mrs. Madhushree C, Assistant Professor in the Department of Civil Engineering at Malnad College of Engineering, Hassan. Holds an M.Tech. degree and is pursuing Ph.D., (NITK Surathkal) with over 9 years of teaching experience. The academic contributions span across teaching core Civil Engineering subjects and guiding students in innovative projects and also actively engages in research and development initiatives, contributing to advancements in sustainable construction practices.</p></span>
@@ -1175,7 +1174,7 @@ To foster moments of happiness, bring smiles across generations, and build a com
   // Initialize EmailJS
   (function () {
     if (typeof emailjs !== "undefined") {
-      emailjs.init("KHYUKWuIOzs8rGb2I"); // ✅ Your Public Key
+      emailjs.init("KHYUKWuIOzs8rGb2I"); // Γ£à Your Public Key
       console.log("EmailJS initialized successfully");
     } else {
       console.error("EmailJS not loaded!");
@@ -1205,7 +1204,7 @@ To foster moments of happiness, bring smiles across generations, and build a com
 
       // Validate fields
       if (!templateParams.name || !templateParams.email || !templateParams.subject || !templateParams.message) {
-        showAlert("❌ Please fill in all fields.", "error");
+        showAlert("Γ¥î Please fill in all fields.", "error");
         return;
       }
 
@@ -1219,12 +1218,12 @@ To foster moments of happiness, bring smiles across generations, and build a com
         const response = await emailjs.send("service_d8sfxs9", "template_3ernr8k", templateParams);
 
         console.log("EmailJS response:", response);
-        showAlert("✅ Message sent successfully! We'll get back to you soon.", "success");
+        showAlert("Γ£à Message sent successfully! We'll get back to you soon.", "success");
         contactForm.reset();
 
       } catch (error) {
         console.error("EmailJS Error:", error);
-        showAlert("❌ Failed to send message. Please try again or email us at soulearnofficial@gmail.com", "error");
+        showAlert("Γ¥î Failed to send message. Please try again or email us at soulearnofficial@gmail.com", "error");
       } finally {
         // Reset button
         submitBtn.disabled = false;
@@ -1242,11 +1241,7 @@ To foster moments of happiness, bring smiles across generations, and build a com
     <script src="error-handler.js"></script>
     <script src="responsive-utils.js"></script>
     <script src="ux-enhancements.js"></script>
-    <script src="golden-cursor.js"></script>
-    <script src="theme-arrow-fix.js"></script>
-    <script src="navbar-fix.js"></script>
+    <script src="unified-system.js?v=3"></script>
     <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>

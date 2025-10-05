@@ -3,106 +3,9 @@
 // ========================================
 
 // Note: Custom cursor functionality has been moved to custom-cursor.js
+// Note: Theme toggle functionality has been moved to theme-arrow-fix.js
+// Note: Navigation functionality has been moved to navbar-fix.js
 // This file now focuses on other interactive features
-
-// Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-const html = document.documentElement;
-
-// Set default theme as dark
-const currentTheme = localStorage.getItem('theme') || 'dark';
-html.setAttribute('data-theme', currentTheme);
-updateThemeIcon(currentTheme);
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
-
-function updateThemeIcon(theme) {
-    if (theme === 'dark') {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-    }
-}
-
-// Enhanced Mobile Menu Toggle with Touch Support
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-
-// Enhanced mobile menu functionality
-function toggleMobileMenu() {
-    mobileMenu.classList.toggle('active');
-    const icon = mobileMenuBtn.querySelector('i');
-    
-    // Add haptic feedback for mobile devices
-    if ('vibrate' in navigator) {
-        navigator.vibrate(50);
-    }
-    
-    if (icon.classList.contains('fa-bars')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = 'hidden';
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        // Restore body scroll
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Enhanced event listeners for mobile menu
-mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-mobileMenuBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    toggleMobileMenu();
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        if (mobileMenu.classList.contains('active')) {
-            toggleMobileMenu();
-        }
-    }
-});
-
-// Enhanced Smooth Scrolling with Mobile Support
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 70;
-            
-            // Enhanced smooth scrolling with mobile optimization
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-            
-            // Add haptic feedback for mobile
-            if ('vibrate' in navigator) {
-                navigator.vibrate(30);
-            }
-        }
-        
-        // Close mobile menu if open
-        if (mobileMenu.classList.contains('active')) {
-            toggleMobileMenu();
-        }
-    });
-});
 
 // Enhanced Service Modal Functions
 function openServiceModal(title, content, iconClass) {
@@ -425,48 +328,6 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Enhanced Navbar background change on scroll
-let lastScrollY = window.scrollY;
-let ticking = false;
-
-function updateNavbar() {
-    const nav = document.querySelector('.navbar');
-    const scrollY = window.scrollY;
-    
-    if (scrollY > 50) {
-        nav.style.background = html.getAttribute('data-theme') === 'dark' 
-            ? 'rgba(15, 23, 42, 0.98)' 
-            : 'rgba(253, 253, 255, 0.98)';
-        nav.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
-        nav.style.backdropFilter = 'blur(20px)';
-    } else {
-        nav.style.background = html.getAttribute('data-theme') === 'dark' 
-            ? 'rgba(15, 23, 42, 0.95)' 
-            : 'rgba(253, 253, 255, 0.95)';
-        nav.style.boxShadow = 'none';
-        nav.style.backdropFilter = 'blur(20px)';
-    }
-    
-    // Hide/show navbar on scroll (mobile)
-    if (window.innerWidth <= 768) {
-        if (scrollY > lastScrollY && scrollY > 100) {
-            nav.style.transform = 'translateY(-100%)';
-        } else {
-            nav.style.transform = 'translateY(0)';
-        }
-    }
-    
-    lastScrollY = scrollY;
-    ticking = false;
-}
-
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(updateNavbar);
-        ticking = true;
-    }
-});
-
 // Enhanced mobile experience with touch feedback
 if ('ontouchstart' in window) {
     // Enhanced touch feedback for cards
@@ -624,7 +485,6 @@ window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
         // Recalculate layouts on resize
-        updateNavbar();
         
         // Update gallery if needed
         updateGallery();
@@ -635,7 +495,6 @@ window.addEventListener('resize', () => {
 window.addEventListener('orientationchange', () => {
     setTimeout(() => {
         // Recalculate layouts after orientation change
-        updateNavbar();
         updateGallery();
     }, 500);
 });
